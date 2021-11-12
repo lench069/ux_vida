@@ -1,0 +1,294 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>index2</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+// var parms = '{ "nuDoc": "22222222", "feNac" : "06121987"}'
+//var parms = '{ "nuDoc": "21889719", "feNac" : ""}'
+var parms = '{ "nuDoc": "14070612", "feNac" : ""}'
+var parms2 = '{ "mtSumaAseg": "1000000", "cdRamo" : "21", "tpCobertura" : "1", "cdClaseRiesgo" : "PER"}'
+var parms2b = '{ "cdActividad":"585", "cdRamo" : "26", "mtSumaAseg": "15000" }'
+var parms7 = '{ "mtSumaAseg": "1000022", "cdRamo" : "21", "tpCobertura" : "1", "cdClaseRiesgo" : "PER"}'
+var parms3 = '{ "cdProducto": "HOG704", "cdRamo" : "21", "cdPlan" : "2", "sumaAsegurada" : "1000000", "cdSucursal" : "1"}'
+var parmsA = '{"in0km":"N","inGarage":"N","inRastreador":"N","cdUso":"1","mtSumaGnc":null,"cdRamo":"40","cdProvincia":"1","tpCobertura":"TODAS","tpIva":"CF","provAuto":"1","cdLocalidad":"1","cdPostal":"1001","nuAnio":"2010","cdMarca":"12","cdModeloRaw":"362|125000","tpGnc":"N","cdModelo":"362","mtSumaAseg":"125000"}'
+var parms5 = {};
+var param6 = {};
+var param8 = {
+	"cdProvincia" : "13",
+	"cdCiudad" : "371",
+	"cdPostal" : "5500",
+	"domCalle" : "P DE LOS AN",
+	"domDepto" : "",
+	"domNro" : "02867",
+	"domPiso" : "",
+	"nuTelefono" : "01146326723",
+	"diMail" : "histrionica48@hotmail.com",
+
+	"origenFondosDDJJ" : "haberes",
+	"inPep" : "N",
+	"cargoPep" : "",
+	"funcPubExt" :"N",
+	"militaryProd" : "N",
+
+	"formaPago" :  {
+	  "tpCuentaBco": "05",
+	  "cdSucCta": "398",
+	  "ctaTarjetaRector": "377790000309568",
+	  "stTarjeta": "01",
+	  "nuCBU": "",
+	  "moneda": "",
+	  "ctaTarjetaFormato": "377790000309568",
+	  "ctaTarjetaFormatoProtegido": "4517#########049",
+	  "tpCtaRector": "A",
+	  "deTpCtaRector": "Debito",
+	  "cdCtaRector": "5",
+	  "inCtaRector": "T",
+	  "cdTitularidad": "TI",
+	  "nroCtaContrato": "0000000000000000"
+	},
+		
+	"feIncripcionRegistral" : "",
+	"nuIncripcionRegistral" : "",
+	"feConstitucion" : "",
+		
+	"feVigenciaNormal" : "20170414",
+	"feVigenciaAutos" : "",
+
+	"entreCalles" : "",
+	"alarma" : "",
+
+	
+	"nroPoliza" : " ",
+	"nroCertificado" : " ",
+	"errNumber" : " ",
+	"errMensaje" : " "
+};
+
+var emitir = function(){
+	var params9 = JSON.stringify(param8);
+	$.getJSON({
+	  type: "POST",
+	  url: '/Multicotizador/api/cotizacion/emision',
+	  data: params9,
+	  contentType:"application/json",
+	  dataType: "json"
+	});
+}
+
+var logingUser = function(){
+	
+	$.getJSON({
+	  type: "POST",
+	  url: '/Multicotizador/api/cliente/',
+	  data: parms,
+	  contentType:"application/json",
+	  dataType: "json"
+	});
+}
+
+var currentUser = function(){
+	
+	$.getJSON({
+	  type: "GET",
+	  url: '/Multicotizador/api/cliente/',
+	});
+}
+
+var cotizacion = function(){
+	$.getJSON({
+	  type: "POST",
+	  url: '/Multicotizador/api/cotizacion/normal',
+	  data: parms2,
+	  contentType:"application/json",
+	  dataType: "json"
+	}).done(function( data ) {
+    	param6 = JSON.stringify(data.firstPricing);
+    });
+}
+
+var cotizacionA = function(){
+	$.getJSON({
+	  type: "POST",
+	  url: '/Multicotizador/api/cotizacion/auto',
+	  data: parmsA,
+	  contentType:"application/json",
+	  dataType: "json"
+	}).done(function( data ) {
+    	param6 = JSON.stringify(data.firstPricing);
+    });
+}
+
+var cotizacion2 = function(){
+	$.getJSON({
+	  type: "POST",
+	  url: '/Multicotizador/api/cotizacion/normal',
+	  data: parms2b,
+	  contentType:"application/json",
+	  dataType: "json"
+	});
+}
+
+var recotizar = function(){
+	$.getJSON({
+	  type: "POST",
+	  url: '/Multicotizador/api/cotizacion/normal/recotizar',
+	  data: parms7,
+	  contentType:"application/json",
+	  dataType: "json"
+	});
+}
+	
+var personalizar = function(){
+	$.getJSON({
+	  type: "POST",
+	  url: '/Multicotizador/api/coberturas/personalizar',
+	  data: param6,
+	  contentType:"application/json",
+	  dataType: "json"
+	}).done(function( data ) {
+    	data.detalleCobertura[1].mtSumaAsegurada = "360000";
+    	parms5 = JSON.stringify(data);
+    });
+}
+
+var cobertura = function(){
+	var nuCoti = $('#cobertura_form').find('input[name="nuCoti"]').val();
+	var parms4 = 'cdSuc=1&nuCoti='+ nuCoti + '&cdRamo=21&cdProd=HOG820&cdPlan=2'
+	$.getJSON({
+	  type: "GET",
+	  contentType:"application/x-www-form-urlencoded; charset=UTF-8",
+	  url: '/Multicotizador/api/coberturas/',
+	  data: parms4
+	});
+}
+
+var personalizar2 = function(){
+	$.getJSON({
+	  type: "POST",
+	  url: '/Multicotizador/api/coberturas/actualizar',
+	  data: parms5,
+	  contentType:"application/json",
+	  dataType: "json"
+	});
+}
+
+var groupCoberturas = function(){
+	var parmsCober = '?cd_ramo=21&cd_prod=HOGP51&=cd_plan=1'
+	$.getJSON({
+	  type: "GET",
+	  contentType:"application/x-www-form-urlencoded; charset=UTF-8",
+	  url: '/Multicotizador/api/coberturas/agrupar',
+	  parmsCober
+	});
+}
+
+var asistencias = function(){
+	var parmsCober = '?cd_ramo=21&cd_prod=HOGP51'
+	$.getJSON({
+	  type: "GET",
+	  contentType:"application/x-www-form-urlencoded; charset=UTF-8",
+	  url: '/Multicotizador/api/coberturas/asistencias',
+	  parmsCober
+	});
+}
+
+var mascota = function(){
+	var parmsCober = '?cd_ramo=21&cd_prod=HOGP51&=cd_plan=1'
+	$.getJSON({
+	  type: "GET",
+	  contentType:"application/x-www-form-urlencoded; charset=UTF-8",
+	  url: '/Multicotizador/api/coberturas/mascota',
+	  parmsCober
+	});
+}
+
+var selectC = function(){
+	$.getJSON({
+	  type: "POST",
+	  url: '/Multicotizador/api/cotizacion/select',
+	  data: param6,
+	  contentType:"application/json",
+	  dataType: "json"
+	});
+}
+
+</script>	
+</head>
+<body>
+JSONS - Login Cliente
+<br>parms = '{ "nuDoc": "22222222", "feNac" : "06121987"}'
+<br>Login:<input type="button" value="POST" onclick="logingUser();"/>
+<br>Current:<input type="button" value=GET onclick="currentUser();"/>
+<br><br>
+Json Cotizacion Auto
+<br>parms = '{ "mtSumaAseg": "1000000", "cdRamo" : "21", "tpCobertura" : "1", "cdClaseRiesgo" : "PER"}'
+<br>Cotizaciones:<input type="button" value="POST" onclick="cotizacionA();"/>
+<br>
+<br><br>
+Json Cotizacion
+<br>parms = '{ "mtSumaAseg": "1000000", "cdRamo" : "21", "tpCobertura" : "1", "cdClaseRiesgo" : "PER"}'
+<br>Cotizaciones:<input type="button" value="POST" onclick="cotizacion();"/>
+<br>
+<br><br>
+Json Cotizacion2
+<br>parms = '{ "mtSumaAseg": "1000000", "cdRamo" : "21", "tpCobertura" : "1", "cdClaseRiesgo" : "PER"}'
+<br>Cotizaciones:<input type="button" value="POST" onclick="cotizacion2();"/>
+<br>
+<br><br>
+Json Recotizar
+<br>parms = '{ "mtSumaAseg": "1000022", "cdRamo" : "21", "tpCobertura" : "1", "cdClaseRiesgo" : "PER"}'
+<br>Cotizaciones:<input type="button" value="POST" onclick="recotizar();"/>
+<br>
+<br><br>
+Json Personalizar
+<br>parms = '{ "cdProducto": "HOG426", "cdRamo" : "21", "cdPlan" : "2"}'
+<br>Cotizaciones:<input type="button" value="POST" onclick="personalizar();"/>
+<br>
+<br><br>
+Json Cobertura
+<br>parms = '{ "cdProd": "HOG426", "cdRamo" : "21", "cdPlan" : "2", "nuCoti" : "1000000", "cdSuc" : "1"}'
+<br>Cotizaciones:
+<form id="cobertura_form" method="GET" action="/Multicotizador/api/coberturas/">
+	<input type="text" name="nuCoti" value="">
+	<input type="button" value="GET" onclick="cobertura();"/>
+</form>
+<br>
+<br><br>
+Json Personalizar2
+<br>parms = response del 1 pero con el dCobertura : "006" con el monto en data.detalleCobertura[1].mtSumaAsegurada = "360000";
+<br>Cotizaciones:<input type="button" value="POST" onclick="personalizar2();"/>
+<br>
+<br>
+<br><br>
+Json groupCoberturas
+<br>parms = { cd_ramo: "21", cd_prod: "HOGP51", cd_plan: "1" };
+<br>Cotizaciones:<input type="button" value="GET" onclick="groupCoberturas();"/>
+<br>
+<br>
+<br><br>
+Json asistencias
+<br>parms = { cd_ramo: "21", cd_prod: "HOGP51"};
+<br>Cotizaciones:<input type="button" value="GET" onclick="asistencias();"/>
+<br>
+<br>
+<br><br>
+Json mascota
+<br>parms = { cd_ramo: "21", cd_prod: "HOGP51", cd_plan: "1" };
+<br>Cotizaciones:<input type="button" value="GET" onclick="mascota();"/>
+<br>
+<br>
+<br><br>
+Json Select
+<br>parms = response del 2 pero con el select [0];
+<br>Cotizaciones:<input type="button" value="POST" onclick="selectC();"/>
+<br>
+<br><br>
+Json Emitir
+<br>parms = 'asdasd'
+<br>Emitir
+:<input type="button" value="POST" onclick="emitir();"/>
+<br>
+</body>
+</html>

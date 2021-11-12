@@ -1,0 +1,143 @@
+<div class="row" style="text-align: left; font-family: 'Roboto Regular', arial;">
+	<div class="col-xs-12 col-md-8 col-lg-9 col-xl-10 col-xxl-10" style="background-color: #efefef; padding-right: 0px;  padding-left: 0px;">
+		<md-content style="background-color: #efefef; padding-left: 15px;">
+			<br>
+			<p class="title-head">Planes</p>
+			<md-card md-theme-watch>
+				<md-card-title class="cardTitulo">
+					<md-card-title-text>
+						<div class="row">
+							<div class="col-md-10">
+								<p class="title-sub">Elegi el plan que mejor se adapte a lo que tu cliente necesita.
+								</p>
+							</div>
+							<div class="col-md-2 iconCard" ng-click="showHideCard('planes')">
+								<em ng-if="showCard.planes" class="glyphicon glyphicon-chevron-up"></em>
+								<em ng-if="!showCard.planes" class="glyphicon glyphicon-chevron-down"></em>
+							</div>
+						</div>
+					</md-card-title-text>
+				</md-card-title>
+				<md-card-content ng-if="showCard.planes">
+					<div class="row rowQuitarMarginTop" >
+						<div class="col-md-4">
+						
+						</div>
+						<div class="col-md-8" style="text-align: right;">
+							<span>
+								
+								<img class="imgCober" alt="Comparar" onmouseout="this.src='./assets/img/iconComparar.svg'" 
+								onmouseover="this.src='./assets/img/iconCompararActive.svg'" 
+								src="./assets/img/iconComparar.svg" ng-click="comparar()"/>
+								<md-tooltip class='tool' md-direction="top">
+									Comparar
+								</md-tooltip>
+							</span>
+							<!--<span>
+								<img class="imgCober" alt="Comprar" onmouseout="this.src='./assets/img/iconList.svg'" onmouseover="this.src='./assets/img/iconListActive.svg'" src="./assets/img/iconList.svg" />
+								<md-tooltip class='tool' md-direction="top">
+									Cobertura
+								</md-tooltip>
+							</span>-->
+							<span>
+								<img class="imgCober" alt="Comprar" onmouseout="this.src='./assets/img/iconImprimirGray.svg'" 
+								onmouseover="this.src='./assets/img/iconImprimirGrayActive.svg'" src="./assets/img/iconImprimirGray.svg" 
+								ng-click="imprimir()"/>
+								<md-tooltip class='tool' md-direction="top">
+									Imprimir
+								</md-tooltip>
+							</span>	
+						</div>
+					</div>
+					<div layout="row" layout-align="start" flex>
+						<table class="table">
+							<caption></caption>
+							<thead class="thead-color">
+							  <tr>
+								<th scope="col"></th>
+								<th scope="col">Compañia</th>
+								<th scope="col">Producto</th>
+								<th scope="col">Plan</th>
+								<th scope="col">Pagos</th>
+								<th scope="col">Cuota mensual</th>
+								<th scope="col">Suma asegurada</th>
+								<th scope="col"></th>
+							  </tr>
+							</thead>
+							<tbody ng-repeat="plan in planes"> 
+							  <tr >
+								<th scope="row" style="vertical-align:middle">
+									<md-switch  class="md-primary" id="{{$index}}" ng-model="plan.activo" ng-change="switch($index)"></md-switch>							  
+								</th>
+								<td style="vertical-align:middle">
+									<img  src="{{img}}" alt="">
+								</td>
+								<td style="vertical-align:middle">{{plan.deProducto}}</td>
+								<td style="vertical-align:middle">{{plan.dePlan}}</td>
+								<td style="vertical-align:middle">{{plan.nuPagos}}</td>
+								<td style="vertical-align:middle">{{plan.mtCuota | currency | formatCurrency}}</td>
+								<td style="vertical-align:middle">{{plan.sumaAsegurada | currency | formatCurrency}}</td>
+								<td style="vertical-align:middle">
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" value="" id="check{{$index}}" ng-click="selectPlanes(plan,$index)" ng-model='plan.check'>
+									  </div>
+								</td>
+							  </tr>
+							</tbody>
+						  </table>
+
+
+					</div>
+				</md-card-content>
+			</md-card>
+			<footer>
+				<div class="col-md-4" style="padding-left: 0px;">
+					<md-button ng-click="volver()" class="md-raised md-primary btnCancelar"><strong>Cancelar</strong></md-button>
+				</div>
+				<div class="col-md-8" style="text-align: right; padding-right: 0px;">
+					<md-button class="md-raised md-accent  btnContinuarCot"  ng-click="confirmarCoti()">
+						<strong>CONFIRMAR COTIZACIÓN</strong>
+					</md-button>
+				</div>
+			</footer>
+		</md-content>
+	</div>
+	<div class="col- col-xs-7 col-md-4 col-lg-3 col-xl-2 col-xxl-2" style="background-color: #efefef; padding-right: 0px;  padding-left: 0px;padding-bottom: 0px">
+		<br><br><br>
+		<md-card class="fondo-white-cob">
+			<div class="row">
+				<div class="col-md-1" style="padding-right: 0px;">
+					<img class="imgCober" src="./assets/img/iconResumen.svg" alt="">
+				</div>
+				<div class="col-md-10" style="padding-left: 0px;">
+					<md-card-title class="padding0px">
+						<md-card-title-text style="margin-left: 10px;">
+							<p class="title-alert size-elert textCotiCober" style="color: #292929;line-height:0px">Este es el número de Cotización
+							</p>
+							<p class="size-elert textCotiCober" style="line-height:0px">
+								<span style="color: #292929;">{{nuCotizacion}} / {{nuPlanes}}</span>
+							</p>
+						</md-card-title-text>
+					</md-card-title>
+				</div>
+			</div>
+		</md-card>
+		<!--<md-card class="fondo-gray">
+			<div class="row">
+				<div class="col-md-12">
+					<md-card-title>
+						<md-card-title-text>
+							<p class="title-alert size-elert color-red"><img class="" src="./assets/img/iconTips.svg"
+									alt=""> Tips Zurich Santander</p>
+							<p class="size-elert">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aenean
+								commodo ligula eget dolor. Aenean massa.</p>
+							<br>
+							<p class="size-elert">Cum sociis natoque penatibus et magnis dis parturient mentes <span
+									class="subrayar">+ info</span></p>
+						</md-card-title-text>
+					</md-card-title>
+				</div>
+			</div>
+		</md-card>-->
+	</div>
+</div>

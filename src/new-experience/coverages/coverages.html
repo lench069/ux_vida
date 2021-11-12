@@ -1,0 +1,399 @@
+<div class="row" style="text-align: left; padding-top: 40px;  font-family: 'Roboto Regular', arial;">
+	<div class="col- col-xs-12 col-md-8 col-lg-9 col-xl-10 col-xxl-10"
+		style="background-color: #efefef; padding-right: 0px;  padding-left: 0px;">
+		<md-content style="background-color: #efefef; padding-left: 34px;">
+			<p class="title-head">Personalizar seguro</p>
+
+			<div style="width: 800; height: 80px;">
+				<div class="col-md-2 homeVivienda">
+					<md-icon style="width: 30px; height: 30px;" md-svg-icon="./assets/img/iconViviendaWhite.svg">
+					</md-icon>
+				</div>
+				<div class="col-md-2" ng-class="showIncAdi ? 'menu' : 'menuNg'" style="margin-left: 10px;"
+					ng-click="opcionMenu()">
+					<p class="btn" ng-class="showIncAdi ? 'btn-circle' : 'btn-circleNg'"> 1 </p> Incluidas
+				</div>
+				<div class="col-md-2" ng-class="!showIncAdi ? 'menu' : 'menuNg'">
+					<p class="btn" ng-class="!showIncAdi ? 'btn-circle' : 'btn-circleNg'"> 2 </p> Adicionales
+				</div>
+			</div>
+
+			<!-- SECCION INCLUIDAS -->
+			<div style="background-color: #FFFFFF; padding: 10px 15px 2px 15px;" ng-show="showIncAdi">
+
+				<div ng-repeat="grupoCobertura in coberturas.obligatorias" style="padding-bottom: 8px;">
+					<md-toolbar ng-class="!grupoCobertura.show ? 'md-accent borderTitleNg' : 'md-accent borderTitle'"
+						ng-click="showHide(grupoCobertura)">
+						<div class="md-toolbar-tools">
+							<md-button class="md-icon-button" aria-label="Settings">
+								<md-icon md-svg-icon="./assets/img/{{grupoCobertura.nameIcon}}"></md-icon>
+							</md-button>
+							<p ng-class="!grupoCobertura.show ? 'title-coberNg' : 'title-cober'">
+								{{ grupoCobertura.name }}</p>
+							<span flex></span>
+							<md-button class="md-icon-button iconColorRed" aria-label="More">
+								<em ng-if="grupoCobertura.show" ng-if="false" class="glyphicon glyphicon-chevron-up"
+									style="color: #E90B18;"></em>
+								<em ng-if="!grupoCobertura.show" class="glyphicon glyphicon-chevron-down"
+									style="color: #292929;"></em>
+							</md-button>
+						</div>
+					</md-toolbar>
+
+					<md-content layout-padding class="borderBody" ng-if="grupoCobertura.show">
+
+						<div ng-repeat="cobertura in grupoCobertura.coberturas"
+							style="padding-top: 0px; padding-bottom: 0px;">
+							<div class="row" style="padding-top: 0px;">
+								<div class="col-md-8" style="padding-top: 10px;">
+									<img ng-src="./assets/img/{{cobertura.nameIcon}}" alt=""
+										style="padding-left: 5px; padding-right: 5px; width: 30px; height: 25px;" />
+									<span class="nameItem"> {{ cobertura.deCobertura }} <span class="verDetalle">
+											<strong ng-click="showHide(cobertura)"> Ver detalle
+												<em class="glyphicon glyphicon-chevron-up" ng-if="cobertura.show"></em>
+												<em class="glyphicon glyphicon-chevron-down" ng-if="!cobertura.show"></em>
+											</strong></span>
+									</span>
+								</div>
+
+								<div class="col-md-4" style="text-align: right;">
+									<md-button ng-disabled="cobertura.mtSumaMaxima == cobertura.mtSumaMinima"
+										ng-class="cobertura.mtSumaMaxima != cobertura.mtSumaMinima ? 'bttnMasMenos' : 'bttnMasMenosNg'"
+										ng-mousedown="presionar(cobertura, 'resta')" ng-mouseup="soltar()"
+										ng-mouseleave="soltar()" ng-dblclick="cantMinima(cobertura)">
+										<md-icon ng-show="cobertura.mtSumaMaxima != cobertura.mtSumaMinima"
+											md-svg-icon="./assets/img/iconMenos.svg"></md-icon>
+									</md-button>
+									<span>
+										<md-tooltip md-direction="top" class="toolpinStyle"
+											ng-if="cobertura.mtSumaMinima != cobertura.mtSumaMaxima">
+											Debe ser superior a {{cobertura.mtSumaMinima | currency | formatCurrency}}
+											<br> e inferior a {{cobertura.mtSumaMaxima | currency | formatCurrency}}
+										</md-tooltip>
+										<input type="text" id="{{cobertura.CD_COBERT}}" name="{{cobertura.CD_COBERT}}"
+											ng-value="cobertura.mtSumaAsegurada | currency | formatCurrency"
+											ng-model="cobertura.mtSumaAsegurada" class="sizeInputCo"
+											ng-disabled="true" />
+									</span>
+									<md-button ng-disabled="cobertura.mtSumaMaxima == cobertura.mtSumaMinima"
+										ng-class="cobertura.mtSumaMaxima != cobertura.mtSumaMinima ? 'bttnMasMenos' : 'bttnMasMenosNg'"
+										ng-mousedown="presionar(cobertura, 'suma')" ng-mouseup="soltar()"
+										ng-mouseleave="soltar()" ng-dblclick="cantMaxima(cobertura)">
+										<md-icon ng-show="cobertura.mtSumaMaxima != cobertura.mtSumaMinima"
+											md-svg-icon="./assets/img/iconMas.svg"></md-icon>
+									</md-button>
+								</div>
+							</div>
+							<div ng-if="cobertura.show">
+								<div class="sombraDesc">
+									<div class="descripcionCob">
+										{{cobertura.deCoberturaLarga}}
+									</div>
+								</div>
+							</div>
+							<md-divider style="border: 1px solid #d8d7d7;"></md-divider>
+						</div>
+
+					</md-content>
+				</div>
+
+				<div class="descConsulta">
+					Para consultar todas las exclusiones hacé <a href="" style="color: #E90B18;"
+						ng-click="showExcluciones()">click aquí.</a>
+				</div>
+
+				<!-- ASISTENCIAS -->
+				<div style="padding-bottom: 8px;">
+					<md-toolbar class="md-accent borderTitle">
+						<div class="md-toolbar-tools">
+							<p class="title-coberNg">
+								Asistencias</p>
+							<span flex></span>
+						</div>
+					</md-toolbar>
+
+					<md-content layout-padding class="borderBody">
+
+						<div ng-repeat="asistencia in asistencias" style="padding-top: 0px; padding-bottom: 0px;">
+							<div class="row" style="padding-top: 0px; padding-bottom: 15px;">
+								<div class="col-md-8" style="padding-top: 10px;">
+									<img ng-src="./assets/img/{{asistencia.nameIcon}}" alt=""
+										style="padding-left: 5px; padding-right: 5px; width: 30px; height: 25px;" />
+									<span class="nameItem"> {{ asistencia.desc }} <span class="verDetalle">
+											<strong ng-click="showHide(asistencia)"> Ver detalle
+												<em class="glyphicon glyphicon-chevron-up" ng-if="asistencia.show"></em>
+												<em class="glyphicon glyphicon-chevron-down"
+													ng-if="!asistencia.show"></em>
+											</strong></span>
+									</span>
+								</div>
+							</div>
+							<div ng-if="asistencia.show">
+								<div class="sombraDesc">
+									<div class="descripcionCob">
+										{{asistencia.DESC_ASISTENCIA}} <a href="" style="color: #E90B18;"
+											ng-click="showModalAsistencia(asistencia)">click aquí.</a>
+									</div>
+								</div>
+							</div>
+							<md-divider style="border: 1px solid #d8d7d7;"></md-divider>
+						</div>
+
+					</md-content>
+				</div>
+				<!-- FIN ASISTENCIAS -->
+
+			</div>
+			<!-- FIN INCLUIDAS -->
+
+			<!-- SECCION ADICIONALES -->
+			<div style="background-color: #FFFFFF; padding: 10px 15px 2px 15px;"
+				ng-show="!showIncAdi && coberturas.opcionales && coberturas.opcionales.length>0">
+
+				<div ng-repeat="grupoCobertura in coberturas.opcionales" style="padding-bottom: 8px;">
+					<md-toolbar ng-class="!grupoCobertura.show ? 'md-accent borderTitleNg' : 'md-accent borderTitle'"
+						ng-click="showHide(grupoCobertura)" ng-if="!grupoCobertura.active">
+						<div class="md-toolbar-tools">
+							<md-button class="md-icon-button" aria-label="Settings">
+								<md-icon md-svg-icon="./assets/img/{{grupoCobertura.nameIcon}}"></md-icon>
+							</md-button>
+							<p ng-class="!grupoCobertura.show ? 'title-coberNg' : 'title-cober'">
+								{{ grupoCobertura.name }}</p>
+							<span flex></span>
+							<md-button class="md-icon-button iconColorRed" aria-label="More">
+								<em ng-if="grupoCobertura.show" ng-if="false" class="glyphicon glyphicon-chevron-up"
+									style="color: #E90B18;"></em>
+								<em ng-if="!grupoCobertura.show" class="glyphicon glyphicon-chevron-down"
+									style="color: #292929;"></em>
+							</md-button>
+						</div>
+					</md-toolbar>
+
+					<md-toolbar class="md-accent borderTitleNgMascot" ng-if="grupoCobertura.active">
+						<div class="md-toolbar-tools">
+							<md-button class="md-icon-button" aria-label="Settings">
+								<md-icon md-svg-icon="./assets/img/iconProteccionMascotasBlanco.svg"></md-icon>
+							</md-button>
+							<p class="title-cober-mascota"> {{ grupoCobertura.name }}</p>
+							<md-button class="md-raised"><span style="color: #E90B18;"><strong>Nuevo</strong></span></md-button>
+							<span flex></span>
+							<md-switch ng-model="grupoCobertura.show" class="md-primary"
+								ng-change="activeMascota(grupoCobertura)">
+							</md-switch>
+						</div>
+					</md-toolbar>
+
+					<md-content layout-padding class="borderBody" ng-if="grupoCobertura.show || grupoCobertura.active">
+
+						<div ng-repeat="cobertura in grupoCobertura.coberturas" style="padding-top: 0px;">
+							<div class="row"
+								ng-class="grupoCobertura.active && !cobertura.mtSumaSugerida ? 'mascota' : 'cobertura'">
+								<div class="col-md-1" ng-if="!grupoCobertura.active"
+									style="margin-right: 0px; padding-right: 0px; width: 6%;">
+									<md-switch ng-model="cobertura.active" class="md-primary"
+										ng-change="activeMonto(cobertura)">
+									</md-switch>
+								</div>
+								<div class="col-md-7" style="padding-top: 17px; padding-left: 0px;"
+									ng-if="!grupoCobertura.active">
+									<img ng-src="./assets/img/{{cobertura.nameIcon}}" alt=""
+										style="padding-left: 5px; padding-right: 5px; width: 30px; height: 25px;" />
+									<span class="nameItem"> {{ cobertura.deCobertura }} <span class="verDetalle">
+											<strong ng-click="showHide(cobertura)"> Ver detalle
+												<em class="glyphicon glyphicon-chevron-up" ng-if="asistencia.show"></em>
+												<em class="glyphicon glyphicon-chevron-down"
+													ng-if="!asistencia.show"></em>
+											</strong></span>
+									</span>
+								</div>
+								<div class="col-md-8" style="padding-top: 10px;" ng-if="grupoCobertura.active">
+									<img ng-src="./assets/img/{{cobertura.nameIcon}}" alt=""
+										style="padding-left: 5px; padding-right: 5px; width: 30px; height: 25px;" />
+									<span class="nameItem"> {{ cobertura.deCobertura }} <span class="verDetalle">
+											<strong ng-click="showHide(cobertura)"> Ver detalle
+												<em class="glyphicon glyphicon-chevron-up" ng-if="asistencia.show"></em>
+												<em class="glyphicon glyphicon-chevron-down"
+													ng-if="!asistencia.show"></em>
+											</strong></span>
+									</span>
+								</div>
+								<div class="col-md-4" style="text-align: right;" ng-if="cobertura.mtSumaSugerida">
+									<md-button
+										ng-disabled="cobertura.mtSumaMaxima == cobertura.mtSumaMinima || !cobertura.active"
+										ng-class="cobertura.mtSumaMaxima != cobertura.mtSumaMinima ? 'bttnMasMenos' : 'bttnMasMenosNg'"
+										ng-mousedown="presionar(cobertura, 'resta')" ng-mouseup="soltar()"
+										ng-mouseleave="soltar()" ng-dblclick="cantMinima(cobertura)">
+										<md-icon
+											ng-show="cobertura.mtSumaMaxima != cobertura.mtSumaMinima && cobertura.active"
+											md-svg-icon="./assets/img/iconMenos.svg"></md-icon>
+									</md-button>
+									<span>
+										<md-tooltip md-direction="top" class="toolpinStyle"
+											ng-if="cobertura.mtSumaMinima != cobertura.mtSumaMaxima">
+											Debe ser superior a {{cobertura.mtSumaMinima | currency | formatCurrency}}
+											<br> e inferior a {{cobertura.mtSumaMaxima | currency | formatCurrency}}
+										</md-tooltip>
+										<input type="text" id="{{cobertura.CD_COBERT}}" name="{{cobertura.CD_COBERT}}"
+											ng-value="cobertura.mtSumaAsegurada | currency | formatCurrency"
+											ng-model="cobertura.mtSumaAsegurada" class="sizeInputCo"
+											ng-disabled="true" />
+									</span>
+									<md-button
+										ng-disabled="cobertura.mtSumaMaxima == cobertura.mtSumaMinima || !cobertura.active"
+										ng-class="cobertura.mtSumaMaxima != cobertura.mtSumaMinima ? 'bttnMasMenos' : 'bttnMasMenosNg'"
+										ng-mousedown="presionar(cobertura, 'suma')" ng-mouseup="soltar()"
+										ng-mouseleave="soltar()" ng-dblclick="cantMaxima(cobertura)">
+										<md-icon
+											ng-show="cobertura.mtSumaMaxima != cobertura.mtSumaMinima && cobertura.active"
+											md-svg-icon="./assets/img/iconMas.svg"></md-icon>
+									</md-button>
+								</div>
+							</div>
+							<div ng-if="cobertura.show">
+								<div class="sombraDesc">
+									<div class="descripcionCob">
+										{{cobertura.deCoberturaLarga}}
+									</div>
+								</div>
+							</div>
+							<md-divider style="border: 1px solid #d8d7d7;"></md-divider>
+						</div>
+
+					</md-content>
+				</div>
+
+				<div class="descConsulta"> Para consultar todas las exclusiones hacé <a href="" style="color: #E90B18;"
+						ng-click="showExcluciones()">click aquí.</a>
+				</div>
+
+			</div>
+
+			<div style="background-color: #FFFFFF; padding: 10px 15px 2px 15px;"
+				ng-show="!showIncAdi && (!coberturas.opcionales || coberturas.opcionales.length==0)">
+				<p class="sin-cobert"><em class="glyphicon glyphicon-info-sign"></em> No se encontraron coberturas
+					adicionales.</p>
+			</div>
+			<!-- FIN ADICIONALES -->
+
+		</md-content>
+		<footer>
+			<div class="col-md-6">
+				<md-button class="md-raised btnCancelar" ng-click="cancelar()"><strong> Cancelar</strong></md-button>
+				<md-button class="md-raised md-primary btnVolver" ng-show="!showIncAdi" ng-click="volver()"><strong>
+						volver al paso anterior</strong>
+				</md-button>
+			</div>
+			<div class="col-md-6" style="text-align: right; padding-right: 0px;">
+				<md-button ng-if="coberturas.obligatorias.length > 0" class="md-raised btnContinuar"
+					ng-click="continuar()"><strong>continuar</strong>
+				</md-button>
+			</div>
+		</footer>
+	</div>
+	<div class="col- col-xs-7 col-md-4 col-lg-3 col-xl-2 col-xxl-2"
+		style="background-color: #efefef; padding-right: 0px;  padding-left: 0px;">
+		<md-card class="fondo-white-cob">
+			<div class="row">
+				<div class="col-md-1" style="padding-right: 0px;">
+					<img class="imgCober" src="./assets/img/iconCostoTotal.svg" alt="">
+				</div>
+				<div class="col-md-11" style="padding-left: 0px;">
+					<md-card-title class="padding0px ">
+						<md-card-title-text>
+							<p class="title-alert size-elert textCotiCober">Costo total mensual <span
+									class="color-red">{{ costoTotal  | currency | formatCurrency}}</span>
+							</p>
+						</md-card-title-text>
+					</md-card-title>
+				</div>
+			</div>
+		</md-card>
+
+		<md-card class="fondo-white-cob">
+			<div class="row">
+				<div class="col-md-1" style="padding-right: 0px;">
+					<img class="imgCober" src="./assets/img/iconCostoDiario.svg" alt="">
+				</div>
+				<div class="col-md-11" style="padding-left: 0px;">
+					<md-card-title class="padding0px">
+						<md-card-title-text>
+							<p class="title-alert size-elert textCotiCober">Costo diario
+								<span
+									class="color-red">{{ ((costoTotal * 1)/30).toFixed(2) | currency | formatCurrency }}</span>
+							</p>
+						</md-card-title-text>
+					</md-card-title>
+				</div>
+			</div>
+		</md-card>
+
+		<md-card class="fondo-white-cob">
+			<div class="row">
+				<div class="col-md-1" style="padding-right: 0px;">
+					<img class="imgCober" src="./assets/img/iconPlanPagos.svg" alt="">
+				</div>
+				<div class="col-md-11" style="padding-left: 0px;">
+					<md-card-title class="padding0px">
+						<md-card-title-text>
+							<p class="title-alert size-elert textCotiCober">Plan de pagos
+								<span class="color-red">{{ numPagos }} cuotas</span>
+							</p>
+						</md-card-title-text>
+					</md-card-title>
+				</div>
+			</div>
+		</md-card>
+
+		<md-card class="fondo-white-cob">
+			<div class="row">
+				<div class="col-md-1" style="padding-right: 0px;">
+					<img class="imgCober" src="./assets/img/iconPlanPagos.svg" alt="">
+				</div>
+				<div class="col-md-11" style="padding-left: 0px;">
+					<md-card-title class="padding0px">
+						<md-card-title-text>
+							<p class="title-alert size-elert textCotiCober">La vivienda será asegurada <br>
+								correctamente por
+								<span class="color-red">
+									{{ cotizacion.dataUser.sumaAsegurada | currency | formatCurrency }}</span>
+							</p>
+						</md-card-title-text>
+					</md-card-title>
+				</div>
+			</div>
+		</md-card>
+
+		<!--<md-card class="fondo-yellow">
+			<div class="row">
+				<div class="col-md-1" style="padding-right: 0px;">
+					<img class="imgPuntosCober" src="./assets/img/iconPuntos.svg" alt="">
+				</div>
+				<div class="col-md-11" style="padding-left: 0px;">
+					<md-card-title class="padding0px">
+						<md-card-title-text>
+							<p class="title-alert size-elert textCotiCober">CON ESTA VENTA GENERARÍAS</p>
+							<p class="size-elert puntos">3450 pts.</p>
+						</md-card-title-text>
+					</md-card-title>
+				</div>
+			</div>
+		</md-card>-->
+
+		<md-card class="fondo-gray">
+			<div class="col-md-12">
+				<md-card-title>
+					<md-card-title-text>
+						<p class="title-alert size-elert color-red"><img class="" src="./assets/img/iconTips.svg"
+								alt=""> Tips Zurich Santander</p>
+						<p class= "size-elert" ng-show="!showIncAdi">Sabías que… El 20% de los clientes que contratan Vivienda en App y OLB incluyen el adicional de mascotas. ¿Tu cliente tiene alguna mascota?</p>
+						<p class="size-elert"ng-show="showIncAdi">En el caso que el cliente quiera solicitar alguna de las asistencias deberá comunicarse al telefono 0800-444-0313</p>
+						<br>
+						<!-- <p class="size-elert">Cum sociis natoque penatibus et magnis dis parturient mentes <span
+								class="subrayar">+ info</span></p> -->
+					</md-card-title-text>
+				</md-card-title>
+			</div>
+		</md-card>
+
+	</div>
+</div>

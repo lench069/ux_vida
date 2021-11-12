@@ -1,0 +1,26 @@
+<div style=" font-family: 'Roboto Regular', arial; max-width: 850px; width: 450px; height: 185px; text-align: center;">
+  <div class="row" style="padding-left: 0px; margin-right: 0px;">
+    <div class="col-md-11" style="padding-left: 0px; padding-top: 5px;">
+    </div>
+    <div class="col-md-1">
+      <p class="close" style="color: black;padding-right: 10px;" ng-click="cancel()">x</p>
+    </div>
+  </div>
+  <md-content class="md-padding" style="background-color: white; padding-bottom: 0px;">
+    <div class="row" style="padding: 0px; margin: 0px;">
+      <div class="col-md-12" style="font-size: 15px;">
+        <b>{{ info.description }}</b>
+      </div>
+      <div class="col-md-8">
+        <input type="text"
+          style="width: 210px; height: 50px; border: 1px solid #E8E8E8; border-radius: 5px; margin-top: 5px; font-weight: bold;"
+          ng-model="info.dataInput" onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+          aria-label="Refresh" ng-disabled="false">
+      </div>
+      <div class="col-md-4">
+        <md-button class="md-raised md-accent buttonModalOk" style="width: 120px; height: 50px !important;" ng-click="acept()"><b>{{ info.nameBttOK }}</b>
+        </md-button>
+      </div>
+    </div>
+  </md-content>
+</div>

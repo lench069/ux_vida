@@ -1,0 +1,18 @@
+<section class="card legales">
+	<form name="formModal"" novalidate>
+		<div class="col-md-12 container-legales">
+			<div class="col-md-12 td_right">
+				<md-button ng-click="hide()">x</md-button>
+			</div>
+
+			<div class="col-md-12 th">{{modalAdvice}}</div>
+			<div class="col-md-12 td">
+				<p ng-bind-html="modalMessage"></p>
+			</div>
+		</div>
+		<div class="col-md-12 text-center barbuttons">
+	    	<input class="btn btn-danger" value="Aceptar" readonly style="padding: 12px 30px;" ng-click="avisoEnterado()"/>	
+<!--     	    <input class="btn btn-white" value="Cancelar" readonly ng-click="hide()"/>	 -->
+	    </div>
+	</form>
+</section>

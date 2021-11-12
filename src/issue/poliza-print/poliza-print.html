@@ -1,0 +1,30 @@
+<section class="poliza-print">
+       <div class="col-md-12 th">Por favor seleccione una opci&oacute;n</div>
+       <md-radio-group ng-model="option" ng-init="option='i'">
+           <div class="col-md-12">
+               <md-radio-button id="cdPrint" value="i" ng-click="option = 'i'; email=''; fax='';">Impresora / Archivo PDF</md-radio-button>
+           </div>
+           <div class="col-md-3">
+               <md-radio-button id="cdEmail" value="m" ng-click="option = 'm'; fax=''; email=mailPoliza.diMail">Enviar por email</md-radio-button>
+           </div>
+           <div class="col-md-9">
+               <md-input-container class="md-block" flex-gt-sm>
+                   <label>Email</label>
+                   <input ng-model="email" class="lowercase" type="mail" id="deEmail" ng-disabled="option != 'm'" ng-blur="validaMailEstilo()" ng-class="{'email-valido': mailValido==true, 'email-invalido': mailValido==false}" required>
+               </md-input-container>
+           </div>
+           <div class="col-md-3">
+               <md-radio-button id="cdEmail" value="f" ng-click="option = 'f'; email=''">Enviar por fax</md-radio-button>
+           </div>
+           <div class="col-md-9">
+               <md-input-container class="md-block" flex-gt-sm>
+                   <label>Fax</label>
+                   <input ng-model="fax" id="deFax" ng-disabled="option != 'f'" pattern="[0-9]+" maxlength="10">
+               </md-input-container>
+           </div>
+       </md-radio-group>
+       <div class="col-md-12 text-center buttons">
+           <input type="button" class="btn btn-danger" value="Aceptar" ng-click="aceptar()" readonly/>
+           <input type="button" class="btn btn-default" value="Cerrar" ng-click="hide()" readonly/>
+       </div>
+</section>

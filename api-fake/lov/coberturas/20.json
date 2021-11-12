@@ -1,0 +1,16 @@
+[
+
+    {
+        "valor":"AUT",
+        "descripcion":"EMPLEADO ESTATAL / TRABAJADOR AUTONOMO"
+    },
+    {
+        "valor":"REL",
+        "descripcion":"EMPLEADO EN RELACION DE DEPENDENCIA"
+    },
+    {
+        "valor":"REL",
+        "descripcion":"EMPLEADO EN RELACION DE DEPENDENCIA"
+    }
+
+]

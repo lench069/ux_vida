@@ -1,0 +1,19 @@
+<section class="card legales"> 
+	<form name="formLegales" ng-submit="formLegales.$valid && aceptarLegales()" novalidate>
+	    <div class="col-md-12 container-legales"> 
+	    	<div class="col-md-12 td_right"><md-button ng-click="hide()">x</md-button></div>
+	    	
+	    	<div ng-repeat="coti in contractCotizaciones">
+		        <div class="col-md-12 th">{{coti.firstPricing.deRamo}}</div>
+		        <div class="col-md-12 td">
+		            <div class="col-md-1 td_check">
+		                <md-checkbox ng-model="check" class="green" aria-label="compara" required></md-checkbox>
+		            </div>
+		            <div class="col-md-11 detail" ng-bind-html="coti.firstPricing.deMedidasSeg | sanitizeHtml"></div>
+		        </div>
+	        </div>
+	        
+	    </div>
+	    <div class="col-md-12 td_footer"><input type="submit" class="btn btn-danger" value="Aceptar" readonly/></div>
+    </form>
+</section>

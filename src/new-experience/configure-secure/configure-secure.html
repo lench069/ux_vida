@@ -1,0 +1,421 @@
+<div class="row" style="text-align: left; font-family: 'Roboto Regular', arial;">
+  <div ng-if="selectSeguroRamo == 'vivienda'" class="col- col-xs-12 col-md-8 col-lg-9 col-xl-10 col-xxl-10"
+    style="background-color: #efefef; padding-right: 0px;  padding-left: 0px;">
+    <md-content style="background-color: #efefef; padding-left: 15px;">
+      <p class="title-head">Configuremos su seguro de Vivienda</p>
+      <md-card md-theme-watch>
+        <md-card-title class="cardTitulo">
+          <md-card-title-text>
+            <div class="row">
+              <div class="col-md-10">
+                <md-switch md-invert class="md-primary" ng-model="asegurado.activo" aria-label="Switch 1"
+                  ng-click="activarNuevoAsegurado()">
+                  <span class="title-sub">El asegurado es diferente al tomador</span>
+                </md-switch>
+              </div>
+              <!-- <div class="col-md-2 iconCard" ng-click="showHideCard('asegurado')">
+								<i ng-if="showCard.asegurado" class="glyphicon glyphicon-chevron-up"></i>
+								<i ng-if="!showCard.asegurado" class="glyphicon glyphicon-chevron-down"></i>
+							</div> -->
+            </div>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+          <div class="contentAsegurado" ng-if="asegurado.activo">
+            <div layout="row" layout-align="start center">
+              <div class="col-md-3">
+                <b>¿Cuales on los datos del asegurado?</b>
+              </div>
+              <md-input-container layout="row" class="col-md-3">
+                <label>N° de documento</label>
+                <input type="text" ng-model="asegurado.nuDoc" class="inputSeguro">
+              </md-input-container>
+              <md-input-container layout="row" class="col-md-3">
+                <label>Fecha nacimiento (dd/mm/aaaa)</label>
+                <md-datepicker ng-model="asegurado.feNac" class="inputSeguro"></md-datepicker>
+              </md-input-container>
+              <md-button class="md-raised md-accent btnContinuar" ng-click="buscarAsegurado()"
+                ng-disabled="asegurado.nuDoc.length<5">
+                <b>ACEPTAR</b>
+              </md-button>
+            </div>
+
+            <div class="row" ng-if="asegurado.apeCli && searchAsegurado"
+              style="font-weight: bold;background-color: #e2fae4; text-align: center;">
+              <div class="col-md-12">
+                <span style="font-style: italic;"> Nuevo Asegurado: {{ asegurado.apeCli }}
+                  {{ asegurado.nmCli }}</span>
+              </div>
+            </div>
+
+            <div class="row" ng-if="!asegurado.apeCli && searchAsegurado"
+              style="font-weight: bold;background-color: #fcc8c8; text-align: center;">
+              <div class="col-md-12">
+                <span style="font-style: italic;"> Busqueda sin resultados.</span>
+              </div>
+            </div>
+          </div>
+        </md-card-content>
+      </md-card>
+
+      <md-card md-theme-watch>
+        <md-card-title>
+          <md-card-title-text>
+            <div class="row">
+              <div class="col-md-10">
+                <p class="title-sub">¿Dónde está ubicada la vivienda que vas a asegurar?
+                </p>
+              </div>
+              <div class="col-md-2 iconCard" ng-click="showHideCard('ubicacion')">
+                <em ng-if="showCard.ubicacion" class="glyphicon glyphicon-chevron-up"></em>
+                <em ng-if="!showCard.ubicacion" class="glyphicon glyphicon-chevron-down"></em>
+              </div>
+            </div>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content ng-if="showCard.ubicacion">
+          <div layout="row" layout-align="start" flex>
+            <md-autocomplete class="md-block" flex="30" id="provincia" name="provincia"
+              ng-required="ramosSelection.ramo21" ng-disabled="false" md-no-cache="true"
+              md-input-name="autocompleteProvincia" md-search-text="searchProv" md-selected-item="dataUser.deProvincia"
+              md-selected-item-change="selectedItemChange(item.valor, 'cdProvincia')"
+              md-items="item in querySearch(searchProv, 'provincias')" md-item-text="item.descripcion.toUpperCase()"
+              md-min-length="0" placeholder="" md-floating-label="Seleccione una provincia">
+              <md-item-template>
+                <span md-highlight-text="searchProv" md-highlight-flags="^i">{{item.descripcion.toUpperCase()}}</span>
+              </md-item-template>
+            </md-autocomplete>
+            <md-autocomplete class="col-md-12" id="codPos" name="codPos" ng-required="ramosSelection.ramo21"
+              ng-disabled="false" md-no-cache="true" md-search-text="searchLocalidad" md-input-name="autocompletecodPos"
+              md-selected-item="dataUser.deLocalidad" md-selected-item-change="selectedItemChange(item.valor, 'codPos')"
+              md-items="item in querySearch(searchLocalidad, 'localidadesCodPostales')"
+              md-item-text="item.descripcion.toUpperCase()" md-min-length="0" placeholder=""
+              md-floating-label="Seleccione un Código Postal">
+              <md-item-template>
+                <span md-highlight-text="searchLocalidad"
+                  md-highlight-flags="^i">{{item.descripcion.toUpperCase()}}</span>
+              </md-item-template>
+            </md-autocomplete>
+          </div>
+        </md-card-content>
+      </md-card>
+      <md-card md-theme-watch>
+        <md-card-title>
+          <md-card-title-text>
+            <div class="row">
+              <div class="col-md-10">
+                <p class="title-sub">Agrega datos de la vivienda</p>
+              </div>
+              <div class="col-md-2 iconCard" ng-click="showHideCard('datos')">
+                <em ng-if="showCard.datos" ng-if="false" class="glyphicon glyphicon-chevron-up"></em>
+                <em ng-if="!showCard.datos" class="glyphicon glyphicon-chevron-down"></em>
+              </div>
+            </div>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content ng-if="showCard.datos">
+          <p>¿Qué tipo de vivienda querés asegurar? *</p>
+          <div class="row">
+            <div class="col-xs-2 col-md-2" align="center"
+              ng-class="selectCobertura == 'CASA' ? 'selectTypeVivienda' : 'typeVivienda'"
+              ng-click="selectTipoVivienda('CASA')">
+              <img ng-if="selectCobertura == 'CASA'" src="./assets/img/iconViviendaActive.svg" alt="">
+              <img ng-if="selectCobertura != 'CASA'" src="./assets/img/iconVivienda.svg" alt="">
+              <p>Casa</p>
+              <div ng-if="selectCobertura == 'CASA'" class="icon-wizard-sec">
+                <em class="glyphicon glyphicon-ok-circle icon-size-sec"></em>
+              </div>
+            </div>
+            <div class="col-xs-2 col-md-2" align="center"
+              ng-class="selectCobertura == 'DEPARTAMENTO' ? 'selectTypeVivienda' : 'typeVivienda'"
+              ng-click="selectTipoVivienda('DEPARTAMENTO')">
+              <img ng-if="selectCobertura == 'DEPARTAMENTO'" src="./assets/img/iconDeptoActive.svg" alt="">
+              <img ng-if="selectCobertura != 'DEPARTAMENTO'" src="./assets/img/iconDepto.svg" alt="">
+              <p>Departamento</p>
+              <div ng-if="selectCobertura == 'DEPARTAMENTO'" class="icon-wizard-sec">
+                <em class="glyphicon glyphicon-ok-circle icon-size-sec"></em>
+              </div>
+            </div>
+            <div class="col-xs-2 col-md-2" align="center"
+              ng-class="selectCobertura == 'COUNTRY / BARRIO CERRADO' ? 'selectTypeVivienda' : 'typeVivienda'"
+              ng-click="selectTipoVivienda('COUNTRY / BARRIO CERRADO')">
+              <img ng-if="selectCobertura == 'COUNTRY / BARRIO CERRADO'" src="./assets/img/iconCountryActive.svg"
+                alt="">
+              <img ng-if="selectCobertura != 'COUNTRY / BARRIO CERRADO'" src="./assets/img/iconCountry.svg" alt="">
+              <p>Country <br> Barrio Cerrado</p>
+              <div ng-if="selectCobertura == 'COUNTRY / BARRIO CERRADO'" class="icon-wizard-sec">
+                <em class="glyphicon glyphicon-ok-circle icon-size-sec"></em>
+              </div>
+            </div>
+            <div class="col-xs-2 col-md-2" align="center"
+              ng-class="selectCobertura == 'PH' ? 'selectTypeVivienda' : 'typeVivienda'"
+              ng-click="selectTipoVivienda('PH')">
+              <img ng-if="selectCobertura == 'PH'" src="./assets/img/iconPropiedadHorizontalActive.svg" alt="">
+              <img ng-if="selectCobertura != 'PH'" src="./assets/img/iconPropiedadHorizontal.svg" alt="">
+              <p>Propiedad Horizontal</p>
+              <div ng-if="selectCobertura == 'PH'" class="icon-wizard-sec">
+                <em class="glyphicon glyphicon-ok-circle icon-size-sec"></em>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div layout="row" layout-align="start" flex>
+            <md-input-container class="md-block" flex="30">
+              <label>¿Qué clase de vivienda es? *</label>
+              <md-select ng-model="dataUser.cdClaseRiesgo" class="selectSeguro">
+                <md-option ng-repeat="clase in clasesViviendas" ng-value="clase.valor" ng-click="selectClassVivienda()">
+                  {{clase.descripcion.toUpperCase()}}
+                </md-option>
+              </md-select>
+            </md-input-container>
+            <md-input-container class="md-block" flex="30">
+              <label>¿Propietario o inquilino? *</label>
+              <md-select ng-model="dataUser.propietarioInquilo" class="selectSeguro">
+                <md-option ng-repeat="tipo in propiedades" ng-value="tipo.valor" ng-click="selectPropieVivienda()">
+                  {{tipo.descripcion.toUpperCase()}}
+                </md-option>
+              </md-select>
+            </md-input-container>
+          </div>
+        </md-card-content>
+      </md-card>
+      <md-card md-theme-watch>
+        <md-card-title>
+          <md-card-title-text>
+            <div class="row">
+              <div class="col-md-10">
+                <p class="title-sub">Completa los Metros Cuadrados o Ambientes de la vivienda.</p>
+              </div>
+              <div class="col-md-2 iconCard" ng-click="showHideCard('vivienda')">
+                <em ng-if="showCard.vivienda" class="glyphicon glyphicon-chevron-up"></em>
+                <em ng-if="!showCard.vivienda" class="glyphicon glyphicon-chevron-down"></em>
+              </div>
+            </div>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content ng-if="showCard.vivienda">
+          <div class="row">
+            <div class="col-md-4 padding10pxTop">
+              <p><img class="imgVivienda" src="./assets/img/iconTamanio.svg" alt="">
+                ¿Cuál es el tamaño en M²?</p>
+            </div>
+            <div class="col-md-2">
+              <span>
+                <md-tooltip md-direction="top" class="toolpinStyle">
+                  El valor del m² debe ser<br>
+                  igual o mayor a 20.
+                </md-tooltip>
+                <input type="text" ng-model="dataUser.m2" ng-click="clickTamM2()" ng-keyup="callSeguro()"
+                  onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                  ng-class="dataUser.m2 < 20 && !checked ? 'errorInput sizeInput' : 'sizeInput'" aria-label="Refresh"
+                  data-toggle="tooltip" ng-disabled="checked">
+              </span> M²
+            </div>
+            <div class="col-md-6 padding10pxTop">
+              <md-checkbox md-no-ink aria-label="Checkbox No Ink" ng-model="checked" ng-change="checkNoSize(checked)"
+                ng-click="clickDesconoTamano()"> <span style="font-weight: bold;"> Desconoce el tamaño (M²) de su
+                  vivienda</span>
+              </md-checkbox>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 padding30pxTop">
+              <p><img class="imgVivienda" src="./assets/img/iconAmbientes.svg" alt="">
+                ¿Cuántos ambientes tiene?</p>
+            </div>
+            <div class="col-md-2">
+              <md-input-container>
+                <!-- <label>Ambientes</label> -->
+                <md-select ng-model="dataUser.ambiente" ng-disabled="!checked" ng-change="callSeguro()"
+                  ng-class="!dataUser.ambiente && checked ? 'errorInput sizeSelect' : 'sizeSelect'">
+                  <md-option ng-repeat="ambiente in ambientes" ng-value="ambiente" ng-click="selectCantAmbientes()">
+                    {{ambiente}} </md-option>
+                </md-select>
+              </md-input-container>
+            </div>
+            <!-- <div class="col-md-6 padding30pxTop">
+							<p style="font-weight: bold;">Monto a asegurar ($): <span
+									class="montoAsegurar">{{ dataUser.sumaAsegurada }}</span></p>
+						</div> -->
+          </div>
+          <div class="row" ng-if="selectCobertura=='DEPARTAMENTO'">
+            <div class="col-md-4 padding30pxTop">
+              <p><img class="imgVivienda" src="./assets/img/iconEscalera.svg" alt=""> ¿En
+                que piso está ubicado el departamento?</p>
+            </div>
+            <div class="col-md-2">
+              <md-input-container>
+                <!-- <label>Piso</label> -->
+                <md-select ng-model="dataUser.piso"
+                  ng-class="!dataUser.piso ? 'errorInput sizeSelectPiso' : 'sizeSelectPiso'">
+                  <md-option ng-repeat="piso in pisos" ng-value="piso.valor" ng-click="selectPiso()">
+                    {{piso.descripcion.toUpperCase()}}
+                  </md-option>
+                </md-select>
+              </md-input-container>
+            </div>
+          </div>
+        </md-card-content>
+      </md-card>
+    </md-content>
+    <footer>
+      <div class="row">
+        <div class="col-xs-6 col-md-6" style="padding-left: 30px;">
+          <md-button class="md-raised md-primary btnVolver" ng-click="volver('vida')"><strong> volver al paso
+              anterior</strong></md-button>
+        </div>
+        <div class="col-xs-6 col-md-6" style="text-align: right;">
+          <md-button class="md-raised md-accent" ng-class="!validar() ? 'btnContinuar' : 'btnContinuarDisabled'"
+            ng-click="getCotizacionMotoAsegurado()" ng-disabled="validar()"><strong>continuar</strong>
+          </md-button>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <div ng-if="selectSeguroRamo == 'vida'" class="col- col-xs-12 col-md-8 col-lg-9 col-xl-10 col-xxl-10"
+    style="background-color: #efefef; padding-right: 0px;  padding-left: 0px;">
+    <md-content style="background-color: #efefef; padding-left: 15px;">
+      <p class="title-head">Configuremos su seguro de Vida</p>
+      <div class="row" style="margin-right: 0px; padding-right: 0px;">
+        <div class="col-xs-12 col-md-12" style="text-align: right; margin-right: 0px; padding-right: 0px;">
+          <md-button ng-if="cotizacion.listaSeguros.length == 1" class="md-raised md-primary btnVolverDjs"
+            ng-click="goDJS()">
+            + Tengo una DJS aprobada </md-button>
+        </div>
+      </div>
+      <md-card md-theme-watch>
+        <md-card-title>
+          <md-card-title-text>
+            <div class="row">
+              <div class="col-md-10">
+                <p class="title-sub">¿Cómo es su grupo familiar?</p>
+              </div>
+              <!-- <div class="col-md-2 iconCard" ng-click="showHideCard('datos')">
+                <em ng-if="showCard.datos" ng-if="false" class="glyphicon glyphicon-chevron-up"></em>
+                <em ng-if="!showCard.datos" class="glyphicon glyphicon-chevron-down"></em>
+              </div> -->
+            </div>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+          <div class="row">
+            <div class="col-xs-2 col-md-2" align="center"
+              ng-class="selectGrupoFamiliar == 'soltero' ? 'selectTypeVida' : 'typeVida'"
+              ng-click="fSelectGrupoFamiliar('soltero')">
+              <img ng-if="selectGrupoFamiliar == 'soltero'" src="./assets/img/IconSoltero-ViudoRojo.svg" alt="">
+              <img ng-if="selectGrupoFamiliar != 'soltero'" src="./assets/img/IconSoltero-Viudo.svg" alt="">
+              <p>Soltero/a</p>
+              <div ng-if="selectGrupoFamiliar == 'soltero'" class="icon-wizard-sec">
+                <em class="glyphicon glyphicon-ok-circle icon-size-sec"></em>
+              </div>
+            </div>
+            <div class="col-xs-2 col-md-2" align="center"
+              ng-class="selectGrupoFamiliar == 'soltero-ninos' ? 'selectTypeVida' : 'typeVida'"
+              ng-click="fSelectGrupoFamiliar('soltero-ninos')">
+              <img ng-if="selectGrupoFamiliar == 'soltero-ninos'" src="./assets/img/IconSolterosConHijosRojo.svg" alt="">
+              <img ng-if="selectGrupoFamiliar != 'soltero-ninos'" src="./assets/img/IconSolterosConHijos.svg" alt="">
+              <p style="margin-bottom: -10px;">Soltero/a</p>
+              <p>con niños</p>
+              <div ng-if="selectGrupoFamiliar == 'soltero-ninos'" class="icon-wizard-sec">
+                <em class="glyphicon glyphicon-ok-circle icon-size-sec"></em>
+              </div>
+            </div>
+            <div class="col-xs-2 col-md-2" align="center"
+              ng-class="selectGrupoFamiliar == 'pareja' ? 'selectTypeVida' : 'typeVida'"
+              ng-click="fSelectGrupoFamiliar('pareja')">
+              <img ng-if="selectGrupoFamiliar == 'pareja'" src="./assets/img/IconParejaRojo.svg" alt="">
+              <img ng-if="selectGrupoFamiliar != 'pareja'" src="./assets/img/IconPareja.svg" alt="">
+              <p>En pareja</p>
+              <div ng-if="selectGrupoFamiliar == 'pareja'" class="icon-wizard-sec">
+                <em class="glyphicon glyphicon-ok-circle icon-size-sec"></em>
+              </div>
+            </div>
+            <div class="col-xs-2 col-md-2" align="center"
+              ng-class="selectGrupoFamiliar == 'pareja-ninos' ? 'selectTypeVida' : 'typeVida'"
+              ng-click="fSelectGrupoFamiliar('pareja-ninos')">
+              <img ng-if="selectGrupoFamiliar == 'pareja-ninos'" src="./assets/img/IconParejaConHijosRojo.svg"
+                alt="">
+              <img ng-if="selectGrupoFamiliar != 'pareja-ninos'" src="./assets/img/IconParejaConHijos.svg" alt="">
+              <p style="margin-bottom: -10px;">En pareja</p>
+              <p>con niños</p>
+              <div ng-if="selectGrupoFamiliar == 'pareja-ninos'" class="icon-wizard-sec">
+                <em class="glyphicon glyphicon-ok-circle icon-size-sec"></em>
+              </div>
+            </div>
+            <div class="col-xs-2 col-md-2" align="center"
+              ng-class="selectGrupoFamiliar == 'viudo' ? 'selectTypeVida' : 'typeVida'"
+              ng-click="fSelectGrupoFamiliar('viudo')">
+              <img ng-if="selectGrupoFamiliar == 'viudo'" src="./assets/img/IconSoltero-ViudoRojo.svg" alt="">
+              <img ng-if="selectGrupoFamiliar != 'viudo'" src="./assets/img/IconSoltero-Viudo.svg" alt="">
+              <p>Viudo/a</p>
+              <div ng-if="selectGrupoFamiliar == 'viudo'" class="icon-wizard-sec">
+                <em class="glyphicon glyphicon-ok-circle icon-size-sec"></em>
+              </div>
+            </div>
+          </div>
+          <br>
+        </md-card-content>
+      </md-card>
+      <md-card md-theme-watch>
+        <md-card-title>
+          <md-card-title-text>
+            <div class="row">
+              <div class="col-md-10">
+                <p class="title-sub">¿Cuál es su condición laboral?
+                </p>
+              </div>
+              <!-- <div class="col-md-2 iconCard" ng-click="showHideCard('ubicacion')">
+                <em ng-if="showCard.ubicacion" class="glyphicon glyphicon-chevron-up"></em>
+                <em ng-if="!showCard.ubicacion" class="glyphicon glyphicon-chevron-down"></em>
+              </div> -->
+            </div>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+          <div layout="row" layout-align="start" flex>
+            <md-button class="vida-laboral" ng-class="focus == 'relacion' ? 'vida-laboral-rojo' : 'vida-laboral'"
+              ng-click="fFocus('relacion')"><strong>Relación de dependencia</strong></md-button>
+            <md-button class="vida-laboral" ng-class="focus == 'autonomo' ? 'vida-laboral-rojo' : 'vida-laboral'"
+              ng-click="fFocus('autonomo')"><strong>Autónomo/Independiente</strong></md-button>
+            <md-button class="vida-laboral" ng-class="focus == 'desempleado' ? 'vida-laboral-rojo' : 'vida-laboral'"
+              ng-click="fFocus('desempleado')"><strong>Desempleado/Jubilado</strong></md-button>
+          </div>
+        </md-card-content>
+      </md-card>
+    </md-content>
+    <footer>
+      <div class="row">
+        <div class="col-xs-6 col-md-6" style="padding-left: 30px;">
+          <md-button class="md-raised md-primary btnVolver" ng-click="volver('regresar')"><strong> volver al paso
+              anterior</strong></md-button>
+        </div>
+        <div class="col-xs-6 col-md-6" style="text-align: right;">
+          <md-button class="md-raised md-accent btnContinuarVida" ng-click="continuarVida('vivienda')"
+            ng-class="!selectGrupoFamiliar == '' ? 'btnContinuar' : 'btnContinuarDisabled'"><strong>
+              continuar</strong>
+          </md-button>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <div class="col- col-xs-7 col-md-4 col-lg-3 col-xl-2 col-xxl-2"
+    style="background-color: #efefef; padding-right: 0px;  padding-left: 0px;">
+    <md-card class="fondo-red" ng-if="alert.description != null && alert.description != ''">
+      <div class="row">
+        <div class="col- col-xs-1 col-md-1 col-lg-1">
+          <img class="" style="padding-left: 15px;" src="./assets/img/iconAlert.svg" alt="">
+        </div>
+        <div class="col- col-xs-11 col-md-11 col-lg-10">
+          <md-card-title class="padding0pxtpBtt">
+            <md-card-title-text>
+              <p class="title-alert size-elert color-red" style="font-size: 16px;">{{alert.title}}</p>
+              <p class="size-elert">{{alert.description}}
+                <!-- <span class="subrayar">+ info</span> -->
+              </p>
+            </md-card-title-text>
+          </md-card-title>
+        </div>
+      </div>
+    </md-card>
+  </div>
+</div>

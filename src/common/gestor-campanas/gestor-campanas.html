@@ -1,0 +1,11 @@
+<section class="card gray box-gestor" ng-show="showCard">
+    <div class="col-sm-1">
+        <div class="icon"></div>
+    </div>
+    <div class="col-sm-10">
+        <h2>Gestor de campa&ntilde;as</h2>
+        <div ng-repeat="msj in mensajeCom" ng-bind-html="renderHtml(msj)"></div>
+    </div>
+    <div class="clear" ng-click="hideCard()">X</div>
+    <div class="clearfix"></div>
+</section>

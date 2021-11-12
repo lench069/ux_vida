@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="26.523" height="11.701" viewBox="0 0 26.523 11.701">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectángulo_18" data-name="Rectángulo 18" width="26.523" height="11.701" transform="translate(0 0)" fill="none" stroke="#707070" stroke-linecap="round" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="iconRemocionEscombros" transform="translate(0)" clip-path="url(#clip-path)">
+    <path id="Trazado_78" data-name="Trazado 78" d="M173.467,282.837H147.5V280.5h25.967Z" transform="translate(-147.222 -280.222)" fill="none" stroke="#e90b18" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1.5"/>
+    <path id="Trazado_79" data-name="Trazado 79" d="M169.531,293.508H155.444L151.66,284.7h21.549Z" transform="translate(-149.067 -282.085)" fill="none" stroke="#e90b18" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1.5"/>
+  </g>
+</svg>

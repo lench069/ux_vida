@@ -1,0 +1,6 @@
+request: api/autos/{cdMarca}/modelos/{year}
+	method: Post
+	exp: para obtener modelos de autos de una marca y en un año
+	urlData:
+		cdMarca: "51"
+		year: "2010"

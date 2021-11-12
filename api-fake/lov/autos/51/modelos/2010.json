@@ -1,0 +1,44 @@
+[
+
+    {
+        "valor":"030|6195000",
+        "descripcion":"CALIFORNIA - $ 6195000"
+    },
+    {
+        "valor":"017|5775000",
+        "descripcion":"430 - $ 5775000"
+    },
+    {
+        "valor":"018|5880000",
+        "descripcion":"430 F1 - $ 5880000"
+    },
+    {
+        "valor":"027|6300000",
+        "descripcion":"430 SCUDERIA - $ 6300000"
+    },
+    {
+        "valor":"019|5985000",
+        "descripcion":"430 SPIDER - $ 5985000"
+    },
+    {
+        "valor":"020|6090000",
+        "descripcion":"430 SPIDER F1 - $ 6090000"
+    },
+    {
+        "valor":"025|6615000",
+        "descripcion":"599 GTB - $ 6615000"
+    },
+    {
+        "valor":"026|6720000",
+        "descripcion":"599 GTB F1 - $ 6720000"
+    },
+    {
+        "valor":"021|6405000",
+        "descripcion":"612 SCAGLIETTI - $ 6405000"
+    },
+    {
+        "valor":"022|6510000",
+        "descripcion":"612 SCAGLIETTI F1 - $ 6510000"
+    }
+
+]

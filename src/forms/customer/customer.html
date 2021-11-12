@@ -1,0 +1,207 @@
+<section class="card formCustomer">
+
+    <div id="form1" ng-class="getState('form1')" class="">
+        <form name="formCustomer1" ng-submit="formCustomer1.nuDoc.$valid && form1Submit()" novalidate>
+            <md-content layout-padding="" class="layout-padding _md">
+
+				<md-input-container class="col-md-4">
+			        <label>Nro de documento/CUIT</label>
+			        <input ng-model="user.nuDoc" name="nuDoc" id="nuDoc" type="number" required>
+			        <div class="md-errors-spacer" ng-show="validForm && formCustomer1.nuDoc.$error.required">Campo requerido</div>
+			        <div class="md-errors-spacer" ng-show="msjValidUser">Nro de documento/CUIT incorrecto</div>
+			    </md-input-container>
+			    <md-input-container class="col-md-4">
+		            <label>Fecha nacimiento (dd/mm/aaaa)</label>
+		            <md-datepicker  ng-model="user.feNacDate" name="feNac" id="feNac"></md-datepicker>
+		        </md-input-container>
+
+<!-- 				<div class="md-errors-spacer" ng-show="allAccountBlocked">Este usuario tiene todas las cuentas bloqueadas debe ingresar un Tarjeta de cr�dito alternativa.</div> -->
+                <input type="submit" id="btnForm1" value="Aceptar" class="btn btn-danger" readonly/>
+            </md-content>
+        </form>
+    </div>
+
+    <div id="form2" ng-class="getState('form2')">
+        <form name="formCustomer2" ng-submit="formCustomer2.$valid && form2Submit()" novalidate>
+			<fieldset>
+	            <md-content layout-padding="" class="layout-padding _md">
+	            	<md-input-container class="col-md-4">
+	                    <label>Nombre</label>
+	                    <input ng-model="dataUser.nmCli" class="ng-pristine ng-valid ng-empty ng-touched" id="nombre" aria-invalid="false" ng-disabled="disabledInput" required>
+	                </md-input-container>
+	                <md-input-container class="col-md-4">
+	                    <label>Apellido</label>
+	                    <input ng-model="dataUser.apeCli" class="ng-pristine ng-valid ng-empty ng-touched" id="apellido" aria-invalid="false" ng-disabled="disabledInput" ng-required="dataUser.tpPersona != 'E'">
+	                </md-input-container>
+	                <md-input-container class="col-md-2">
+	                    <label>Tipo Doc.</label>
+	                    <md-select ng-model="dataUser.tpDoc" id="tpDoc" ng-disabled="disabledInput" required>
+	                        <md-option ng-repeat="tpDoc in tpDocs" value="{{tpDoc.valor}}">{{tpDoc.descripcion}}</md-option>
+	                    </md-select>
+	                </md-input-container>
+	                <md-input-container class="col-md-2">
+	                    <label>Nro. Doc.</label>
+	                    <input ng-model="dataUser.nuDoc" class="ng-pristine ng-valid ng-empty ng-touched" id="nuDoc" aria-invalid="false" ng-disabled="disabledInput" required>
+	                </md-input-container>
+	                <md-input-container class="col-md-6">
+	                    <label>Cuit/Cuil</label>
+	                    <input ng-model="dataUser.nuCuitCuil" class="ng-pristine ng-valid ng-empty ng-touched" id="nuCuitCuil" aria-invalid="false" ng-disabled="disabledInput && disabledCuitCuil">
+	                </md-input-container>
+	                <md-input-container class="col-md-6">
+	                    <label>Fecha nacimiento (dd/mm/aaaa)</label>
+	                    <md-datepicker ng-model="feNacDate" class="ng-pristine ng-valid ng-empty ng-touched" id="feNac" aria-invalid="false" novalidate ng-disabled="disabledInput" required></md-datepicker>
+	                </md-input-container>
+	                <md-input-container class="col-md-6">
+	                    <label>Estado civil</label>
+	                    <md-select ng-model="dataUser.cdEdoCivil" id="cdEdoCivil" required>
+	                        <md-option ng-repeat="est in estadosCiviles" value="{{est.valor}}">{{est.descripcion}}</md-option>
+	                    </md-select>
+	                </md-input-container>
+	                <md-input-container class="col-md-6">
+	                    <label>Sexo</label>
+	                    <md-select ng-model="dataUser.inSexo" id="inSexo" required>
+	                        <md-option ng-repeat="sexo in sexos" value="{{sexo.valor}}">{{sexo.descripcion}}</md-option>
+	                    </md-select>
+	                </md-input-container>
+	                
+	                <md-content class="col-md-12">
+		                <md-autocomplete required id="cdProfesion" name="cdProfesion"
+			                             ng-disabled="false" md-no-cache="false"
+			                             md-search-text="searchText"
+			                             md-selected-item="dataUser.deProfesion"
+			                             md-selected-item-change="selectedItemChangeCust(item.valor, 'cdProfesion')"
+			                             md-items="item in querySearchCust(searchText, 'profesiones')"
+			                             md-item-text="item.descripcion.toUpperCase()"
+			                             md-min-length="0" placeholder="" md-floating-label="Ocupaci&oacute;n/Profesi&oacute;n/Actividad">
+			                <md-item-template>
+			                    <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.descripcion.toUpperCase()}}</span>
+			                </md-item-template>
+			            </md-autocomplete>
+			        </md-content>
+	
+					<md-content class="col-md-4">
+		                <md-autocomplete required id="provincia" name="provincia"
+			                             ng-disabled="false" md-no-cache="true"
+			                             md-search-text="searchTextProv"
+			                             md-selected-item="dataUser.deProvincia"
+			                             md-selected-item-change="selectedItemChangeCust(item.valor, 'cdProvincia')"
+			                             md-items="item in querySearchCust(searchTextProv, 'provincias')"
+			                             md-item-text="item.descripcion.toUpperCase()"
+			                             md-min-length="0" placeholder="" md-floating-label="Provincia">
+			                <md-item-template>
+			                    <span md-highlight-text="searchTextProv" md-highlight-flags="^i">{{item.descripcion.toUpperCase()}}</span>
+			                </md-item-template>
+			                <div class="errorSelect" ng-if="msjValidProv">{{msjValidProv}}</div>
+			            </md-autocomplete>
+			        </md-content>
+			        
+			        <md-content class="col-md-4">
+		                <md-autocomplete required id="localidad" name="localidad"
+			                             ng-disabled="!dataUser.deProvincia" md-no-cache="true"
+			                             md-search-text="searchTextLoc"
+			                             md-selected-item="dataUser.deCiudad"
+			                             md-selected-item-change="selectedItemChangeCust(item.valor, 'cdCiudad')"
+			                             md-items="item in querySearchCust(searchTextLoc, 'localidades')"
+			                             md-item-text="item.descripcion.toUpperCase()"
+			                             md-min-length="0" placeholder="" md-floating-label="Localidad">
+			                <md-item-template>
+			                    <span md-highlight-text="searchTextLoc" md-highlight-flags="^i">{{item.descripcion.toUpperCase()}}</span>
+			                </md-item-template>
+			                <div class="errorSelect" ng-if="msjValidLoc">{{msjValidLoc}}</div>
+			            </md-autocomplete>
+			        </md-content>
+			        
+					<md-content class="col-md-4">
+		                <md-autocomplete required id="postal" name="postal"
+			                             ng-disabled="!dataUser.deCiudad" md-no-cache="true"
+			                             md-search-text="searchTextCp"
+			                             md-selected-item="dataUser.cdPostal"
+			                             md-selected-item-change="selectedItemChangeCust(item.valor, 'cdPostal')"
+			                             md-items="item in querySearchCust(searchTextCp, 'cdPostales')"
+			                             md-item-text="item.descripcion.toUpperCase()"
+			                             md-min-length="0" placeholder="" md-floating-label="C&oacute;digo Postal">
+			                <md-item-template>
+			                    <span md-highlight-text="searchTextCp" md-highlight-flags="^i">{{item.descripcion.toUpperCase()}}</span>
+			                </md-item-template>
+			                <div class="errorSelect" ng-if="msjValidCp">{{msjValidCp}}</div>
+			            </md-autocomplete>
+			        </md-content>
+	
+					<div class="col-md-4">
+						<md-input-container class="md-block" flex-gt-sm>
+			                <label>Domicilio</label>
+			                <input ng-model="dataUser.domCalle" id="domCalle" aria-invalid="false">
+			            </md-input-container>
+					</div>
+					<div class="col-md-4">
+						<md-input-container class="col-md-5 md-block" flex-gt-sm>
+			                <label>Nro</label>
+			                <input ng-model="dataUser.domNro" id="domNro" aria-invalid="false">
+			            </md-input-container>
+			            <md-input-container class="col-md-3 md-block" flex-gt-sm>
+			                <label>Piso</label>
+			                <input ng-model="dataUser.domPiso" id="domPiso" aria-invalid="false">
+			            </md-input-container>
+			            <md-input-container class="col-md-3 md-block" flex-gt-sm>
+			                <label>Dpto</label>
+			                <input ng-model="dataUser.domDepto" id="domDepto" aria-invalid="false">
+			            </md-input-container>
+					</div>
+					<div class="col-md-4">
+						<md-input-container class="col-md-12 md-block" class="ng-pristine ng-valid ng-empty ng-touched" id="nuTelefono" flex-gt-sm aria-invalid="false">
+			                <label>Tel&eacute;fono</label>
+			                <input ng-model="dataUser.nuTelefono" id="nuTelefono" aria-invalid="false" required>
+			            </md-input-container>
+					</div>
+	            </md-content>
+			</fieldset>
+            <input type="submit" id="btnForm2" value="Aceptar" class="btn btn-danger" readonly/>
+            <input id="btnForm2Cancel" value="Cancelar" class="btn btn-default" ng-click="changeUser()" ng-hide="cdCanalBco != '21'" readonly/>
+        </form>
+    </div>
+
+    <div id="form3" ng-class="getState('form3')">
+        <div class="col-md-11">
+	        <div class="col-md-12">
+	            <label class="col-md-2" style="width: 14%;">Nombre</label><div class="col-md-4 uppercase"><b>{{dataUser.nmCli}}</b></div>         
+	        	<label class="col-md-2" style="width: 14%;">Apellido</label><div class="col-md-4 uppercase"><b>{{dataUser.apeCli}}</b></div>
+	        </div>
+	        <div class="col-md-12">
+	        	<label class="col-md-2" style="width: 14%;">{{tpDoc}}</label><div class="col-md-4"><b>{{dataUser.nuDoc}}</b></div>
+	        	<label class="col-md-2" style="width: 14%;">Cuit/Cuil</label><div class="col-md-4"><b>{{dataUser.nuCuitCuil}}</b></div>
+	        </div>
+	        <div class="col-md-12">
+	            <label class="col-md-2" style="width: 14%;">Fec. Nac.</label><div class="col-md-4"><b>{{feNacDate | date :  "dd/MM/yyyy" }}</b></div>
+	        	<label class="col-md-2" style="width: 14%;">Sexo</label><div class="col-md-4"><b>{{dataUser.deSexo}}</b></div>
+	        </div>
+	        <div class="col-md-12">
+	        	<label class="col-md-2" style="width: 14%;">Estado civil</label><div class="col-md-4"><b>{{dataUser.deEdoCivil}}</b></div>
+	        	<label class="col-md-2" style="width: 14%;">Actividad</label><div class="col-md-4"><b>{{dataUser.deProfesion}}</b></div>  
+	        </div>
+	        <div class="col-md-12">
+	            <label class="col-md-2" style="width: 14%;">Provincia</label><div class="col-md-4"><b>{{dataUser.deProvincia}}</b></div>
+	        	<label class="col-md-2" style="width: 14%;">Localidad</label><div class="col-md-4"><b>{{dataUser.deCiudad}}</b></div>
+	        </div>
+	        <div class="col-md-12">
+	        	<label class="col-md-2" style="width: 14%;">Cd. Postal</label><div class="col-md-4"><b>{{dataUser.cdPostal}}</b></div>
+	        	<label class="col-md-2" style="width: 14%;">Tel&eacute;fono</label><div class="col-md-4"><b>{{dataUser.nuTelefono}}</b></div>
+	        </div>
+	        <div class="col-md-12">
+	        	<label class="col-md-2" style="width: 14%;">Domicilio</label><div class="col-md-10"><b>{{dataUser.domicilio}}</b></div>
+                </div>
+	         <div class="col-md-12" ng-show="dataUser.enri.enriUseService==true && dataUser.inCliente =='CLI'">
+	         	<label class="col-md-2">Nivel de Riesgo</label>
+	        				<div ng-show="dataUser.cdRiesgoBSR != ''" class="col-md-1"><strong>{{dataUser.cdRiesgoBSR}}</strong></div>
+	        				<div ng-show="dataUser.cdRiesgoBSR == ''" class="col-md-1"><strong>S/R</strong></div>
+	        	<label class="col-md-2" ng-show="dataUser.enri.enriUrlEncuesta!=undefined"><a href="#" ng-click="showEncuestaEnri(dataUser.enri.enriUrlEncuesta)">Encuesta de perfil de riesgo</a></label>
+                </div>
+        </div>
+        <div class="col-md-1">
+        	<div class="col-md-12 iconChangeUser" ng-click="changeUser()" title="Cambiar de Cliente" ng-hide="cdCanalBco != '21'"></div>
+        	<div class="col-md-12 iconEmpleado" ng-show="dataUser.inEmpleado != 'N'" title="Empleado Santander"></div>
+        	<div class="col-md-12 iconNoEmpleado" ng-show="dataUser.inEmpleado == 'N'" title="Cliente"></div>
+        </div>
+        
+    </div>
+
+</section>

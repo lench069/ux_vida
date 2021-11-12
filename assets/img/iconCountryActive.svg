@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="28.522" height="27" viewBox="0 0 28.522 27">
+  <g id="iconCountryActive" transform="translate(-165.72 -413.69)">
+    <rect id="Rectángulo_469" data-name="Rectángulo 469" width="4.828" height="4.289" rx="1.451" transform="translate(169 431.695)" fill="none" stroke="#e90b18" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <rect id="Rectángulo_470" data-name="Rectángulo 470" width="7.868" height="3.134" rx="1.451" transform="translate(181.235 419.378)" fill="none" stroke="#e90b18" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Trazado_419" data-name="Trazado 419" d="M167.2,431.459l8.795-6.775a2,2,0,0,1,2.311,0l8.688,6.692a1.135,1.135,0,0,1,.479.891v7.453a1.483,1.483,0,0,1-1.634,1.258H168.355a1.484,1.484,0,0,1-1.635-1.258v-7.372A1.132,1.132,0,0,1,167.2,431.459Z" transform="translate(0 -1.295)" fill="none" stroke="#e90b18" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Rectángulo_471" data-name="Rectángulo 471" d="M1.45,0H5.441a1.45,1.45,0,0,1,1.45,1.45V8.332a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V1.45A1.45,1.45,0,0,1,1.45,0Z" transform="translate(176.365 431.358)" fill="none" stroke="#e90b18" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Trazado_420" data-name="Trazado 420" d="M178.709,422.549v-6.425a1.434,1.434,0,0,1,1.434-1.434l13.632,1.908a1.255,1.255,0,0,1,1.08,1.242v20.415a1.435,1.435,0,0,1-1.435,1.435h-7.941" transform="translate(-1.613)" fill="none" stroke="#e90b18" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+  </g>
+</svg>

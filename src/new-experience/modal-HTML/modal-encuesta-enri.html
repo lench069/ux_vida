@@ -1,0 +1,23 @@
+<div style=" font-family: 'Roboto Regular', arial; width: 900px;">
+	<div class="headerModelRed">
+		<div class="row">
+			<div class="col-md-1" style="padding-right: 0px; padding-left: 25px;">
+				<img src="./assets/img/{{info.nameIcon}}" alt="">
+			</div>
+			<div class="col-md-10" style="padding-left: 0px; padding-top: 5px;">
+				Encuesta de perfil de riesgo
+			</div>
+			<div class="col-md-1">
+				<p class="close" ng-click="cancel()">X</p>
+			</div>
+		</div>
+	</div>
+	<div ng-cloak>
+		<md-content class="md-padding" style="background-color: white; padding-bottom: 0px;">
+			<div class="col-md-12 td" style=" height: 500px">
+				<iframe title="Encuesta de perfil de riesgo" width="100%" height="100%" ng-src="{{enriUrlEncuesta}}">
+				</iframe>
+			</div>
+		</md-content>
+	</div>
+</div>

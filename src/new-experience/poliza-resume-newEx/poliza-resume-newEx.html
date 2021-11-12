@@ -1,0 +1,97 @@
+<section class="poliza-resume-new">
+	<div class="resume">
+		<div class="card col-md-4 card-policy poliza" ng-repeat="poliza in polizas">
+			<div class="clear" ng-show="poliza.emitFails" ng-click="deleteCotizacion(poliza.poliza.cdRamo)"></div>
+			<div class="heading">
+				<i class="pull-left" ng-class="('cdRamo')+{{poliza.cdRamo}}"></i>
+				<h2>{{getName(poliza.poliza.cdRamo)}}</h2>
+			</div>
+			<div ng-show="!poliza.asyncIsDone" layout="row" layout-sm="column" layout-align="space-around">
+				<md-progress-circular ng-disabled="poliza.asyncIsDone" md-mode="indeterminate"></md-progress-circular>
+			</div>
+
+			<div class="poliza-content" ng-show="poliza.asyncIsDone">
+				<div class="col-md-12">
+					<md-input-container class="md-block" flex-gt-sm>
+						<label>Compa&ntilde;&iacute;a aseguradora</label>
+						<input type="text" class="inputnewex" ng-value="poliza.poliza.compania" readonly>
+					</md-input-container>
+				</div>
+				<div class="col-md-12">
+					<md-input-container class="md-block" flex-gt-sm>
+						<label>Seguro</label>
+						<input type="text" class="inputnewex" ng-value="poliza.poliza.deProducto" readonly>
+					</md-input-container>
+				</div>
+				<div ng-show="poliza.poliza.nuPoliza != null">
+					<div class="col-md-12">
+						<md-input-container class="md-block" flex-gt-sm>
+							<label>Titular de la p&oacute;liza</label>
+							<input type="text" class="inputnewex" ng-value="poliza.poliza.titular" readonly>
+						</md-input-container>
+					</div>
+					<div class="col-md-6" ng-show="isNotAutoType(poliza.poliza.cdRamo)">
+						<md-input-container class="md-block" flex-gt-sm>
+							<label>P&oacute;liza / Certificado</label>
+							<input type="text" class="inputnewex"
+								ng-value="poliza.poliza.nuPoliza + ' / ' + poliza.poliza.nuCertificado" readonly>
+						</md-input-container>
+					</div>
+					<div class="col-md-6" ng-show="!isNotAutoType(poliza.poliza.cdRamo)">
+						<md-input-container class="md-block" flex-gt-sm>
+							<label>P&oacute;liza</label>
+							<input type="text" class="inputnewex" ng-value="poliza.poliza.nuPolizaAuto" readonly>
+						</md-input-container>
+					</div>
+					<div class="col-md-6">
+						<md-input-container class="md-block" flex-gt-sm>
+							<label>Vigencia desde</label>
+							<input type="text" class="inputnewex text-right" ng-value="poliza.poliza.vigencia" readonly>
+						</md-input-container>
+					</div>
+					<div class="col-md-7" ng-show="poliza.poliza.estado == 'VIGENTE'">
+						<md-input-container class="md-block" flex-gt-sm>
+							<label>Estado de p&oacute;liza</label>
+							<input type="text" class="inputnewex" ng-value="poliza.poliza.estado" readonly>
+						</md-input-container>
+					</div>
+					<div class="col-md-5" ng-show="poliza.poliza.estado == 'VIGENTE'">
+						<md-input-container class="md-block" flex-gt-sm>
+							<label>Cuota</label>
+							<input type="text" class="inputnewex text-right" ng-value="poliza.poliza.costoMensual"
+								readonly>
+						</md-input-container>
+					</div>
+					<div class="col-md-12" ng-show="poliza.poliza.estado != 'VIGENTE'">
+						<md-input-container class="md-block" flex-gt-sm>
+							<label>Estado de p&oacute;liza</label>
+							<input type="text" class="inputnewex" ng-value="poliza.poliza.estado" readonly>
+						</md-input-container>
+					</div>
+				</div>
+				<div class="col-md-12 buttons text-center">
+					<div class="col-md-12 costPP" ng-show="poliza.poliza.cdClaseProd == 'PP'">
+						{{poliza.poliza.costoDsmPP}}</div>
+					<div class="containerErrorMsj">
+						<div class="col-md-12 errorMsj" ng-show="poliza.poliza.mensaje.length > 3">
+							{{poliza.poliza.mensaje}}</div>
+					</div>
+					<input class="btn btnPrintPoliza" value="Imprimir p&oacute;liza" ng-click="showPrint($index)"
+						ng-show="poliza.poliza.nuPoliza != null && poliza.poliza.estado == 'VIGENTE'" readonly />
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="col-md-12 buttons text-center">
+		<br>
+		<input class="btn btnExitPoliza" value="Salir" ng-click="salir()" readonly />
+		<!-- <input class="btn btnDefaultPoliza" value="Reenviar Mail" ng-click="sendMail()" ng-show="asegurado.hash != undefined && !aceptacionDigital" readonly/> -->
+		<input class="btn btnDefaultPoliza" value="Corregir Emision" ng-click="returnEmitir()"
+			ng-show="!aceptacionDigital && (cotiRemnant != 0 || errorCotizacion)" readonly />
+		<p class="help-block">
+			Gracias por confiar en Banco Santander.
+		</p>
+	</div>
+</section>

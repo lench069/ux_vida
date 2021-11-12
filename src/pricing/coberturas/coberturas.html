@@ -1,0 +1,23 @@
+<section class="card coberturas">
+    <div class="col-md-12 container-coberturas">
+        <div class="col-md-12 th">Seguros - Consulta de coberturas</div>
+        <div class="col-md-12 td">
+            <div class="col-md-6">
+                <div class="title-cover">Producto</div>
+                <div class="detail-cover">{{producto.deProducto}}</div>
+            </div>
+            <div class="col-md-6 td_none">
+                <div class="title-cover">Plan</div>
+                <div class="detail-cover">{{producto.dePlan}}</div>
+            </div>
+        </div>
+        <div class="col-md-10 td td_itemLeft title">Cobertura</div><div class="col-md-2 td title">Suma asegurada</div>
+        <div ng-repeat="cober in cobertura.detalleCobertura">
+            	<div class="col-md-10 td td_itemLeft">{{cober.deCobertura}}</div><div class="col-md-2 td">{{cober.mtSumaAsegurada}}</div>
+        </div>
+        <div class="col-md-12 td td_left">
+            <div>{{cobertura.detallesCoberturas}}</div>
+        </div>
+        <div class="col-md-12 td_footer td_right"><md-button ng-click="hide()">Cerrar</md-button></div>
+    </div>
+</section>

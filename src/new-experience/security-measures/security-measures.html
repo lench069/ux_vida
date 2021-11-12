@@ -1,0 +1,27 @@
+<div style="max-width: 1000px; font-family: 'Roboto Regular', arial;">
+	<div class="headerSeguro">
+		<div class="row">
+			<div class="col-md-1" style="padding-left: 20px; padding-right: 0px;"><img
+					src="./assets/img/iconViviendaWhite.svg" alt="" class="imgSize"></div>
+			<div class="col-md-11 textSeg" style="padding-top: 5px; padding-left: 0px;">Seguro de vivienda <p
+					class="close" ng-click="hide()">X</p>
+			</div>
+		</div>
+	</div>
+	<div ng-cloak>
+		<md-content class="md-padding" style="background-color: white;">
+			<div class="panel panel-default" style="text-align: justify;"
+				ng-repeat="line in medidasSeguridadTextArray track by $index">
+				<p> {{line}} </p>
+			</div>
+		</md-content>
+	</div>
+	<div>
+		<md-switch class="form-switch" ng-model="showButton" aria-label="Switch 1">
+			<p class="condiciones">Acepto las condiciones</p>
+		</md-switch>
+		<md-button ng-if="showButton" class="md-raised md-accent buttonModal btnContinuar" ng-click="continuar()">
+			<strong>continuar</strong>
+		</md-button>
+	</div>
+</div>

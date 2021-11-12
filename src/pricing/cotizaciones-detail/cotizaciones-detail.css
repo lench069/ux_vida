@@ -1,0 +1,97 @@
+section.cotizaciones-detail {padding: 142px 20px 20px 20px;}
+	section.cotizaciones-detail div.listCotizDetail div.text-coti { font-size: 14px; font-weight: 600;}
+    section.cotizaciones-detail div.listCotizDetail div.th {background-color: #ec0000;color: #fff;display: block;float: left;font-weight: 600;font-size: 14px;text-align: center;padding: 8px 8px 8px 8px;white-space: pre-line;border: solid 1px #fff;margin: 10px 0px 0px 0px;text-overflow: ellipsis;}
+    section.cotizaciones-detail div.listCotizDetail div.col_none {background-color: transparent;}
+    section.cotizaciones-detail div.listCotizDetail div.headerRow {height: 49px;}
+    section.cotizaciones-detail div.listCotizDetail div.col_40p {width: 40px;}
+    section.cotizaciones-detail div.listCotizDetail div.col_90p {width: 90px;}
+    section.cotizaciones-detail div.listCotizDetail div.col_3 {width: 3%;}
+    section.cotizaciones-detail div.listCotizDetail div.col_6 {width: 6%;}
+    section.cotizaciones-detail div.listCotizDetail div.col_8 {width: 8%;}
+    section.cotizaciones-detail div.listCotizDetail div.col_10 {width: 10%;}
+    section.cotizaciones-detail div.listCotizDetail div.col_12 {width: 12%;}
+    section.cotizaciones-detail div.listCotizDetail div.col_13 {width: 13%;}
+    section.cotizaciones-detail div.listCotizDetail div.col_20 {width: 20%;}
+    
+    @media (max-width: 1150px) {
+	    section.cotizaciones-detail div.listCotizDetail div.th { height: 55px;}
+		section.cotizaciones-detail div.listCotizDetail div.headerRow {height: 65px;}
+	}
+	
+	section.cotizaciones-detail div.navbar-fixed-top {padding: 80px 5px 0px 5px; margin: 20px 30px 0px 30px; background: #fafafa; z-index: 10;}
+	.dropDown{top: 70px !important;}
+
+section.cotizaciones-detail md-input-container{ height: 42px; font-size: 14px; padding-left: 0px; margin-left: 10px; margin-bottom: 0px;}
+section.cotizaciones-detail md-input-container label{ margin-bottom: 0px;}
+section.cotizaciones-detail md-input-container.md-input{ height: 25px;}
+section.cotizaciones-detail md-input-container input{ height: 25px;}
+
+    section.cotizaciones-detail div.listCotizDetail div.th_input {display: block; float: left; height: 35px; text-align: center; padding: 4px 4px 4px 4px; border: solid 1px #fff; margin: 10px 0px 10px 0px;}
+    section.cotizaciones-detail div.listCotizDetail div.th_input input {height: 100%;width: 100%;margin: 0px;background-color: #707070;padding: 7px 7px;min-width: 7em;}
+
+    section.cotizaciones-detail div.listCotizDetail div.td {display: block; float: left; text-transform: uppercase; font-size: 12px; text-align: center; padding: 8px 4px 8px 4px; border: solid 1px #ccc; color: #000; height : 60px; line-height: normal; overflow: hidden;}
+        section.cotizaciones-detail div.listCotizDetail div.td input {margin: 0px 0px 5px 0px; height: 20px; width: 100%; padding: 5px 5px 5px 5px;}
+        section.cotizaciones-detail div.listCotizDetail div.td.check {padding:2% 0% 0% 1%;}
+        section.cotizaciones-detail div.listCotizDetail div.td.descr {text-align: left; font-size: 12px; padding-top: 1em;}
+        section.cotizaciones-detail div.listCotizDetail div.td.monto {font-weight: 600; font-size: 14px; padding-top: 1em;}
+        section.cotizaciones-detail div.listCotizDetail div.inspec {font-size: 11px!important; font-style: italic!important; font-weight: normal!important; text-transform: lowercase!important; padding-top: .2em!important; color: maroon!important;}
+        .cotizaciones-detail .listCotizDetail .td.rad {
+            display: flex;
+            align-items: center;
+            padding: 0px;
+        }
+        .cotizaciones-detail .listCotizDetail .td.rad md-radio-button{
+            margin: 0 auto;
+        }
+        .cotizaciones-detail .listCotizDetail .td.rad md-radio-button .md-ink-ripple{
+            right: 0;
+            margin: 0 auto;
+        }  
+    @media (max-width: 1693px) {
+	    section.cotizaciones-detail div.listCotizDetail div.td { font-size: 9px;}
+	}
+
+    md-radio-button.md-default-theme .md-on, md-radio-button .md-on {background-color: #ec0000;}
+    md-radio-button.md-default-theme.md-checked .md-off, md-radio-button.md-checked .md-off {border-color: #ec0000;}
+    md-checkbox.md-checked.green .md-icon {background-color: #ec0000;}
+
+section.cotizaciones-detail div.listCotizDetail div.containerDetail { padding: 0px;}
+
+    section.cotizaciones-detail div.listCotizDetail div.td.cdRamo30 {background-image: url(../../../assets/img/zurich.svg); background-repeat: no-repeat; background-position: center; background-size: 70%;}
+    section.cotizaciones-detail div.listCotizDetail div.td.cdRamo31 {background-image: url(../../../assets/img/orbis.svg); background-repeat: no-repeat; background-position: 2% 0%; background-size: contain;}
+    section.cotizaciones-detail div.listCotizDetail div.td.cdRamo32 {background-image: url(../../../assets/img/mapfre.svg); background-repeat: no-repeat; background-position: 2% 0%; background-size: contain;}
+    section.cotizaciones-detail div.listCotizDetail div.td.cdRamo33 {background-image: url(../../../assets/img/sancor.svg); background-repeat: no-repeat; background-position: 1px 15px; background-size: contain;}
+    section.cotizaciones-detail div.listCotizDetail div.td.cdRamo35 {background-image: url(../../../assets/img/meridional.svg); background-repeat: no-repeat; background-position: 1px 15px; background-size: contain;}
+    section.cotizaciones-detail div.listCotizDetail div.td.cdRamo36 {background-image: url(../../../assets/img/lacaja.svg); background-repeat: no-repeat; background-position: 43% 1px; background-size: contain;}
+    section.cotizaciones-detail div.listCotizDetail div.td.cdRamo39 {background-image: url(../../../assets/img/sura.svg); background-repeat: no-repeat; background-position: 65% 50%; background-size: 80%;}
+
+    /*TODO: cambiar logo de los siguientes registros al de zurick-santander*/
+    section.cotizaciones-detail div.td.cdRamo1, section.cotizaciones-detail div.td.cdRamo8, section.cotizaciones-detail div.td.cdRamo18, section.cotizaciones-detail div.td.cdRamo19, section.cotizaciones-detail div.td.cdRamo20, section.cotizaciones-detail div.td.cdRamo21, section.cotizaciones-detail div.td.cdRamo22, section.cotizaciones-detail div.td.cdRamo23, section.cotizaciones-detail div.td.cdRamo24, section.cotizaciones-detail div.td.cdRamo25, section.cotizaciones-detail div.td.cdRamo26 {background-image: url(../../../assets/img/zurich-santander.svg); background-repeat: no-repeat; background-position: center; background-size: 60%;}
+    
+.cotizaciones-detail .listCotizDetail .btn-blue{ font-size: 9px;}
+.cotizaciones-detail .listCotizDetail .btn-green{ font-size: 9px;}
+.cotizaciones-detail .btn-recot{ padding: 10px;}    
+    
+    /*-- PopUp comparar --*/
+    section.comparar {padding: 20px 20px 20px 20px; font-weight: 500; min-width: 700px;}
+    
+    section.comparar div.container-comparar div.td_right {text-align: right;}
+    section.comparar div.container-comparar div.td_footer {margin: 0px; text-transform: uppercase; font-weight: 500; font-size: 12px; color: #ec0000;}
+    
+    section.comparar div.container-comparar{ padding: 10px;}
+	section.comparar div.container-comparar div.th.title{ height: 25px; background: #ec0000; color:#fff; font-size:14px; text-align: center; font-weight: 600; text-transform: uppercase; padding: 4px;}
+
+	section.comparar div.container-comparar table.table-bordered { margin-top: 28px;}
+    section.comparar div.container-comparar table.table-bordered td { font-size: 10px; font-weight: 500; text-transform: uppercase;}
+    section.comparar div.container-comparar table.table-bordered td.title { width: 15%; color: #ec0000;}
+    section.comparar div.container-comparar table.table-bordered td.detail { width: 42%;}
+    section.comparar div.container-comparar table.table-bordered td img { width: 30%; height: 30%;}
+    section.comparar div.container-comparar table.table-bordered td img#meridional { width: 60%; height: 10%;}
+
+    section.comparar div.container-comparar table.table-bordered td.col_15 { width: 15%;}
+    section.comparar div.container-comparar table.table-bordered td.col_42 { width: 42.5%;}
+    section.comparar div.container-comparar table.table-bordered td.col_28 { width: 28.3%;}
+    
+    
+    
+    

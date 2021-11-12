@@ -1,0 +1,504 @@
+<div class="row" style="text-align: left; font-family: 'Roboto Regular', arial;">
+	<div class="col- col-xs-12 col-md-8 col-lg-9 col-xl-10 col-xxl-10"
+		style="background-color: #efefef; padding-right: 0px;  padding-left: 0px;">
+		<md-content style="background-color: #efefef; padding-left: 15px;">
+			<p class="title-head">Cotización</p>
+			<table class="default" aria-labelledby="">
+				<th id=""></th>
+				<caption></caption>
+			</table>
+			<div class="col-md-7" style="padding-left: 0px;">
+				<span class="title-sub-head">Esta es la mejor propuesta para tu cliente</span>
+			</div>
+			<div class="col-md-5" style="text-align: right;">
+				<span class="title-sub-head"> Nº de Cotización {{numCotizacion}}</span>
+			</div>
+			<md-card md-theme-watch class="bg-planes">
+				<md-card-content style="height: 71px;">
+					<div class="col-md-1 iconCard-cotizar">
+						<img class="icono-vida" src="./assets/img/IconInicialBlanco.svg" alt="">
+					</div>
+					<div class="col-md-7" style="padding-left: 5px;">
+						<p class="title-sub-cotizar">Seguro de Vida ({{producto}})
+						</p>
+					</div>
+					<div class="col-md-4" style="text-align: right; padding-right: 0px;">
+						<md-button class="md-raised md-accent" ng-click="planes()" ng-disabled="!planDisabled"
+							ng-class="planDisabled ? 'btnPlanes' : 'btnPlanesDisabled'"><strong>Planes</strong>
+						</md-button>
+                        <md-button class="md-raised md-accent" ng-click="eliminarCotizacion()" ng-class="planDisabled ? 'btnEliminar' : 'btnPlanesDisabled'">
+                            <span class="glyphicon glyphicon-remove-sign" style="font-size: 18px;"></span> Eliminar
+                        </md-button>
+					</div>
+				</md-card-content>
+				<md-card-content class="bg-card">
+					<div class="row">
+						<div class="col-md-5">
+							<div class="row">
+								<div class="font-asistencia">Este seguro cuenta con asistencias ante urgencias y para el
+									cuidado del hogar de tu cliente</div>
+							</div>
+							<div class="row">
+								<div style="margin-top: 3%;">
+									<div class="col-md-1 ">
+										<md-tooltip md-direction="top" class="toolpinStyleCot">
+											Asistencias ante urgencias.
+										</md-tooltip>
+										<img class="img-asistencias primer-margen"
+											src="./assets/img/iconAsistencia24.svg" alt="Texto">
+									</div>
+									<div class="col-md-1 margen-imagen-asistencia">
+										<md-tooltip md-direction="top" class="toolpinStyleCot">
+											Asistencias para el cuidado<br>de su hogar.
+										</md-tooltip>
+										<img class="img-asistencias-vida" src="./assets/img/IconOdontologica.svg"
+											alt="Texto">
+									</div>
+									<div class="col-md-1 margen-imagen-asistencia">
+										<md-tooltip md-direction="top" class="toolpinStyleCot">
+											Servicio de ambulancia a domicilio <br>ante urgencias.
+										</md-tooltip>
+										<img class="img-asistencias-vida" src="./assets/img/IconSalud.svg"
+											alt="Texto">
+									</div>
+									<div class="col-md-1 margen-imagen-asistencia">
+										<md-tooltip md-direction="top" class="toolpinStyleCot">
+											Servicio de asesoramiento médico<br>telefónico con profesionales.
+										</md-tooltip>
+										<img class="img-asistencias-vida" src="./assets/img/IconDesc+Envio.svg"
+											alt="Texto">
+									</div>
+									<div class="col-md-8">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div style="height: auto;width: 169px; margin-left: 20px;">
+									<img style="margin-top: 10%;" src="./assets/img/logoZurichSantander.svg" alt="">
+								</div>
+							</div>
+						</div>
+						<div class="col-md-7">
+							<div class="row">
+								<div class="col-md-4" style="vertical-align: middle;">
+									<div class="costo-total-box">
+										<div class="row">
+											<div class="col-md-2">
+												<img style="margin-left: 20px;" src="./assets/img/iconCostoTotal.svg"
+													alt="">
+											</div>
+											<div class="col-md-10">
+												<span class="texto-costo-total">Costo total mensual
+												</span>
+											</div>
+										</div>
+										<div class="row" style="margin-top: 15px;">
+											<span class="texto-total-mensual">
+												{{ costoTotalMensual | currency | formatCurrency }}
+											</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="row">
+										<div class="costo-diario-box">
+											<div class="col-md-3">
+												<img src="./assets/img/iconCostoDiario.svg" alt=""
+													style="margin-top: 15px;">
+											</div>
+											<div class="col-md-9 padding-left: 9px;padding-right: 2px;">
+												<div style="margin-top: 5px;">
+													<span class="texto-costo-total">
+														Costo diario
+													</span>
+													<div class="texto-costo-total"
+														style="font-weight: normal !important;">
+														{{ costoDiario  | currency | formatCurrency }}
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="costo-diario-box1">
+											<div class="col-md-3">
+												<img src="./assets/img/iconPlanPagos.svg" alt=""
+													style="margin-top: 15px;">
+											</div>
+											<div class="col-md-9" style="padding-left: 9px;padding-right: 2px;">
+												<div style="margin-top: 5px;">
+													<span class="texto-costo-total">
+														Plan de pagos
+													</span>
+													<div class="texto-costo-total"
+														style="font-weight: normal !important;">
+														{{planDePagos}} Cuotas
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div ng-If="ambiente" class="costo-diario-box1">
+											<div class="col-md-3" style="right:8px;">
+												<img src="./assets/img/iconAmbientes.svg" alt=""
+													style="margin-top: 15px;">
+											</div>
+											<div class="col-md-9" style="padding-right: 2px;padding-left: 9px">
+												<div style="margin-top: 5px;">
+													<span class="texto-costo-total">
+														¿Cuántos ambientes tiene?
+													</span>
+													<span class="texto-costo-total"
+														style="font-weight: normal !important;">
+														{{ambiente}}
+													</span>
+												</div>
+											</div>
+										</div>
+										<div ng-If="!ambiente" class="costo-diario-box1 ">
+											<div class="col-md-3">
+												<img src="./assets/img/iconTamanio.svg" alt=""
+													style="margin-top: 15px;">
+											</div>
+											<div class="col-md-9" style="padding-right: 2px;padding-left: 9px;">
+												<div style="margin-top: 5px;">
+													<span class="texto-costo-total">
+														¿Cuál es el tamaño en M²?
+													</span>
+													<span class="texto-costo-total"
+														style="font-weight: normal !important;">
+														{{tamanoM2}} M²
+													</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4 ">
+									<div class="vivenda-asegurada-box">
+										<div>
+											<img class="fix-posicion-vivienda sumaVida" src="./assets/img/IconInicial.svg"
+												alt="">
+
+											<div class="texto-vivienda-correcta fix-posicion-vivienda">
+												Su seguro cuenta con una suma asegurada principal de
+											</div>
+											<div class="total-seguro fix-posicion-vivienda">
+												{{ sumaAsegurada | currency | formatCurrency }}
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</md-card-content>
+			</md-card>
+			<md-card md-theme-watch class="bg-planes">
+				<md-card-content style="height: 71px;">
+					<div class="col-md-1 iconCard-cotizar">
+						<img class="icono-casa" src="./assets/img/iconViviendaWhite.svg" alt="">
+					</div>
+					<div class="col-md-7" style="padding-left: 5px;">
+						<p class="title-sub-cotizar">Seguro de vivienda ({{producto}})
+						</p>
+					</div>
+					<div class="col-md-4" style="text-align: right; padding-right: 0px;">
+						<md-button class="md-raised md-accent" ng-click="planes()" ng-disabled="!planDisabled"
+							ng-class="planDisabled ? 'btnPlanes' : 'btnPlanesDisabled'"><strong>Planes</strong>
+						</md-button>                        
+                        <md-button class="md-raised md-accent" ng-click="eliminarCotizacion()" ng-class="planDisabled ? 'btnEliminar' : 'btnPlanesDisabled'">
+                            <span class="glyphicon glyphicon-remove-sign" style="font-size: 18px;"></span> Eliminar
+                        </md-button>
+					</div>
+				</md-card-content>
+				<md-card-content class="bg-card">
+					<div class="row">
+						<div class="col-md-5">
+							<div class="row">
+								<div class="font-asistencia">Este seguro cuenta con asistencias ante urgencias y para el
+									cuidado del hogar de tu cliente</div>
+							</div>
+							<div class="row">
+								<div style="margin-top: 3%;">
+									<div class="col-md-1 ">
+										<md-tooltip md-direction="top" class="toolpinStyleCot">
+											Asistencias ante urgencias.
+										</md-tooltip>
+										<img class="img-asistencias primer-margen"
+											src="./assets/img/iconAsistencia24.svg" alt="Texto">
+									</div>
+									<div class="col-md-1 margen-imagen-asistencia">
+										<md-tooltip md-direction="top" class="toolpinStyleCot">
+											Asistencias para el cuidado<br>de su hogar.
+										</md-tooltip>
+										<img class="img-asistencias" src="./assets/img/iconAsistenciaSoporte.svg"
+											alt="Texto">
+									</div>
+									<div class="col-md-1 margen-imagen-asistencia">
+										<md-tooltip md-direction="top" class="toolpinStyleCot">
+											Servicio de ambulancia a domicilio <br>ante urgencias.
+										</md-tooltip>
+										<img class="img-asistencias" src="./assets/img/iconAsistenciaAmbulancia.svg"
+											alt="Texto">
+									</div>
+									<div class="col-md-1 margen-imagen-asistencia">
+										<md-tooltip md-direction="top" class="toolpinStyleCot">
+											Servicio de asesoramiento médico<br>telefónico con profesionales.
+										</md-tooltip>
+										<img class="img-asistencias" src="./assets/img/iconAsistenciaTelefono.svg"
+											alt="Texto">
+									</div>
+									<div class="col-md-8">
+
+									</div>
+								</div>
+
+
+							</div>
+							<div class="row">
+								<div style="height: auto;width: 169px; margin-left: 20px;">
+									<img style="margin-top: 10%;" src="./assets/img/logoZurichSantander.svg" alt="">
+								</div>
+
+
+							</div>
+						</div>
+
+						<div class="col-md-7">
+							<div class="row">
+								<div class="col-md-4" style="vertical-align: middle;">
+									<div class="costo-total-box">
+										<div class="row">
+											<div class="col-md-2">
+												<img style="margin-left: 20px;" src="./assets/img/iconCostoTotal.svg"
+													alt="">
+											</div>
+											<div class="col-md-10">
+												<span class="texto-costo-total">Costo total mensual
+												</span>
+											</div>
+										</div>
+										<div class="row" style="margin-top: 15px;">
+											<span class="texto-total-mensual">
+												{{ costoTotalMensual | currency | formatCurrency }}
+											</span>
+										</div>
+
+
+									</div>
+
+								</div>
+								<div class="col-md-4">
+									<div class="row">
+										<div class="costo-diario-box">
+											<div class="col-md-3">
+												<img src="./assets/img/iconCostoDiario.svg" alt=""
+													style="margin-top: 15px;">
+											</div>
+											<div class="col-md-9 padding-left: 9px;padding-right: 2px;">
+												<div style="margin-top: 5px;">
+													<span class="texto-costo-total">
+														Costo diario
+													</span>
+													<div class="texto-costo-total"
+														style="font-weight: normal !important;">
+														{{ costoDiario  | currency | formatCurrency }}
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="costo-diario-box1">
+											<div class="col-md-3">
+												<img src="./assets/img/iconPlanPagos.svg" alt=""
+													style="margin-top: 15px;">
+											</div>
+											<div class="col-md-9" style="padding-left: 9px;padding-right: 2px;">
+												<div style="margin-top: 5px;">
+													<span class="texto-costo-total">
+														Plan de pagos
+													</span>
+													<div class="texto-costo-total"
+														style="font-weight: normal !important;">
+														{{planDePagos}} Cuotas
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div ng-If="ambiente" class="costo-diario-box1">
+											<div class="col-md-3" style="right:8px;">
+												<img src="./assets/img/iconAmbientes.svg" alt=""
+													style="margin-top: 15px;">
+											</div>
+											<div class="col-md-9" style="padding-right: 2px;padding-left: 9px">
+												<div style="margin-top: 5px;">
+													<span class="texto-costo-total">
+														¿Cuántos ambientes tiene?
+													</span>
+													<span class="texto-costo-total"
+														style="font-weight: normal !important;">
+														{{ambiente}}
+													</span>
+												</div>
+											</div>
+										</div>
+										<div ng-If="!ambiente" class="costo-diario-box1 ">
+											<div class="col-md-3">
+												<img src="./assets/img/iconTamanio.svg" alt=""
+													style="margin-top: 15px;">
+											</div>
+											<div class="col-md-9" style="padding-right: 2px;padding-left: 9px;">
+												<div style="margin-top: 5px;">
+													<span class="texto-costo-total">
+														¿Cuál es el tamaño en M²?
+													</span>
+													<span class="texto-costo-total"
+														style="font-weight: normal !important;">
+														{{tamanoM2}} M²
+													</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4 ">
+									<div class="vivenda-asegurada-box">
+										<div>
+											<img class="fix-posicion-vivienda" src="./assets/img/iconViviendaActive.svg"
+												alt="">
+
+											<div class="texto-vivienda-correcta fix-posicion-vivienda">
+												La vivienda será asegurada por
+											</div>
+											<div class="total-seguro fix-posicion-vivienda">
+												{{ sumaAsegurada | currency | formatCurrency }}
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</md-card-content>
+			</md-card>
+			<footer>
+				<div class="col-md-4" style="padding-left: 0px;">
+					<md-button ng-click="volver()" class="md-raised md-primary btnVolver"><strong> volver al paso
+							anterior</strong></md-button>
+				</div>
+				<div class="col-md-8" style="text-align: right; padding-right: 0px;">
+					<md-button class="md-raised md-accent btnPersonalizar" ng-click="personalizar()">
+						<img class="tamano-imagen-boton" src="./assets/img/iconPersonalizarBlanco.svg" alt="">
+						<strong>Personalizar seguro</strong>
+					</md-button>
+					<md-button class="md-raised md-accent" ng-disabled="!continuarOk"
+						ng-class="continuarOk ? ' btnContinuarCot' : 'btnContinuarCotDisabled'" ng-click="continuar()">
+						<strong>continuar</strong>
+					</md-button>
+				</div>
+			</footer>
+	</div>
+	<div class="col- col-xs-7 col-md-4 col-lg-3 col-xl-2 col-xxl-2"
+		style="background-color: #efefef; padding-right: 0px;  padding-left: 0px;">
+		<md-card class="fondo-white-cob">
+			<div class="row">
+				<div class="col-md-1" style="padding-right: 0px;">
+					<img class="imgCober" src="./assets/img/iconSucursalEmision.svg" alt="">
+				</div>
+				<div class="col-md-10" style="padding-left: 0px;">
+					<md-card-title class="padding0px">
+						<md-card-title-text style="margin-left: 10px;">
+							<p class="title-alert size-elert textCotiCober" style="color: #292929;">¿Cuál es la sucursal
+								de emisión? *
+								<br>
+								<p class="size-elert textCotiCober">
+									<span style="color: #292929;">{{sucursalEmision}}</span>
+								</p>
+							</p>
+						</md-card-title-text>
+					</md-card-title>
+				</div>
+			</div>
+		</md-card>
+		<md-card class="fondo-white-cob">
+			<div class="row">
+				<div class="col-md-1" style="padding-right: 0px;">
+					<img class="imgCober" src="./assets/img/iconUsuarioEmision.svg" alt="">
+				</div>
+				<div class="col-md-11" style="padding-left: 0px;">
+					<md-card-title class="padding0px">
+						<md-card-title-text style="margin-left: 10px;">
+							<p class="title-alert size-elert textCotiCober" style="color: #292929;">¿Cuál es la usuario
+								de emisión? *
+								<br>
+								<p class="size-elert textCotiCober">
+									<span style="color: #292929;">{{usuarioEmision}}</span>
+								</p>
+							</p>
+						</md-card-title-text>
+					</md-card-title>
+				</div>
+			</div>
+		</md-card>
+		<md-card class="color-white fondo-green" ng-if="frecuencias.title">
+			<div class="row">
+				<div class="col-xs-1 col-md-1 col-lg-1">
+					<img class="centrar" src="./assets/img/iconTarjeta.svg" alt="">
+				</div>
+				<div class="col-xs-11 col-md-11 col-lg-10">
+					<md-card-title class="padding0pxtpBtt">
+						<md-card-title-text>
+							<p class="title-alert size-elert color-white">{{frecuencias.title}}</P>
+							<p class="size-elert">{{frecuencias.description}}
+								<span class="subrayar" ng-if="frecuencias.url"><a href="{{frecuencias.url}}" target="_blank"> +info</a>
+								</span>
+							</P>
+						</md-card-title-text>
+					</md-card-title>
+				</div>
+			</div>
+		</md-card>
+		<md-card class="fondo-white" ng-if="promociones.title">
+			<div class="row">
+				<div class="col-xs-1 col-md-1 col-lg-1">
+					<img class="centrar" src="./assets/img/iconNotebook.svg" alt="">
+				</div>
+				<div class="col-xs-11 col-md-11 col-lg-10">
+					<md-card-title class="padding0pxtpBtt">
+						<md-card-title-text>
+							<p class="title-alert size-elert color-blue">{{promociones.title}}</p>
+							<p class="size-elert">{{promociones.description}}
+								<span class="subrayar" ng-if="promociones.url"><a href="{{promociones.url}}" target="_blank"> +info</a>
+								</span>
+							</p>
+						</md-card-title-text>
+					</md-card-title>
+				</div>
+			</div>
+
+		</md-card>
+		<md-card class="fondo-gray">
+			<div class="row">
+				<div class="col-md-12">
+					<md-card-title>
+						<md-card-title-text>
+							<p class="title-alert size-elert color-red"><img class="" src="./assets/img/iconTips.svg"
+									alt=""> Tips Zurich Santander</p>
+							<p class="size-elert">La suma asegurada propuesta es la adecuada para la reconstrucción de
+								su vivienda en caso de incendio. ¡Recordá que es en relación al tamaño de la vivienda
+								que cotizaste!</p>
+							<br>
+						</md-card-title-text>
+					</md-card-title>
+				</div>
+			</div>
+		</md-card>
+	</div>
+</div>

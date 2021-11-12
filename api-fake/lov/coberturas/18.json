@@ -1,0 +1,27 @@
+[
+    {
+        "valor":"TODAS",
+        "descripcion":"TODAS"
+    },
+    {
+        "valor":"RC",
+        "descripcion":"RESPONSABILIDAD CIVIL"
+    },
+    {
+        "valor":"TT",
+        "descripcion":"TODO TOTAL"
+    },
+    {
+        "valor":"TC",
+        "descripcion":"TERCEROS COMPLETOS"
+    },
+    {
+        "valor":"TRCF",
+        "descripcion":"TODO RIESGO CON FRANQUICIA"
+    },
+    {
+        "valor":"TRSF",
+        "descripcion":"TODO RIESGO SIN FRANQUICIA"
+    }
+
+]

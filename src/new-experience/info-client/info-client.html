@@ -1,0 +1,820 @@
+<div class="row" style="text-align: left; font-family: 'Roboto Regular', arial;">
+	<div class="col-xs-12 col-md-8 col-lg-9 col-xl-10 col-xxl-10"
+		style="background-color: #efefef; padding-right: 0px;  padding-left: 0px;">
+		<md-content style="background-color: #efefef; padding-left: 15px;">
+			<p class="title-head"><strong>Datos del Cliente</strong></p>
+			<md-card md-theme-watch>
+				<md-card-title class="cardTitulo">
+					<md-card-title-text>
+						<div class="row">
+							<div class="col-md-10">
+								<p class="title-sub">¿Cuáles son los datos básicos del tomador?
+								</p>
+							</div>
+							<div class="col-md-2 iconCard" ng-click="showHideCard('planes')">
+								<em ng-if="showCard.planes" class="glyphicon glyphicon-chevron-up"></em>
+								<em ng-if="!showCard.planes" class="glyphicon glyphicon-chevron-down"></em>
+							</div>
+						</div>
+					</md-card-title-text>
+				</md-card-title>
+				<md-card-content ng-if="showCard.ubicacion">
+					<div class="row">
+						<md-input-container class=" col-md-2 containerDatos">
+							<label class="marginLeft">Tipo de documento *</label>
+							<md-select ng-model="tomador.tipoDocumento" class="selectSeguro" disabled>
+								<md-option ng-repeat="tpdoc in tpDocs" ng-value="tpdoc"
+									ng-selected="{{ tpdoc.valor === dataUser.tpDoc ? 'true' : 'false' }}" disabled>
+									{{tpdoc.descripcion}}
+								</md-option>
+							</md-select>
+						</md-input-container>
+						<md-input-container class="col-md-2 containerDatos">
+							<label>N° de documento</label>
+							<input matInput appearance="outline" type="text" ng-model="tomador.nroDocumento" required=""
+								class="inputSeguro " disabled>
+						</md-input-container>
+						<md-input-container class="col-md-3 containerDatos">
+							<label>Nombre</label>
+							<input type="text" ng-model="tomador.nombre" required="" class="inputSeguro " disabled>
+						</md-input-container>
+						<md-input-container class="col-md-3 containerDatos">
+							<label>Apellido</label>
+							<input type="text" ng-model="tomador.apellido" required="" class="inputSeguro " disabled>
+						</md-input-container>
+						<md-input-container class="col-md-2 containerDatos">
+							<label>Fecha de nacimiento</label>
+							<input type="text" ng-model="tomador.fecNac" class="inputSeguro "
+								ng-value="tomador.fecNac | date: 'dd/MM/yyyy'" required disabled>
+							<!--<md-icon md-font-icon="fa fa-calendar"></md-icon>-->
+						</md-input-container>
+					</div>
+					<div class="row">
+						<md-input-container class="col-md-2 containerDatosAbajo">
+							<label class="marginLeft">Sexo *</label>
+							<md-select ng-model="tomador.sexo" class="selectSeguro" disabled>
+								<md-option ng-repeat="sexo in sexos" ng-value="sexo.valor"
+									ng-selected="{{ sexo.valor === tomador.sexo ? 'true' : 'false' }}" disabled>
+									{{sexo.descripcion}}
+								</md-option>
+							</md-select>
+						</md-input-container>
+						<md-input-container class="col-md-2 containerDatosAbajo">
+							<label>CUIT/CUIL</label>
+							<input type="text" ng-model="tomador.cuit" required="" class="inputSeguro " disabled>
+						</md-input-container>
+						<md-input-container class="col-md-3 containerDatosAbajo">
+							<label class="marginLeft">Estado civil *</label>
+							<md-select ng-model="tomador.estadoCivil" class="selectSeguroIntro selectSeg" disabled>
+								<md-option ng-repeat="estadosCivil in estadosCiviles" ng-value="estadosCivil.valor"
+									ng-selected="{{ estadosCivil.valor === tomador.estadoCivil ? 'true' : 'false' }}"
+									disabled>
+									{{estadosCivil.descripcion}}
+								</md-option>
+							</md-select>
+						</md-input-container>
+					</div>
+				</md-card-content>
+			</md-card>
+			<md-card md-theme-watch>
+				<md-card-title style="padding-bottom: 0px;">
+					<md-card-title-text>
+						<div class="row">
+							<div class="col-md-10">
+								<p class="title-sub">¿Cuáles son los datos de contacto?
+								</p>
+							</div>
+						</div>
+					</md-card-title-text>
+				</md-card-title>
+				<md-card-content ng-if="showCard.ubicacion">
+					<div layout="row" layout-align="start" flex>
+						<md-input-container class="md-col-4 containerDatos hide-validation-error">
+							<label>Telefono</label>
+							<input type="text" ng-model="tomador.contacto.telefono" class="inputSeguro ">
+							<div class="md-errors-spacerInf" ng-if="!valTelefono">Campo requerido</div>
+						</md-input-container>
+						<md-input-container class="col-md-4 containerDatos hide-validation-error">
+							<label>Correo electronico</label>
+							<input type="text" ng-model="tomador.contacto.correoElectronico" required=""
+								class="inputSeguro"
+								ng-class="{'email-valido': valCorreo==true, 'email-invalido': valCorreo==false}">
+							<div class="md-errors-spacerInf" ng-if="!valCorreo">Debe ingresar un email valido</div>
+						</md-input-container>
+						<md-input-container class="col-md-3" style="margin-top:23px">
+							<md-checkbox ng-model="tomador.contacto.envioElectronico" aria-label="Finished?">
+								Envío electrónico
+							</md-checkbox>
+						</md-input-container>
+						<!--<md-input-container style="margin-top:-1px; margin-left:20px">
+							<md-switch class="md-primary lblEnvioElectronico" ng-change="checkFormaDePago(1)"
+								ng-model="formaDePago.banco.santander.checked" aria-label="Switch 1">
+								Envio electronico
+							</md-switch>
+						</md-input-container>-->
+					</div>
+
+				</md-card-content>
+			</md-card>
+			<!--card-->
+			<md-card md-theme-watch>
+				<md-card-title style="padding-bottom: 0px;">
+					<md-card-title-text>
+						<div class="row">
+							<div class="col-md-10">
+								<p class="title-sub">¿Cuál es la dirección legal del tomador?
+								</p>
+							</div>
+						</div>
+					</md-card-title-text>
+				</md-card-title>
+				<div layout="row" layout-align="start" flex>
+					<md-input-container class="col-md-4">
+						<label class="marginLeft">Provincia *</label>
+						<md-select ng-model="dataUser.cdProvincia" class="selectSeguro"
+							ng-change="selectedItemChange(dataUser.cdProvincia, 'cdProvincia')" disabled>
+							<md-option ng-repeat="provincia in provincias" ng-value="provincia.valor">
+								{{provincia.descripcion.toUpperCase()}}
+							</md-option>
+						</md-select>
+					</md-input-container>
+					<md-input-container class="col-md-4">
+						<label>Código Postal *</label>
+						<md-select ng-model="dataUser.codPos" class="selectSeguro"
+							ng-change="selectedItemChange(dataUser.codPos, 'codPos')" disabled>
+							<md-option ng-repeat="locConPostal in localidadesCodPostales" ng-value="locConPostal.valor">
+								{{locConPostal.descripcion.toUpperCase()}}
+							</md-option>
+						</md-select>
+					</md-input-container>
+				</div>
+				<div layout="row">
+					<md-input-container class="col-md-4 margLeft containerDatosD hide-validation-error">
+						<label>¿Cuál es la dirección?</label>
+						<input type="text" ng-model="tomador.direccionLegal.direccion" required="" class="inputSeguro ">
+						<div class="md-errors-spacerInf" ng-if="!valDireccion">Campo requerido</div>
+					</md-input-container>
+					<md-input-container class="col-md-2 containerDatosD">
+						<label>Número</label>
+						<input type="text" ng-model="tomador.direccionLegal.numero" class="inputSeguro ">
+					</md-input-container>
+					<md-input-container class="col-md-2 containerDatosD">
+						<label>Piso</label>
+						<input type="text" ng-model="tomador.direccionLegal.piso" class="inputSeguro ">
+					</md-input-container>
+					<md-input-container class="col-md-2 containerDatosD">
+						<label>Departamento</label>
+						<input type="text" ng-model="tomador.direccionLegal.departamento" ng-change='console.log(1)'
+							class="inputSeguro ">
+					</md-input-container>
+				</div>
+				<div layout="row">
+					<md-input-container class="col-md-9 margLeft containerDatosDomi hide-validation-error"
+						style="margin-bottom: 15px;">
+						<label>Entre calles </label>
+						<input type="text" ng-model="tomador.direccionLegal.entreCalles" class="inputSeguro  maxW">
+						<!--<div class="md-errors-spacerInf" ng-if="!valcallesTomador" >Campo requerido</div>-->
+					</md-input-container>
+				</div>
+			</md-card>
+			<!--fin card-->
+			<!--card-->
+			<md-card md-theme-watch>
+				<md-card-title class='cardTitulo'>
+					<md-card-title-text>
+						<div class="row">
+							<div class="col-md-10">
+								<p class="title-sub">Otros datos
+								</p>
+							</div>
+						</div>
+					</md-card-title-text>
+				</md-card-title>
+				<div layout="row" layout-align="start" flex>
+					<md-input-container class="col-md-4">
+						<label class="marginLeft">Ocupación</label>
+						<md-select ng-model="tomador.ocupacion" class="selectSeguro" disabled>
+							<md-option ng-repeat="profesion in profesiones" ng-value="profesion"
+								ng-selected="{{ profesion.valor === dataUser.cdProfesion ? 'true' : 'false' }}"
+								disabled>
+
+								{{profesion.descripcion}}
+							</md-option>
+						</md-select>
+					</md-input-container>
+					<md-input-container class="col-md-3">
+						<label class="marginLeft">Lugar de nacimiento</label>
+						<md-select ng-model="tomador.lugarNacimiento" class="selectSeguro">
+							<md-option ng-repeat="pais in paises" ng-value="pais.valor"
+								ng-selected="{{ pais.valor === tomador.lugarNacimiento ? 'true' : 'false' }}">
+								{{pais.descripcion}}
+							</md-option>
+						</md-select>
+					</md-input-container>
+					<md-input-container class="col-md-3">
+						<label class="marginLeft">Nacionalidad</label>
+						<md-select ng-model="tomador.nacionalidad" class="selectSeguro">
+							<md-option ng-repeat="pais in paises" ng-value="pais.valor"
+								ng-selected="{{ pais.valor === tomador.nacionalidad ? 'true' : 'false' }}">
+								{{pais.descripcion}}
+							</md-option>
+						</md-select>
+					</md-input-container>
+				</div>
+			</md-card>
+			<!--fin card-->
+			<!--card-->
+			<md-card md-theme-watch>
+				<md-card-title class="cardTitulo">
+					<md-card-title-text>
+						<div class="row">
+							<div class="col-md-10">
+								<p class="title-sub">¿Cuáles son los datos de la póliza?
+								</p>
+							</div>
+						</div>
+					</md-card-title-text>
+				</md-card-title>
+				<md-card-content ng-if="showCard.ubicacion">
+					<div class="row">
+						<md-input-container class="col-md-4">
+							<label>Producto</label>
+							<input type="text" ng-model="producto" required=""
+								class="inputSeguro  deshabilitado margBotton" disabled>
+						</md-input-container>
+						<md-input-container class="col-md-4">
+							<label>Plan</label>
+							<input type="text" required="" ng-model="plan" class="inputSeguro  deshabilitado margBotton"
+								disabled>
+						</md-input-container>
+					</div>
+					<div class="row">
+						<md-input-container class="col-md-4" style="margin-top: 0px;">
+							<label>Sucursal y N° de Cotización</label>
+							<input type="text" ng-model="SucCotizacion" required="" class="inputSeguro  deshabilitado"
+								disabled>
+						</md-input-container>
+						<md-input-container class="md-block col-md-4 containerDatosDomi">
+							<label>Cuando debe iniciar la vigencia de la póliza</label>
+							<md-select ng-model="poliza.vigencia" class="selectSeguroIntro"
+								ng-disabled="vigencias.length == 0" required>
+								<md-option ng-repeat="vig in vigencias" value="{{vig}}" ng-selected="$first">{{vig}}
+								</md-option>
+							</md-select>
+						</md-input-container>
+					</div>
+				</md-card-content>
+			</md-card>
+			<!--fin card-->
+			<!--card-->
+			<!--***********************DATOS DEL ASEGURADO SEGUNDA FASE**********************************-->
+			<!-- <md-card md-theme-watch>
+				<md-card-title class="cardTitulo">
+					<md-card-title-text>
+						<div class="row">
+							<div class="col-md-10">
+								<p class="title-sub">¿Cuales son los datos del asegurado?
+								</p>
+							</div>
+						</div>
+					</md-card-title-text>
+				</md-card-title>
+				<md-card-content>
+					<div layout="row" layout-align="start center">
+						<md-input-container layout="row" class="col-md-2">
+							<label>N° de documento</label>
+							<input type="text" ng-model="asegurado.nroDocumento" required="" class="inputSeguro " disabled>
+						</md-input-container>
+						<md-input-container layout="row" class="col-md-3">
+							<label>Fecha de nacimiento</label>
+							<input type="text" ng-model="asegurado.fecNac | date: 'dd / MM / yyyy'"
+								class="inputSeguro " disabled>
+						</md-input-container>
+						<md-button class="md-raised md-accent btnContinuar" ng-click="aceptar()"><b>ACEPTAR</b></md-button>
+					</div>
+					<div layout="row" >
+						<md-input-container class="">
+							<label>tipo y Nro. Documento </label>
+							<input type="text" ng-model="producto" required="" class="deshabilitado inputSeguro " disabled>
+						</md-input-container>
+						<md-input-container class="">
+							<label>Nombre </label>
+							<input type="text" required="" class="deshabilitado inputSeguro" disabled ng-model="plan">
+						</md-input-container>
+						<md-input-container class="">
+							<label>Apellido </label>
+							<input type="text" required="" class="deshabilitado inputSeguro" disabled ng-model="plan">
+						</md-input-container>
+
+					</div>
+					<div layout="row" layout-align="start" >
+						<md-input-container class=" col-md-3 containerDatosArriba" >
+							<label>Lugar de nacimiento</label>
+							<md-select ng-model="tomador.lugarNacimiento" class="selectSeguro" disabled>
+								<md-option ng-repeat="pais in paises" ng-value="pais"
+								ng-selected="{{ pais.valor === dataUser.cdPaisNacimiento ? 'true' : 'false' }}">
+									{{pais.descripcion}}
+								</md-option>
+							</md-select>
+						</md-input-container>
+						<md-input-container class="col-md-3 containerDatosArriba" >
+							<label>Nacionalidad</label>
+							<md-select ng-model="vivienda.codigoPostal" class="selectSeguro" disabled>
+								<md-option ng-repeat="pais in paises" ng-value="paises"
+								ng-selected="{{ pais.valor === dataUser.cdPaisNacionalidad ? 'true' : 'false' }}">
+									{{pais.descripcion}}
+								</md-option>
+							</md-select>
+						</md-input-container>
+						<md-input-container class=" col-md-3 containerDatosArriba" >
+							<label>Ocupacion</label>
+							<md-select ng-model="tomador.otro.otro" class="selectSeguro" disabled >
+								<md-option ng-repeat="profesion in profesiones" ng-value="profesion"
+								ng-selected="{{ profesion.valor === dataUser.cdProfesion ? 'true' : 'false' }}">
+									{{profesion.descripcion}}
+								</md-option>
+							</md-select>
+						</md-input-container>
+					</div>
+					<div layout="row" layout-align="start" >
+						<md-input-container class="col-md-5 maringTopBooton">
+							<label>Correo electronico</label>
+							<input type="text" ng-model="asegurado.correoElectronico" required="" class="inputSeguro ">
+						</md-input-container>
+						<md-input-container class="maringTopBooton">
+							<md-switch class="md-primary lblEnvioElectronico" ng-change="checkFormaDePago(1)"
+								ng-model="formaDePago.banco.santander.checked" aria-label="Switch 1">
+								Envio electronico
+							</md-switch>
+						</md-input-container>
+					</div>
+					<div layout="row" layout-align="start" flex>
+						<md-input-container class="col-md-5 maringTop">
+							<label>Correo alternativo</label>
+							<input type="text" ng-model="asegurado.telefono" required="" class="inputSeguro">
+						</md-input-container>
+					</div>
+				</md-card-content>
+			</md-card> -->
+			<!--fin card-->
+			<!--***********************FIN DATOS DEL ASEGURADO SEGUNDA FASE**********************************-->
+			<!--card-->
+			<md-card md-theme-watch>
+				<md-card-title class='cardTitulo'>
+					<md-card-title-text>
+						<div class="row">
+							<div class="col-md-10">
+								<p class="title-sub">Datos del bien asegurado
+								</p>
+							</div>
+						</div>
+					</md-card-title-text>
+				</md-card-title>
+				<md-card-content ng-if="showCard.ubicacion">
+					<div class="row">
+						<md-input-container class="md-block col-md-4">
+							<label class="marginLeft">Provincia *</label>
+							<md-select ng-model="bienAsegurado.provincia" class="selectSeguro" disabled>
+								<md-option ng-repeat="provincia in provincias" ng-value="provincia"
+									ng-selected="{{ provincia.valor === tomador.direccionLegal.provincia ? 'true' : 'false' }}">
+									{{provincia.descripcion}}
+								</md-option>
+							</md-select>
+						</md-input-container>
+						<md-input-container class="md-block col-md-4">
+							<label class="marginLeft">Código postal *</label>
+							<md-select ng-model="dataUser.codPos" class="selectSeguro"
+								ng-change="selectedItemChange(dataUser.codPos, 'codPos')" disabled>
+								<md-option ng-repeat="locConPostal in localidadesCodPostales"
+									ng-value="locConPostal.valor">
+									{{locConPostal.descripcion.toUpperCase()}}
+								</md-option>
+							</md-select>
+						</md-input-container>
+					</div>
+					<div layout="row">
+						<md-input-container class=" md-block  col-md-3 margBotton hide-validation-error">
+							<label>¿Cuál es la dirección?</label>
+							<input type="text" ng-model="bienAsegurado.direccion" required="" class="inputSeguro ">
+							<div class="md-errors-spacerInf" ng-if="!valDireccionBienAseg">Campo requerido</div>
+						</md-input-container>
+						<md-input-container class="col-md-2">
+							<label>Número</label>
+							<input type="text" ng-model="bienAsegurado.numero" class="inputSeguro ">
+						</md-input-container>
+						<md-input-container class="col-md-2">
+							<label>Piso</label>
+							<input type="text" ng-model="bienAsegurado.piso" class="inputSeguro ">
+						</md-input-container>
+						<md-input-container class="col-md-2">
+							<label>Departamento</label>
+							<input type="text" ng-model="bienAsegurado.departamento" class="inputSeguro ">
+						</md-input-container>
+					</div>
+					<div layout="row">
+						<md-input-container class="md-block col-md-10 containerDatosAbajo hide-validation-error"
+							style="margin-bottom: 10px;">
+							<label>Entre calles </label>
+							<input type="text" ng-model="bienAsegurado.entreCalles" class="inputSeguro  maxW">
+							<!--<div class="md-errors-spacerInf" ng-if="!valcallesBienAsegu">Campo requerido</div>  Descomentar para que sea obligatorio-->
+						</md-input-container>
+					</div>
+					<!--********************CAMPO PARA LA SEGUNDA FASE******************-->
+					<div layout="row">
+						<md-input-container class="md-block col-md-10 ">
+							<label>Alarma (Solo completa en caso de existencia. La póliza quedará pendiente de
+								aprobación por Área de Emisión)</label>
+							<input type="text" ng-model="bienAsegurado.alarma" class="inputSeguro  maxW">
+						</md-input-container>
+					</div>
+					<!--********************CAMPO PARA LA SEGUNDA FASE******************-->
+				</md-card-content>
+			</md-card>
+			<!--fin card-->
+			<!--card-->
+			<md-card md-theme-watch>
+				<md-card-title>
+					<md-card-title-text>
+						<div class="row">
+							<div class="col-md-10">
+								<p class="title-sub">Declaración Jurada
+								</p>
+							</div>
+						</div>
+					</md-card-title-text>
+				</md-card-title>
+				<md-card-content ng-if="showCard.ubicacion">
+					<div layout="row" layout-align="start">
+						<div class="col-md-8">
+							<p style="text-align: left"><strong>Declaración Jurada de Origen de Fondos</strong></p>
+							<p style="text-align: left">Manifiesto en carácter de DDJJ que el origen de los fondos
+								correspondientes a la operación de contratación de seguros corresponden a:
+							</p>
+							<span class="radioValue">{{ data.group3 }}</span>
+						</div>
+						<div class="col-md-4">
+							<md-select ng-model="declaracionJurada.origenDeFondos" class="selectSeguro">
+								<md-option ng-repeat="item in origenFondos" ng-value="item"
+									ng-selected="{{ item.valor === declaracionJurada.origenDeFondos ? 'true' : 'false' }}">
+									{{item.descripcion}}
+								</md-option>
+							</md-select>
+						</div>
+					</div>
+					<hr>
+					<div layout="row" layout-align="start">
+						<div class="col-md-12">
+							<p class="negrita" style="text-align: left;"><strong>Declaración Jurada de Persona Expuesta
+									Políticamente</strong> </p>
+							<p>
+								<div class="radio-in-line">
+									<p style="text-align: left;margin-bottom: 0px;"><span>Declaro bajo juramento que
+										</span>
+										<span>
+											<md-radio-group class="declaracion"
+												ng-model="declaracionJurada.personaExpuestaPoliticamente" layout="row"
+												required>
+												<md-radio-button value="true" class=" radioButton"> Si</md-radio-button>
+												<md-radio-button value="false" class="radioButton"> No
+												</md-radio-button>
+											</md-radio-group>
+										</span>
+										me encuentro alcanzado por las posiciones relativas a personas expuestas
+										políticamente (resolución 11/2011 de la UIF) y sus modifactorias descriptos en
+										<a href="" ng-click="showAnexo()" style="color: crimson;">Anexo legal</a>
+										adjunto.
+									</p>
+									<md-input-container style="margin-top: 0px;margin-bottom: 0px;">
+										<p>En caso afirmativo indicar detalladamente el motivo: </p>
+									</md-input-container>
+									<md-input-container class="hide-validation-error"
+										style="margin-top: 0px;margin-bottom: 0px; width: 400px;">
+										<input type="text" ng-model="declaracionJurada.detalleMotivo"
+											class="inputSeguroF maxWF "
+											ng-disabled="declaracionJurada.personaExpuestaPoliticamente == 'false'">
+										<div class="md-errors-spacerInf" ng-if="!valMotivo">Campo requerido</div>
+									</md-input-container>
+								</div>
+						</div>
+					</div>
+					<hr style="margin-top: 0px;">
+					<div layout="row" layout-align="start">
+						<div class="col-md-1">
+							<md-input-container style="margin-top: -15px;">
+								<md-switch ng-model="declaracionJurada.declaro" class="md-primary"
+									aria-label="Switch 1">
+								</md-switch>
+								<div class="md-errors-spacerInf" ng-if="!valDeclaJurada">Campo requerido</div>
+							</md-input-container>
+						</div>
+						<div class="col-md-11">
+							<p>Declaro bajo juramento que los datos declarados son correctos y verdaderos y me
+								comprometo a
+								informar cualquier modificación al respecto, dentro de los 30 días ocurrida, y presentar
+								la
+								documentación respaldatoria.</p>
+						</div>
+					</div>
+				</md-card-content>
+			</md-card>
+			<!--fin card-->
+			<!--card-->
+			<md-card md-theme-watch>
+				<md-card-title class="cardTitulo">
+					<md-card-title-text>
+						<div class="row">
+							<div class="col-md-10">
+								<p class="title-sub">¿Cuál es la forma de pago?
+								</p>
+							</div>
+						</div>
+					</md-card-title-text>
+				</md-card-title>
+				<md-card-content ng-if="showCard.ubicacion">
+					<div class="row" ng-if="esCliente && cuentas.length>0">
+						<div class="col-md-2">
+							<md-input-container style="margin-top: 2px;">
+								<md-switch class="md-primary" ng-change="checkFormaDePago(1)"
+									ng-model="formaDePago.banco.santander.checked" aria-label="Switch 1">
+									Santander
+								</md-switch>
+							</md-input-container>
+						</div>
+						<div class="col-md-6">
+							<md-input-container style="width: 400px;">
+								<label>Seleccione una tarjeta *</label>
+								<md-select ng-model="formaDePago.banco.santander.listado" class="selectSeguro"
+									ng-disabled=!formaDePago.banco.santander.checked
+									ng-change="changeSelectTarjSantander()">
+									<md-option ng-repeat="tarjetaSantander in cuentas" ng-value="tarjetaSantander "
+										ng-selected="{{ tarjetaSantander.ctaTarjetaRector === cliTar ? 'true' : 'false' }}">
+										{{tarjetaSantander.deTpCtaRector}}
+										({{tarjetaSantander.ctaTarjetaFormatoProtegido}})
+									</md-option>
+								</md-select>
+								<div class="md-errors-spacerInf" ng-if="!valSelectTarjetaSantander">Campo requerido
+								</div>
+							</md-input-container>
+						</div>
+					</div>
+					<!-- <hr style="margin-top: 0px;margin-bottom: 0px;"> -->
+					<div class="row" ng-if="otrasTarjetas.length>0">
+						<div class="col-md-2">
+							<md-input-container style="margin-top: 2px;">
+								<md-switch class="md-primary" ng-change="checkFormaDePago(2)"
+									ng-model="formaDePago.banco.otro.checked" aria-label="Switch 1">
+									Tarjeta de Crédito <br> de otro banco
+								</md-switch>
+							</md-input-container>
+						</div>
+						<div class="col-md-4">
+							<md-input-container style="width: 300px;">
+								<label>Seleccione una tarjeta *</label>
+								<md-select ng-model="formaDePago.banco.otro.listado" class="selectSeguro"
+									ng-disabled=!formaDePago.banco.otro.checked>
+									<md-option ng-repeat="otraTarjeta in otrasTarjetas" ng-value="otraTarjeta "
+										ng-selected="{{ otraTarjeta.tipo === nocliTar ? 'true' : 'false' }}">
+										{{otraTarjeta.descripcion}}
+									</md-option>
+								</md-select>
+								<div class="md-errors-spacerInf" ng-if="!valSelectTarjetaOtroBanco">Campo requerido
+								</div>
+							</md-input-container>
+						</div>
+
+						<md-input-container class="md-block col-md-4 hide-validation-error">
+							<input type="text" ng-model="formaDePago.banco.otro.nro" class="inputSeguro maxW"
+								placeholder="Nro. de tarjeta" maxlength="16"
+								onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
+								required>
+							<div class="md-errors-spacerInf" ng-if="!valTarjeta && !formaDePago.banco.otro.nro">Campo
+								requerido</div>
+							<div class="md-errors-spacerInf"
+								ng-if="!valTarjeta && formaDePago.banco.otro.nro && formaDePago.banco.otro.nro.length < 16">
+								Número de tarjeta inválido</div>
+						</md-input-container>
+					</div>
+
+					<!--***********************DEBITOS ALTERNATIVOS SEGUNDA FASE**********************************-->
+					<hr style="margin-top: 0px;">
+					<div class="row" ng-if="formaDePago.banco.santander.checked && listTarjDebAlternativas.length > 1">
+						<div class="col-md-6">
+							<md-input-container style="margin-top: -10px;">
+								<md-switch class="md-primary" ng-change="checkFormaDePago(3)"
+									ng-model="formaDePago.banco.alternativo.checked" aria-label="Switch 1">
+									Debitos Alternativos
+								</md-switch>
+							</md-input-container>
+						</div>
+					</div>
+					<div layout="row" ng-if="formaDePago.banco.alternativo.checked">
+						<div class="col-md-6">
+							<md-checkbox ng-repeat="tarjeta in listTarjDebAlternativas" ng-model="tarjeta.checked"
+								value="tarjeta" aria-label="Checkbox"
+								ng-show="formaDePago.banco.santander.listado.ctaTarjetaRector != tarjeta.ctaTarjetaRector">
+								{{tarjeta.deTpCtaRector}} ({{tarjeta.ctaTarjetaFormatoProtegido}})
+							</md-checkbox>
+						</div>
+					</div>
+					<!--***********************FIN DEBITOS ALTERNATIVOS SEGUNDA FASE**********************************-->
+				</md-card-content>
+			</md-card>
+			<!--fin card-->
+		</md-content>
+		<footer style="margin-left: 20px;">
+			<div class="row">
+				<div class="col-md-6">
+					<md-button class="md-raised md-primary btnVolver" ng-click="volver()"><strong>VOLVER AL PASO
+							ANTERIOR</strong>
+					</md-button>
+				</div>
+				<div class="col-md-6" style="text-align: right;">
+					<md-button class="md-raised md-accent btnImprimirDatos" ng-click="imprimir()"><strong>IMPRIMIR
+							COTIZACION</strong>
+					</md-button>
+					<md-button class="md-raised md-accent"
+						ng-class="(declaracionJurada.declaro && !validar()) ? 'btnContinuar' : 'btnContinuarDisabled'"
+						ng-click="validaMailEstilo();continuar()" ng-disabled="!declaracionJurada.declaro || validar()">
+						<strong>CONTINUAR</strong>
+					</md-button>
+				</div>
+			</div>
+		</footer>
+	</div>
+	<div class="col-xs-12 col-md-3 col-lg-3"
+		style="margin-top:-10px; background-color: #efefef; padding-right: 0px; padding-left: 0px;">
+		<md-content style="background-color: #efefef;">
+			<md-card md-theme-watch class="bg-planes">
+				<md-card-content style="height: 60px;">
+					<div class="col-md-1 iconCard-cotizar">
+						<img class="icono-casa" src="./assets/img/iconViviendaWhite.svg" alt="">
+					</div>
+					<div class="col-md-11" style="padding-left: 45px;">
+						<p class="title-sub-cotizar">Resumen del seguro
+						</p>
+					</div>
+				</md-card-content>
+				<md-card-content class="bg-card" style="padding-top:5px">
+					<div class="row">
+						<div class="col-md-12">
+							<md-card style="box-shadow: none !important;background-color: #F5F7FA;">
+								<md-card-title style="padding-top:15px">
+									<md-card-title-text>
+										<div class="row">
+											<div class="col-xs-5 col-md-3 col-lg-3"
+												style="text-align: right;padding-right: 0px;">
+												<img src="./assets/img/iconCostoTotal.svg" alt="">
+											</div>
+											<div class="col-xs-7 col-md-8 col-lg-8" style="text-align:start">
+
+												<p class="title-alert size-elert textResumeCot"><strong>Costo total
+														mensual</strong></p>
+											</div>
+										</div>
+										<div style="height:10px"></div>
+										<div class="row" style="text-align: center;">
+											<div class="col-md-12">
+
+												<span
+													class="texto-total-mensual">{{planPersonalizado.costoTotalMensual | currency | formatCurrency}}
+
+												</span>
+											</div>
+										</div>
+									</md-card-title-text>
+								</md-card-title>
+							</md-card>
+						</div>
+						<div class="col-md-12">
+							<md-card class="card-resumen">
+								<md-card-title class="textTittle">
+									<md-card-title-text>
+										<div class="row">
+											<div class="col-xs-1 col-md-2">
+												<img style="margin-left:10px" src="./assets/img/iconCostoDiario.svg"
+													alt="">
+											</div>
+											<div class="col-xs-10 col-md-10">
+												<p class="title-alert size-elert textResumeCot">Costo diario <span
+														class="color-red">{{ planPersonalizado.costoDiario | currency | formatCurrency}}</span>
+												</p>
+											</div>
+										</div>
+									</md-card-title-text>
+								</md-card-title>
+							</md-card>
+						</div>
+						<div class="col-md-12">
+							<md-card class="card-resumen">
+								<md-card-title class="textTittle">
+									<md-card-title-text>
+										<div class="row">
+											<div class="col-xs-1 col-md-2">
+												<img style="margin-left:10px" src="./assets/img/iconPlanPagos.svg"
+													alt="">
+											</div>
+											<div class="col-xs-10 col-md-10">
+												<p class="title-alert size-elert textResumeCot">Plan de pagos <span
+														class="rojo">{{planPersonalizado.numDePagos}} cuotas</span></p>
+											</div>
+										</div>
+									</md-card-title-text>
+								</md-card-title>
+								<div layout="row" layout-align="start" flex>
+								</div>
+							</md-card>
+						</div>
+						<div class="col-md-12">
+							<md-card class="card-resumen">
+								<md-card-title class="textTittle">
+									<md-card-title-text>
+										<div class="row">
+											<div class="col-xs-1 col-md-2">
+												<img style="margin-left:10px;margin-top: 10px;"
+													src="./assets/img/iconViviendaRed.svg" alt="">
+											</div>
+											<div class="col-xs-10 col-md-10">
+												<p class="title-alert size-elert textResumeCot">La vivienda será
+													asegurada correctamente por <span
+														class="rojo">{{planPersonalizado.sumaAsegurada | currency | formatCurrency}}</span>
+												</p>
+											</div>
+										</div>
+									</md-card-title-text>
+								</md-card-title>
+								<div layout="row" layout-align="start" flex>
+								</div>
+							</md-card>
+						</div>
+						<div class="col-md-12">
+							<md-card class="card-resumen">
+								<md-card-title class="textTittle">
+									<md-card-title-text>
+										<div class="row">
+											<div class="col-xs-1 col-md-2">
+												<img style="margin-left:10px" src="./assets/img/iconTamanio.svg" alt="">
+											</div>
+											<div class="col-xs-10 col-md-10" ng-if='dataUser.m2!=""'>
+												<p class="title-alert size-elert textResumeCot">Tamaño <span
+														class="negrita rojo">{{planPersonalizado.tamanoM2}} M²</span>
+												</p>
+
+											</div>
+											<div class="col-xs-10 col-md-10" ng-if='dataUser.m2==""'>
+												<p class="title-alert size-elert textResumeCot">Cantidad de ambientes
+												</p>
+												<p class="title-alert size-elert textResumeCot rojo">
+													{{dataUser.ambiente}}
+													{{dataUser.ambiente == 1? "ambiente":"ambientes"}}</p>
+											</div>
+										</div>
+									</md-card-title-text>
+								</md-card-title>
+								<div layout="row" layout-align="start" flex>
+								</div>
+							</md-card>
+						</div>
+						<br>
+						<div style="text-align: center;">
+							<img class="marginImage" src="./assets/img/logoZurichSantander.svg" alt="">
+						</div>
+
+					</div>
+
+				</md-card-content>
+			</md-card>
+
+	</div>
+	<!--***********************CARDS INFORMATIVAS SEGUNDA FASE**********************************-->
+	<!--<md-card class="fondo-alert">
+		<div class="row" >
+			<div class="col-md-1">
+				<img class="" style="padding-left: 15px;" src="./assets/img/iconAlert.svg" alt="">
+			</div>
+			<div class="col-md-10">
+				<md-card-title class="padding0pxtpBtt">
+					<md-card-title-text>
+						<p  style="font-size: 12px;"> ESTE SEGURO <b>REQUIERE INSPECCION</b>
+						</p>
+					</md-card-title-text>
+				</md-card-title>
+			</div>
+		</div>
+	</md-card> 
+	<md-card class="fondo-red">
+		<div class="row" >
+			<div class="col-md-1">
+				<img class="" style="padding-left: 15px;" src="./assets/img/iconAlert.svg" alt="">
+			</div>
+			<div class="col-md-10">
+				<md-card-title class="padding0pxtpBtt">
+					<md-card-title-text>
+						<p  style="font-size: 12px;"> NIVEL DE RIESGO DEL CLIENTE <b>"B"</b>
+						</p>
+					</md-card-title-text>
+				</md-card-title>
+			</div>
+		</div>
+	</md-card> -->
+	<!--***********************FIN CARDS INFORMATIVAS SEGUNDA FASE**********************************-->
+</div>

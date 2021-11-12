@@ -1,0 +1,12 @@
+<svg id="iconList" xmlns="http://www.w3.org/2000/svg" width="17.75" height="12" viewBox="0 0 17.75 12">
+  <g id="Regular_1.5px_list" data-name="Regular 1.5px/list">
+    <g id="Group">
+      <path id="Vector_567_Stroke_" data-name="Vector 567 (Stroke)" d="M.75,0h12a.75.75,0,0,1,0,1.5H.75A.75.75,0,0,1,.75,0Z" transform="translate(4.25 0.25)" fill="#292929"/>
+      <path id="Vector_568_Stroke_" data-name="Vector 568 (Stroke)" d="M.75,0h12a.75.75,0,0,1,0,1.5H.75A.75.75,0,0,1,.75,0Z" transform="translate(4.25 5.25)" fill="#292929"/>
+      <path id="Vector_569_Stroke_" data-name="Vector 569 (Stroke)" d="M.75,0h12a.75.75,0,0,1,0,1.5H.75A.75.75,0,0,1,.75,0Z" transform="translate(4.25 10.25)" fill="#292929"/>
+      <path id="Ellipse_180" data-name="Ellipse 180" d="M1,2A1,1,0,1,1,2,1,1,1,0,0,1,1,2Z" fill="#292929"/>
+      <path id="Ellipse_181" data-name="Ellipse 181" d="M1,2A1,1,0,1,1,2,1,1,1,0,0,1,1,2Z" transform="translate(0 5)" fill="#292929"/>
+      <path id="Ellipse_182" data-name="Ellipse 182" d="M1,2A1,1,0,1,1,2,1,1,1,0,0,1,1,2Z" transform="translate(0 10)" fill="#292929"/>
+    </g>
+  </g>
+</svg>

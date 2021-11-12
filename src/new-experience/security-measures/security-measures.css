@@ -1,0 +1,97 @@
+.headerSeguro {
+  background: #003F8F 0% 0% no-repeat padding-box;
+  border-radius: 5px 5px 0px 0px;
+  opacity: 1;
+  font-family: 'Roboto Regular', arial !important;
+  height: 71px;
+  font-size: 22px;
+  padding: 10px 25px 10px 25px;
+  font-weight: 600;
+  width: 100%;
+  color: #fff;
+}
+
+.close {
+  float: right;
+  vertical-align: middle;
+  font-size: 25px;
+  font-family: 'Roboto Regular', arial !important;
+}
+
+md-checkbox.md-checked .md-icon:after {
+  display: block !important;
+}
+
+/* prueba */
+
+.form-switch {
+  display: flex;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  padding: 0px 0px 0px 20px;
+}
+
+
+.condiciones {
+  padding: 5px 0px 0px 0px;
+  font-family: 'Roboto Bold', arial !important;
+  color: #292929;
+  font-weight: bold;
+}
+
+.panel {
+  box-shadow: none;
+}
+
+.form-switch {
+  margin-bottom: 30px;
+}
+
+.buttonModal {
+  width: 120px;
+  height: 45px;
+  background-color: #E90B18 !important;
+  border-radius: 5px;
+  opacity: 1;
+  margin-right: 15px !important;
+  float: right;
+  font-family: 'Roboto Bold', arial !important;
+}
+
+md-switch.md-default-theme.md-checked .md-bar,
+md-switch.md-checked .md-bar {
+  background-color: #003F8F;
+}
+
+d-switch.md-default-theme.md-checked .md-ink-ripple,
+md-switch.md-checked .md-ink-ripple {
+  color: #4BD763
+}
+
+.form-switch ng-valid md-checked ng-not-empty ng-dirty ng-valid-parse ng-touched {
+  display: inline-block;
+}
+
+.form-switch {
+  display: inline-block;
+  line-height: normal;
+}
+
+md-switch.md-default-theme.md-checked .md-thumb,
+md-switch.md-checked .md-thumb {
+  background-color: #dedede;
+}
+
+.md-button.md-raised:not([disabled]) {
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 26%);
+  margin-right: 20px;
+}
+
+.imgSize {
+  width: 30px !important;
+  height: 30px !important;
+}
+
+.textSeg {
+  margin-left: -10px !important;
+}

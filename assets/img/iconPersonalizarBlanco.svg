@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="18.5" height="18.5" viewBox="0 0 18.5 18.5">
+  <g id="iconPersonalizarBlanco" transform="translate(0.5 0.5)">
+    <g id="Group" transform="translate(0)">
+      <path id="Combined_Shape" data-name="Combined Shape" d="M6.75,7.5a3.76,3.76,0,0,1-3.675-3H.75A.75.75,0,0,1,.75,3H3.075a3.751,3.751,0,0,1,7.349,0H16.75a.75.75,0,0,1,0,1.5H10.425A3.76,3.76,0,0,1,6.75,7.5Zm0-6A2.25,2.25,0,1,0,9,3.75,2.253,2.253,0,0,0,6.75,1.5Z" transform="translate(0 10)" fill="#fff" stroke="rgba(0,0,0,0)" stroke-width="1"/>
+      <path id="Combined_Shape-2" data-name="Combined Shape" d="M10.75,7.5a3.76,3.76,0,0,1-3.675-3H.75A.75.75,0,0,1,.75,3H7.075a3.751,3.751,0,0,1,7.35,0H16.75a.75.75,0,0,1,0,1.5H14.425A3.761,3.761,0,0,1,10.75,7.5Zm0-6A2.25,2.25,0,1,0,13,3.75,2.253,2.253,0,0,0,10.75,1.5Z" fill="#fff" stroke="rgba(0,0,0,0)" stroke-width="1"/>
+    </g>
+  </g>
+</svg>

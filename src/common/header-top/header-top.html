@@ -1,0 +1,17 @@
+<header class="header-fixed">
+    <div class="logo"></div>
+    <!-- Navbar -->
+    <nav class="navbar navbar-custom top-nav" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" ng-click="redirect()"><i class="fa fa-home"></i></a><label><a class="navbar-brand textoHome" ng-click="redirect()">Men&uacute; principal</a></label>
+            </div>
+
+            <div class="navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav pull-right">
+                    <li ng-show="customerServ.getUser().apeCli"><i class="fa fa-user-circle"></i>Tomador: {{customerServ.getUser().nmCli}} {{customerServ.getUser().apeCli}} / {{customerServ.getUser().tpDoc}}-{{customerServ.getUser().nuDoc}}</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

@@ -1,0 +1,41 @@
+<section class="card legales">
+	<form name="formModal"" novalidate>
+		<div class="col-md-12 container-legales">
+			<div class="col-md-12 td_right">
+				<md-button ng-click="hide()">x</md-button>
+			</div>
+
+			<div class="col-md-12 th">{{modalAdvice}}</div>
+			<div class="col-md-12 td">
+				<ul ng-if="modalMessage1.length > 0" class="">
+				      {{modalTitle1}} 
+				    <li class="animate-repeat" ng-repeat="mensaje in modalMessage1 track by $index">
+				      {{mensaje}} 
+				    </li>
+				</ul>
+				<ul ng-if="modalMessage2.length > 0" class="">
+				      {{modalTitle2}} 
+				    <li class="animate-repeat" ng-repeat="mensaje in modalMessage2 track by $index">
+				      {{mensaje}} 
+				    </li>
+				</ul>
+				<ul ng-if="modalMessage3.length > 0" class="">
+				      {{modalTitle3}} 
+				    <li class="animate-repeat" ng-repeat="mensaje in modalMessage3 track by $index">
+				      {{mensaje}} 
+				    </li>
+				</ul>
+				<ul ng-if="modalMessage4.length > 0" class="">
+				      {{modalTitle4}} 
+				    <li class="animate-repeat" ng-repeat="mensaje in modalMessage4 track by $index">
+				      {{mensaje}} 
+				    </li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-md-12 text-center barbuttons">
+	    	<input class="btn btn-danger" value="Aceptar" readonly style="padding: 12px 30px;" ng-click="hide()"/>	
+<!-- 	    	ng-click="avisoEnterado()"/>	 -->
+	    </div>
+	</form>
+</section>

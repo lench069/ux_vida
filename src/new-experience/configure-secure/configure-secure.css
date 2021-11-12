@@ -1,0 +1,434 @@
+.container-dialog {
+    min-width: 800px;
+}
+
+.container-dialog .row {
+    text-align: center;
+}
+
+.container-dialog .header1 {
+    padding: 3px 15px 3px 15px;
+}
+
+.container-dialog .price-plan {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #ccc;
+}
+
+.container-dialog .redprice {
+    color: #ec0000;
+}
+
+.container-dialog .head-tab .head-item {
+    background-color: #969696;
+    color: #fff;
+}
+
+.container-dialog .row-line {
+    background-color: #e6e6e6;
+}
+
+.container-dialog .btn-pad {
+    text-align: center;
+}
+
+.container-dialog .btn-pad .pad-item .btn {
+    width: 90%;
+    padding: 5px 10px 5px 10px;
+}
+
+.container-dialog input.monto.invalid {
+    color: #ff0002;
+}
+
+md-tabs .md-tab.md-active {
+    color: #000;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+
+md-tabs .md-tab {
+    background-color: #eae8e8;
+}
+
+md-checkbox.md-checked .md-icon:after {
+    display: block !important;
+}
+
+.container-dialog table.table.table-bordered {
+    font-size: 12px;
+}
+
+.container-dialog table.table.table-bordered th {
+    padding: 5px 0px 0px 0px;
+}
+
+.container-dialog table.table.table-bordered td {
+    padding: 3px;
+}
+
+.container-dialog table.table.table-bordered td.descr {
+    padding-left: 5px;
+    max-width: 580px;
+}
+
+.container-dialog table.table.table-bordered td.monto {
+    padding-right: 5px;
+}
+
+.container-dialog table.table.table-bordered td input {
+    text-align: right;
+}
+
+.container-dialog table.table.table-bordered th md-checkbox {
+    margin-bottom: 0px;
+    margin-left: 5px;
+}
+
+
+.container-dialog md-tabs-canvas {
+    height: 33px;
+}
+
+.container-dialog md-pagination-wrapper {
+    height: 33px;
+}
+
+.container-dialog md-tab-item {
+    height: 33px;
+    font-size: 12px;
+    padding: 5px 24px 5px 24px;
+}
+
+.container-dialog md-content {
+    padding: 5px 0px 0px 0px;
+}
+
+.title-head {
+    text-align: left;
+    font-size: 22px;
+    font-family: 'Roboto Bold', arial !important;
+}
+
+.title-alert {
+    font-weight: bold;
+    font-family: 'Roboto Bold', arial !important;
+}
+
+.size-elert {
+    font-size: 14px;
+}
+
+.color-white {
+    color: white !important;
+}
+
+.color-blue {
+    color: #003F8F !important;
+}
+
+.color-red {
+    color: #ff0002 !important;
+}
+
+.title-sub {
+    text-align: left;
+    font-size: 16px;
+    font-weight: bold;
+    color: #292929;
+    font-family: 'Roboto Bold', arial !important;
+}
+
+.centrar {
+    font-size: 20px;
+    margin-top: 25px;
+    margin-left: 10px;
+}
+
+.subrayar {
+    text-decoration: underline;
+}
+
+.padding0pxtpBtt {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.sizeInput {
+    left: 399px;
+    width: 88px !important;
+    height: 40px;
+    border: 1px solid #E8E8E8;
+    border-radius: 5px;
+    opacity: 1;
+    font-family: 'Roboto Medium', arial !important;
+    text-align: center;
+}
+
+.sizeSelect {
+    left: 399px;
+    width: 88px !important;
+    height: 40px;
+    border: 1px solid #E8E8E8;
+    border-radius: 5px;
+    opacity: 1;
+    text-align: center;
+}
+
+.typeVivienda {
+    width: 115px;
+    height: 110px;
+    padding-top: 25px;
+    font-weight: bold;
+    border: 1px solid #BDBAB7;
+    border-radius: 5px;
+    opacity: 1;
+    background-color: #FFFFFF;
+    margin-left: 15px !important;
+    padding-left: 0px;
+    padding-right: 0px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.selectTypeVivienda {
+    width: 115px;
+    height: 110px;
+    padding-top: 25px;
+    color: #E90B18;
+    font-weight: bold;
+    border: 3px solid #E90B18;
+    border-radius: 5px;
+    opacity: 1;
+    background-color: #FFFFFF;
+    margin-left: 15px !important;
+    padding-left: 0px;
+    padding-right: 0px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.typeVida {
+    width: 115px;
+    height: 110px;
+    padding-top: 5px;
+    font-weight: bold;
+    border: 1px solid #BDBAB7;
+    border-radius: 5px;
+    opacity: 1;
+    background-color: #FFFFFF;
+    margin-left: 15px !important;
+    padding-left: 0px;
+    padding-right: 0px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.selectTypeVida {
+    width: 115px;
+    height: 110px;
+    padding-top: 5px;
+    color: #E90B18;
+    font-weight: bold;
+    border: 3px solid #E90B18;
+    border-radius: 5px;
+    opacity: 1;
+    background-color: #FFFFFF;
+    margin-left: 15px !important;
+    padding-left: 0px;
+    padding-right: 0px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.selectSeguro {
+    background-color: #FFFFFF;
+    border: 1px solid #E8E8E8;
+    border-radius: 5px;
+    opacity: 1;
+    margin-left: 10px;
+    font-family: 'Roboto Medium', arial !important;
+}
+
+.padding10pxTop {
+    padding-top: 10px;
+}
+
+.padding20pxTop {
+    padding-top: 20px;
+}
+
+.padding30pxTop {
+    padding-top: 30px;
+}
+
+md-checkbox .md-icon {
+    background-color: #FFFFFF;
+    border: 1px solid #E8E8E8;
+    border-radius: 5px;
+    opacity: 1;
+}
+
+.montoAsegurar {
+    padding: 10px 10px 10px 25px;
+    border: 1px solid #E8E8E8;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.sizeInputMonto {
+    left: 399px;
+    width: 160px !important;
+    height: 40px;
+    border: 1px solid #E8E8E8;
+    border-radius: 5px;
+    opacity: 1;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.imgVivienda {
+    margin-right: 5px !important;
+}
+
+.iconCard {
+    text-align: right;
+    cursor: pointer;
+}
+
+.padding0px {
+    padding: 0px 0px 0px 0px;
+}
+
+.icon-wizard-sec {
+    position: absolute;
+    top: 93px;
+    right: 0px;
+    width: 100%;
+    overflow-y: visible;
+    overflow-x: hidden;
+    z-index: 1;
+}
+
+.icon-size-sec {
+    font-size: 22px;
+    color: #E90B18;
+    background-color: #efefef;
+    border-radius: 15px;
+    z-index: 2;
+}
+
+.sizeSelectPiso {
+    left: 399px;
+    width: 230px !important;
+    height: 40px;
+    border: 1px solid #E8E8E8;
+    border-radius: 5px;
+    opacity: 1;
+}
+
+#provincia input[name="autocompleteProvincia"]  {
+    text-transform: none !important;
+    opacity: 1;
+    border: 1px solid #e6e6e6 !important;
+    border-radius: 5px !important;
+    padding: 15px !important; 
+    color:black !important;
+    font-family: 'Roboto Bold', arial !important;
+	text-transform: uppercase;
+}
+
+#codPos input[name="autocompletecodPos"]  {
+    text-transform: none !important;
+    opacity: 1;
+    border: 1px solid #e6e6e6 !important;
+    border-radius: 5px !important;
+    padding: 15px !important; 
+    color:black !important;
+    font-family: 'Roboto Bold', arial !important;
+	text-transform: uppercase;
+}
+
+.contentAsegurado {
+    background-color: #f7f5f5 !important;
+    border-radius: 5px;
+    height: 100px;
+    padding-top: 10px;
+}
+
+.inputSeguro {
+    text-transform: none !important;
+    width: 110% !important;
+    height: 50px !important;
+    opacity: 1;
+    background-color: #FFFFFF !important;
+    border: 1px solid #e6e6e6 !important;
+    border-radius: 5px !important;
+    padding: 15px !important; 
+    color:black !important;
+    font-family: 'Roboto Bold', arial !important;
+    font-weight: bold;
+}
+
+.vida-laboral {
+  border: 1px solid #E8E8E8;
+  border-radius: 5px;
+  height: 50px;
+}
+
+.vida-laboral-rojo {
+  border: 2px solid #E90B18;
+  border-radius: 5px;
+  height: 50px;
+  color: #E90B18;
+}
+
+.btnContinuarVida {
+  height: 45px;
+  background: #E90B18 0% 0% no-repeat padding-box !important;
+  border-radius: 5px;
+  font-size: 14px;
+  font-family: 'Roboto Bold', arial !important;
+  letter-spacing: 0px;
+  color: #FFFFFF !important;
+  opacity: 1;
+  margin-right: 5px !important;
+}
+
+.btnVolverDjs.md-button {
+  width: 220px !important;
+  border-radius: 5px !important;
+  color: #003F8F !important;
+  background: white !important;
+  font-size: 14px;
+  font-family: 'Roboto Regular', arial !important;
+}
+
+.btnVolverDjs.md-button:hover {
+  border-radius: 5px !important;
+  color: white !important;
+  background: #003F8F !important;
+  font-size: 14px;
+  font-family: 'Roboto Regular', arial !important;
+}
+
+.btnVolverDjs {
+  width: 220px !important;
+  height: 30px !important;
+  background: white 0% 0% no-repeat padding-box !important;
+  border: 1px solid #063F8F;
+  border-radius: 5px;
+  font-size: 14px;
+  text-transform: none !important;
+  font-family: 'Roboto Regular', arial !important;
+  letter-spacing: 0px;
+  color: #063F8F;
+  opacity: 1;
+  margin-left: 23px !important;
+  margin-right: 10px !important;
+  font-weight: bold;
+}

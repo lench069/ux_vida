@@ -1,0 +1,33 @@
+.container-dialog{width: 950px;}
+.container-dialog .row{ text-align: center; font-size: 11px;}
+.container-dialog .header1{ padding: 3px 15px 3px 15px;}
+.container-dialog .price-plan{ background-color: #fff; color: #000; border: 1px solid #ccc;}
+.container-dialog .redprice{ color: #ec0000;}
+.container-dialog .head-tab .head-item{ background-color: #969696; color: #fff;}
+.container-dialog .row-line { background-color: #e6e6e6;}
+.container-dialog .btn-pad{ text-align: center;}
+.container-dialog .btn-pad .pad-item .btn{ width: 90%; padding: 5px 10px 5px 10px;}
+.container-dialog input.monto.invalid { color: #ff0002;}
+
+md-tabs .md-tab.md-active{ color: #000; background-color: #fff; border: 1px solid #ccc;}
+md-tabs .md-tab{ background-color: #eae8e8;}
+
+md-checkbox.md-checked .md-icon:after { display: block !important;}
+
+.container-dialog table.table.table-bordered { font-size: 12px;}
+.container-dialog table.table.table-bordered  th{ padding: 5px 0px 0px 0px;}
+.container-dialog table.table.table-bordered  td{ padding: 3px;}
+.container-dialog table.table.table-bordered  td.descr{ padding-left: 5px; max-width: 580px;}
+.container-dialog table.table.table-bordered  td.monto{ padding-right: 5px;}
+.container-dialog table.table.table-bordered  td input{ text-align: right;}
+.container-dialog table.table.table-bordered  th md-checkbox{ margin-bottom: 0px; margin-left: 5px;}
+
+
+.container-dialog md-tabs-canvas { height: 33px;} 
+.container-dialog md-pagination-wrapper { height: 33px;} 
+.container-dialog md-tab-item { height: 33px; font-size: 12px; padding: 5px 24px 5px 24px;} 
+.container-dialog md-content { padding: 5px 0px 0px 0px;} 
+.sombra {background-color: #eae8e8; border-radius: 5px; max-width: 940px;}
+.descripcion {font-size: 11px; padding: 5px 10px 5px 10px; text-align: justify;}
+.headRow {border-bottom: 1px solid black; font-weight: bold; font-size: 10px;}
+.invalid {color: red;}

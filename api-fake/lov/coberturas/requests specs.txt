@@ -1,0 +1,5 @@
+request: api/lov/coberturas/{cdRamo}
+	method: Get
+	exp: dependiendo el ramo trae lov de coberturas
+
+	

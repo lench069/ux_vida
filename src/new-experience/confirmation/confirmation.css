@@ -1,0 +1,295 @@
+.title-head {
+    font-family: 'Roboto Bold', arial !important;
+    font-size: 22px;
+    text-align: left;
+    letter-spacing: 0px;
+    color: #003F8F;
+    opacity: 1;
+}
+
+.title-cober2 {
+    padding-top: 15px;
+    text-align: left;
+    font-size: 14px;
+    font-family: 'Roboto Bold', arial !important;
+    color: #E90B18;
+    text-transform: uppercase;
+    letter-spacing: 0px;
+    font-weight: bold;
+}
+
+.title-coberNg2 {
+    padding-top: 15px;
+    text-align: left;
+    font-size: 14px;
+    font-family: 'Roboto Bold', arial !important;
+    color: #ec0000 !important;
+    text-transform: uppercase;
+    letter-spacing: 0px;
+    font-weight: bold;
+}
+
+.title-cober-mascota {
+    padding-top: 15px;
+    text-align: left;
+    font-size: 14px;
+    font-family: 'Roboto Bold', arial !important;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    letter-spacing: 0px;
+}
+
+.borderTitle2 {
+    color: #ec0000 !important;
+    background-color: #F5F7FA !important;
+    border: none !important;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.borderTitleNg2 {
+    color: #ec0000 !important;
+    background-color: #FFFFFF !important;
+    border: none !important;
+    border-radius: 5px;
+}
+
+.borderTitleNgMascot {
+    color: #ffffff !important;
+    background-color: #E90B18 !important;
+    border: 1px solid #BDBAB7;
+    border-radius: 5px 5px 0px 0px;
+    opacity: 1;
+}
+
+.borderBody2 {
+    background-color: #ffffff !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: none !important;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.iconColorRed {
+    color: #ec0000 !important;
+}
+
+.sizeInputCo {
+    left: 399px;
+    text-align: center;
+    width: 125px !important;
+    height: 40px;
+    border: 1px solid #E8E8E8;
+    border-radius: 5px;
+    opacity: 1;
+    font-size: 14px;
+    font-family: 'Roboto Medium', arial !important;
+}
+
+.bttnMasMenos {
+    color: #ec0000;
+    min-height: 40px;
+    min-width: 40px;
+    background-color: #F5F5F5;
+    border-radius: 5px;
+    text-align: right;
+}
+
+.bttnMasMenosNg {
+    min-height: 40px;
+    min-width: 40px;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    text-align: right;
+}
+
+.nameItem2 {
+    text-align: left;
+    font-size: 14px;
+    font-family: 'Roboto Bold', arial !important;
+    letter-spacing: 0px;
+    color: #292929;
+    opacity: 1;
+    font-weight: bold;
+}
+
+.verDetalle {
+    font-size: 12px;
+    font-family: 'Roboto Bold', arial !important;
+    padding-left: 15px;
+    text-align: left;
+    letter-spacing: 0px;
+    color: #E90B18;
+    opacity: 1;
+}
+
+.sombraDesc {
+    background-color: #eae8e8 !important;
+    border-radius: 5px;
+    height: auto;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.descripcionCob {
+    padding: 5px 10px 5px 10px;
+    text-align: justify;
+    text-align: left;
+    font-size: 11px;
+    font-family: 'Roboto Regular', arial !important;
+    letter-spacing: 0px;
+    color: #5C5C5C;
+    opacity: 1;
+}
+
+.descConsulta {
+    padding-top: 15px;
+    padding-bottom: 20px;
+    text-align: left;
+    font-size: 14px;
+    font-family: 'Roboto Regular', arial !important;
+    letter-spacing: 0px;
+    color: #292929;
+}
+
+.homeVivienda {
+    text-align: center;
+    padding-top: 15px;
+    padding-left: 25px;
+    padding-right: 30px;
+    width: 99px;
+    height: 60px;
+    background: #E90B18 0% 0% no-repeat padding-box;
+    border-radius: 5px;
+    opacity: 1;
+    cursor: pointer;
+}
+
+.menu {
+    padding-top: 5px;
+    width: 287px;
+    height: 60px;
+    background: #003F8F 0% 0% no-repeat padding-box;
+    border-radius: 5px 0px 0px 5px;
+    text-align: center;
+    font-size: 16px;
+    font-family: 'Roboto Bold', arial !important;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    opacity: 1;
+    cursor: pointer;
+}
+
+.menuNg {
+    padding-top: 5px;
+    width: 287px;
+    height: 60px;
+    background: #dbd9d9 0% 0% no-repeat padding-box;
+    text-align: center;
+    font-size: 16px;
+    font-family: 'Roboto Bold', arial !important;
+    letter-spacing: 0px;
+    color: #a19e9a;
+    text-transform: uppercase;
+    opacity: 1;
+}
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    border: 2px solid #FFFFFF;
+    padding: 3px 0;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.428571429;
+    border-radius: 15px;
+    background: #003F8F 0% 0% no-repeat padding-box !important;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
+.btn-circleNg {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    border: 2px solid #a19e9a;
+    padding: 3px 0;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.428571429;
+    border-radius: 15px;
+    background: #dbd9d9 0% 0% no-repeat padding-box !important;
+    text-transform: uppercase;
+    color: #a19e9a !important;
+}
+
+.sin-cobert {
+    padding-top: 0px;
+    text-align: left;
+    font-size: 14px;
+    font-family: 'Roboto Regular', arial !important;
+    color: #292929;
+    letter-spacing: 0px;
+}
+
+
+.color-white {
+    color: white !important;
+}
+
+
+.fondo-azul{
+    background-color:  #003F8F !important;
+    border-radius: 5px;
+
+}
+
+.title-alert {
+    font-weight: bold;
+    font-family: 'Roboto Bold', arial !important;
+}
+
+
+.title{
+    background-color: #5C5C5C !important;
+
+}
+
+.size-elert {
+    font-size: 14px;
+}
+
+.negrita{
+    color: black !important;
+    font-family: 'Roboto Regular', arial !important;
+}
+
+.simbolo-dolar {
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Roboto Regular', arial !important;
+    letter-spacing: 0px;
+    color: #003F8F;
+}
+
+.card-resumen {
+    border-radius: 5px;
+    border-color: #E8E8E8 aliceblue !important;
+    border-width: 1px;
+    border-style: solid;
+    width: 250px;
+    display: inline-table;
+    margin-top: 5px;
+    width: 95%;
+}
+
+.rojo{
+    color: red !important;;
+}
+
+.layout-padding{
+    padding: 8px 8px 2px 8px;
+}

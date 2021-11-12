@@ -1,0 +1,9 @@
+<div id="menuramos" class="right-menu" ng-controller="MenuRamosController as menuRamoCtrl" ng-show="ramosList.length">
+    <div ng-repeat="ramo in ramosList">
+        <a class="col-md-4" ng-click="toggleSelected( ramo )" ng-class="{'checked': ramo.selected}" ng-show="ramo.available">
+            <div class="icon icon-ramo-{{ramo.cdRamo}} {{ramo.color}}"></div>
+            <h3>{{ramo.deRamo}}</h3>
+        </a>
+    </div>
+    <div class="clearfix"></div>
+</div>

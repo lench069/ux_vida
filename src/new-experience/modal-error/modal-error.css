@@ -1,0 +1,7 @@
+.headerModelError {
+    border-radius: 5px 5px 0px 0px;
+    text-align: left;
+    font-weight: 600;
+    width: 100%;
+    font-family: 'Roboto Bold', arial !important;
+}

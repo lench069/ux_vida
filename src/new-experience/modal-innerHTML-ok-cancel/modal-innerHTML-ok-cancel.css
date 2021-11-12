@@ -1,0 +1,71 @@
+.buttonModalOk.md-button {
+    width: 107 !important;
+    height: 45px !important;
+    color: white !important;
+    font-size: 14px;
+    font-family: 'Roboto Regular', arial !important;
+    background: #E90B18 !important;
+}
+
+.buttonModalOk.md-button:hover {
+    width: 107 !important;
+    height: 45px !important;
+    color: #E90B18 !important;
+    font-size: 14px;
+    font-family: 'Roboto Regular', arial !important;
+    background: white !important;
+    border: #E90B18 1px solid !important;
+}
+
+.buttonModalOk {
+    height: 45px;
+    background-color: #E90B18 !important;
+    border-radius: 5px;
+    font-size: 14px;
+    opacity: 1;
+    margin-right: 50px;
+    float: right;
+    font-family: 'Roboto Bold', arial !important;
+}
+
+.buttonModalCancel.md-button {
+    width: 107 !important;
+    height: 45px !important;
+    color: 292929 !important;
+    font-size: 14px;
+    font-family: 'Roboto Regular', arial !important;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+}
+
+.buttonModalCancel.md-button:hover {
+    width: 107 !important;
+    height: 45px !important;
+    color: #292929 !important;
+    font-size: 14px;
+    font-family: 'Roboto Regular', arial !important;
+    background: white !important;
+    border: #BDBAB7 1px solid !important;
+}
+
+.buttonModalCancel {
+    height: 45px;
+    background: #FFFFFF 0% 0% no-repeat padding-box !important;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: 'Roboto Medium', arial !important;
+    letter-spacing: 0px;
+    float: right;
+    color: #292929 !important;
+    border: 2px solid #BDBAB7;
+    opacity: 1;
+}
+
+.sizeModal {
+    max-width: 570px;
+}
+
+.descripcion {
+    font-size: 14px;
+    font-family: 'Roboto Regular', arial !important;
+    color: #292929 !important;
+}

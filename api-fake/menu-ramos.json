@@ -1,0 +1,108 @@
+{
+  "menu-ramos": [
+    {
+      "code": "vivienda",
+      "cdGrupo": 1,
+      "displayName": "Vivienda",
+      "isMulti": true,
+      "visible": "true",
+      "color": "red",
+      "enabled": "true"
+    },
+    {
+      "code": "accpersonales",
+      "cdGrupo": 1,
+      "displayName": "Accidentes Personales",
+      "isMulti": true,
+      "visible": "true",
+      "color": "yellow",
+      "enabled": "false"
+    },
+    {
+      "code": "vida",
+      "cdGrupo": 1,
+      "displayName": "Vida",
+      "isMulti": true,
+      "visible": "true",
+      "color": "green",
+      "enabled": "false"
+    },
+    {
+      "code": "robo",
+      "cdGrupo": 1,
+      "displayName": "Robo en Cajeros",
+      "isMulti": true,
+      "visible": "true",
+      "color": "blue",
+      "enabled": "false"
+    },
+    {
+      "code": "desempleo",
+      "cdGrupo": 1,
+      "displayName": "Desempleo/Gastos Protegidos",
+      "isMulti": true,
+      "visible": "true",
+      "color": "blue",
+      "enabled": "false"
+    },
+    {
+      "code": "autos",
+      "cdGrupo": 1,
+      "displayName": "Auto/Moto",
+      "isMulti": true,
+      "visible": "true",
+      "color": "blue",
+      "enabled": "false"
+    },
+    {
+      "code": "protsalud",
+      "cdGrupo": 2,
+      "displayName": "Protección Salud Zurich Santander",
+      "isMulti": false,
+      "visible": "true",
+      "color": "blue",
+      "enabled": "false"
+    },
+    {
+      "code": "protcartera",
+      "cdGrupo": 2,
+      "displayName": "Protección Cartera Zurich Santander",
+      "isMulti": false,
+      "visible": "true",
+      "color": "blue",
+      "enabled": "false"
+    },
+    {
+      "code": "compraprot",
+      "displayName": "Compra Protegida Zurich Santander",
+      "isMulti": false,
+      "visible": "true",
+      "color": "blue",
+      "enabled": "false"
+    },
+    {
+      "code": "integralcomerc",
+      "displayName": "Integral de Comercio Zurich Santander",
+      "isMulti": false,
+      "visible": "true",
+      "color": "blue",
+      "enabled": "false"
+    },
+    {
+      "code": "pymes",
+      "displayName": "Pymes",
+      "isMulti": false,
+      "visible": "true",
+      "color": "blue",
+      "enabled": "false"
+    },
+    {
+      "code": "incendio",
+      "displayName": "Incendio",
+      "isMulti": false,
+      "visible": "true",
+      "color": "blue",
+      "enabled": "false"
+    }
+  ]
+}

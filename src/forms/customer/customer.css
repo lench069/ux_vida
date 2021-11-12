@@ -1,0 +1,24 @@
+.formCustomer .layout-padding{ overflow: hidden;}
+section.formCustomer .md-errors-spacer{ color: #ff0000; font-size: 10px; text-align: left; float: left;}
+section.formCustomer md-content md-input-container.col-md-4._md-datepicker-floating-label._md-datepicker-has-calendar-icon{width: 330px;}
+section.formCustomer div#form3 label{ margin-bottom: 0px; padding: 0px;}
+section.formCustomer div#form3 b{ margin-left: 0px;}
+
+section.formCustomer div#form2 md-input-container{ margin-bottom: 0px; height: 55px; font-size: 14px; padding-left: 0px;}
+section.formCustomer div#form2 md-input-container#nuTelefono{ margin-bottom: 0px; height: 55px; font-size: 14px; padding-right: 0px;}
+section.formCustomer div#form2 md-input-container md-complete-wrap{ height: 55px; overflow: hidden;}
+section.formCustomer div#form2 md-input-container md-complete-wrap input{ font-weight: 400; font-size: 14px;}
+section.formCustomer div#form2 md-input-container div.md-text{ font-weight: 400; font-size: 13px;}
+section.formCustomer div#form2 md-autocomplete{ height: 64px; overflow: hidden;}
+	section.formCustomer div#form2 md-autocomplete div.md-errors-spacer{ min-height: 0px; height: 15px; overflow: hidden; font-size: 9px;}
+section.formCustomer div#form2 input#btnForm2Cancel{ width: 112px; padding: 12px;}
+section.formCustomer div#form2 input.btn-danger{ width: 112px; padding: 12px;}
+
+section.formCustomer div#form3 div.iconEmpleado { float: right; right: 20px; top: 10px; margin-top: 35px; background-image: url(../../../assets/img/empleado.svg); background-position: center; width: 40px; height: 40px; background-repeat: no-repeat; background-size: contain; }
+section.formCustomer div#form3 div.iconNoEmpleado { float: right; right: 20px; top: 10px; margin-top: 35px; background-image: url(../../../assets/img/noEmpleado.svg); background-position: center; width: 40px; height: 40px; background-repeat: no-repeat; background-size: contain; }
+
+.uppercase {
+	text-transform: uppercase!important;
+}
+
+.errorSelect { color: #ff0000; font-size: 10px; text-align: justify;}

@@ -1,0 +1,10 @@
+section.comparar div.container-comparar div.th.title {
+    height: 25px;
+    background: #ec0000;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 4px;
+}

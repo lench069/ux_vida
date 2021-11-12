@@ -1,0 +1,81 @@
+<section class="container card container-dialog"> 
+	<div class="header1">
+		Plan: {{coberturaVO.cdPlan}}
+	</div>
+	<div class="header1 price-plan">
+    	Premio:&nbsp;&nbsp;<span class="redprice">$ {{mtPremio | number:2}}</span>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;Cuota:&nbsp;&nbsp;<span class="redprice">$ {{mtCuota | number:2}}</span>
+	</div>
+	<div class="row btn-pad">
+    	<div class="col-md-3 pad-item"><button class="btn btn-warning" ng-click="calculateMinimumPlan()" readonly>Plan m&iacute;nimo</button></div>
+    	<div class="col-md-3 pad-item"><button class="btn btn-info" ng-click="calculateSuggestedPlan()" readonly>Plan sugerido</button></div>
+    	<div class="col-md-3 pad-item"><button class="btn btn-success" ng-click="recalcular()" readonly>Recalcular</button></div>
+    	<div class="col-md-3 pad-item"><button class="btn btn-danger" ng-click="hide()" readonly>Salir</button></div>
+	</div>
+	<div ng-cloak>
+		<md-content>
+	    <md-tabs md-dynamic-height md-border-bottom>
+				<md-tab label="Coberturas incluidas" ng-click="tab='i'" ng-init="tab='i'">
+					<md-content class="md-padding">
+	        	<table class="table table-bordered" aria-labelledby="">
+	        		<thead>
+						<tr class="row head-tab">
+							<th class="text-center head-item" id="">Cob</th>
+							<th colspan="2" class="text-center head-item" id="">Descripci&oacute;n</th>
+							<th class="text-center head-item" id="">Suma Min</th>
+							<th class="text-center head-item" id="">Suma Max</th>
+							<th class="text-center head-item" id="">Suma asegurada</th>
+						</tr>
+					</thead>
+					<tbody>
+					    <tr class="row row-line" ng-repeat=" item in coberturaVO.detalleCobertura">
+							<th class="text-center" scope="row" col-md-1>
+								<md-checkbox ng-model="defaultChecksList[item.cdCobertura]" class="green" aria-label="compara" ng-disabled="true" ng-checked="true"></md-checkbox>
+							</th>
+							<td>{{item.cdCobertura}}</td>
+							<td class="text-left descr" >{{item.deCobertura}}</td>
+							<td class="text-right monto">{{item.mtSumaMinima}}</td>
+							<td class="text-right monto">{{item.mtSumaMaxima}}</td>
+							<td>
+				                <input ng-class="('monto')+$index" class="monto" type="text" ng-model="item.mtSumaAsegurada" aria-label="..." ng-blur="validaMonto($index)" size="14"/>
+							</td>
+					    </tr>
+					 </tbody>
+				</table>
+					</md-content>
+				</md-tab>
+				<md-tab label="Coberturas opcionales" ng-click="tab='o'">
+					<md-content class="md-padding">
+	         	<table class="table table-bordered" aria-labelledby="">
+	        		<thead>
+						<tr class="row head-tab">
+							<th class="text-center head-item" id="">Cob</th>
+							<th colspan="2" class="text-center head-item"  id="">Descripci&oacute;n</th>
+							<th class="text-center head-item"  id="">Suma Min</th>
+							<th class="text-center head-item"  id="">Suma Max</th>
+							<th class="text-center head-item"  id="">Suma asegurada</th>
+						</tr>
+					</thead>
+					<tbody>
+					    <tr class="row row-line" ng-repeat=" itemOptional in coberturaVO.detalleCoberturaOpcionales">
+							<th scope="row" class="text-center" col-md-1>
+								<md-checkbox ng-model="optionalChecksList[itemOptional.cdCobertura]" class="green" aria-label="compara"   ng-init="optionalChecksList[itemOptional.cdCobertura] = isChecked(itemOptional.mtSumaAsegurada)"
+								ng-change="setValueOptionalCheckbox(itemOptional)"
+								></md-checkbox>
+							</th>
+							<td class="">{{itemOptional.cdCobertura}}</td>
+							<td class="text-left descr" >{{itemOptional.deCobertura}}</td>
+							<td class="text-right monto" >{{itemOptional.mtSumaMinima}}</td>
+							<td class="text-right monto" >{{itemOptional.mtSumaMaxima}}</td>
+							<td>
+								<input  ng-class="('montoOp')+$index" class="monto" ng-model="itemOptional.mtSumaAsegurada" aria-label="..." ng-blur="validaMontoOp($index)" size="14" ng-disabled="!optionalChecksList[itemOptional.cdCobertura]"/>
+							</td>
+					    </tr>
+					 </tbody>
+				</table>
+					</md-content>
+				</md-tab>
+	     
+			</md-tabs>
+		</md-content>
+	</div>
+</section>

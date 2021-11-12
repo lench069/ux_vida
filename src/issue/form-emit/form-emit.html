@@ -1,0 +1,818 @@
+<section class="card datos-asegurado">	
+	<div class="formAsegurado">
+		<!-- Datos del asegurado y de correspondencia -->
+		<div class="datosAsegurado" ng-if="::finish1" ng-show="stepId == 1" ng-cloak>
+			<div class="row">
+				<div class="col-md-4">
+					<md-input-container class="col-md-5 col-md-offset-1 md-input-has-value">
+	                    <label>Tipo Doc.</label>
+	                    <md-select ng-model="::asegurado.tpDoc" id="tpDoc" disabled required>
+	                        <md-option value="{{::asegurado.tpDoc}}">{{::descDoc}}</md-option>
+	                    </md-select>
+	                </md-input-container>
+					<md-input-container class="col-md-4 col-md-offset-1 md-input-has-value" flex-gt-sm>
+		                <label>Nro. de Doc.</label>
+		                <input ng-model="::asegurado.nuDoc" id="nuDoc" readonly required>
+		            </md-input-container>
+				</div>
+				<div class="col-md-4">
+					<md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+		                <label>Nombre</label>
+		                <input ng-model="::asegurado.nmCli" id="apeCli" readonly required>
+		            </md-input-container>
+				</div>  
+				<div class="col-md-4" ng-show="persFisica">
+					<md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+		                <label>Apellido</label>
+		                <input ng-model="::asegurado.apeCli" id="apeCli" readonly ng-required="persFisica">
+		            </md-input-container>
+				</div>       
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<md-input-container class="col-md-12 col-md-offset-1 md-block" flex-gt-sm>
+		                <label class="fixDateLabel">Fecha de Nacimiento</label>
+		                <md-datepicker ng-model="::feNacDatepicker" id="feNacFormat" disabled required></md-datepicker>
+		            </md-input-container>
+				</div>
+				<div class="col-md-4">
+					<md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+		                <label>CUIT/CUIL</label>
+		                <input ng-model="::asegurado.nuCuitCuil" id="nuCuitCuil" readonly required>
+		            </md-input-container>
+				</div>
+				<div class="col-md-4">
+					<md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+		                <label>Sexo</label>
+		                <md-select ng-model="::asegurado.inSexo" id="inSexo" disabled required>
+		                    <md-option value="{{::asegurado.inSexo}}">{{::asegurado.deSexo}}</md-option>
+		                </md-select>
+		            </md-input-container>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+		                <label>Estado Civil</label>
+		                <md-select ng-model="::asegurado.cdEdoCivil" id="cdEdoCivil" disabled required>
+		                    <md-option value="{{::asegurado.cdEdoCivil}}">{{::asegurado.deEdoCivil}}</md-option>
+		                </md-select>
+		            </md-input-container>
+				</div> 
+				<div class="col-md-4">
+					<md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+		                <label>Ocupaci&oacute;n</label>
+		                <md-select ng-model="::asegurado.cdProfesion" id="cdProfesion" disabled required>
+		                    <md-option value="{{::asegurado.cdProfesion}}">{{::asegurado.deProfesion}}</md-option>
+		                </md-select>
+		            </md-input-container>
+				</div>
+			</div>
+			<div class="row">
+				<md-content class="col-md-4">
+					<md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+		                <label>Provincia</label>
+		                <input ng-model="::asegurado.deProvincia" id="provincia" name="provincia" disabled ng-required="ramosSelection.ramo21">
+		            </md-input-container>
+				</md-content>
+				<md-content class="col-md-4">
+				    <md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+		                <label>Cod. Postal</label>
+		                <input ng-model="::descCiudad" id="localidad" name="localidad" disabled required>
+		            </md-input-container>
+		         </md-content>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+		                <label>Domicilio</label>
+		                <input ng-model="asegurado.domCalle" id="domCalle" maxlength="50" pattern="[a-zA-Z0-9 ]+" required>
+		                <div class="md-errors-spacer" ng-show="!valDomCalleStep1">Campo requerido</div>
+		            </md-input-container>
+				</div>
+				<div class="col-md-4">
+					<md-input-container class="col-md-3 col-md-offset-1 md-block" flex-gt-sm>
+		                <label>Nro</label>
+		                <input ng-model="asegurado.domNro" id="domNro" maxlength="5" pattern="[a-zA-Z0-9 ]+">
+		            </md-input-container>
+		            <md-input-container class="col-md-3 col-md-offset-1 md-block" flex-gt-sm>
+		                <label>Piso</label>
+		                <input ng-model="asegurado.domPiso" id="domPiso" maxlength="2" pattern="[a-zA-Z0-9 ]+">
+		            </md-input-container>
+		            <md-input-container class="col-md-2 col-md-offset-1 md-block" flex-gt-sm>
+		                <label>Depto</label>
+		                <input ng-model="asegurado.domDepto" id="domDepto" maxlength="3" pattern="[a-zA-Z0-9 ]+">
+		            </md-input-container>
+				</div>
+				<div class="col-md-4">
+					<md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+		                <label>Tel&eacute;fono</label>
+		                <input ng-model="asegurado.nuTelefono" id="nuTelefono" pattern="[0-9]+" maxlength="15" required>
+		                <div class="md-errors-spacer" ng-show="!valNuTelefonoStep1">Campo requerido</div>
+		            </md-input-container>
+				</div>
+			</div>
+
+
+	       <!-- persona fisica -->
+	       <div class="row" ng-if="persFisica">
+		        <md-content class="col-md-4">
+		            <md-autocomplete class="col-md-10 col-md-offset-1 md-block" id="dePaisNacimiento" name="dePaisNacimiento"
+			                             ng-disabled="false" md-no-cache="true"
+			                             md-search-text="searchTextLugar"
+			                             md-input-id="idPaisNacimiento"
+			                             md-selected-item-change="selectedItemChange(item.valor, 'asegurado', 'cdPaisNacimiento')"
+			                             md-items="item in querySearch(searchTextLugar, 'paises')"
+			                             md-item-text="item.descripcion.toUpperCase()"
+			                             md-min-length="0" placeholder="" md-floating-label="Lugar Nacimiento">
+			            <md-item-template>
+			                <span md-highlight-text="searchTextLugar" md-highlight-flags="^i">{{item.descripcion.toUpperCase()}}</span>
+			            </md-item-template>
+			        </md-autocomplete>
+			        <div class="md-errors-spacer" ng-show="!valDePaisNacimiento">Campo requerido</div>
+			    </md-content>
+			    <md-content class="col-md-4">
+		            <md-autocomplete class="col-md-10 col-md-offset-1 md-block" id="dePaisNacionalidad" name="dePaisNacionalidad"
+			                             ng-disabled="false" md-no-cache="true"
+			                             md-search-text="searchTextNacionalidad"
+			                             md-input-id="idPaisNacionalidad"
+			                             md-selected-item-change="selectedItemChange(item.valor, 'asegurado', 'cdPaisNacionalidad')"
+			                             md-items="item in querySearch(searchTextNacionalidad, 'paises')"
+			                             md-item-text="item.descripcion.toUpperCase()"
+			                             md-min-length="0" placeholder="" md-floating-label="Nacionalidad">
+
+			            <md-item-template>
+			                <span md-highlight-text="searchTextNacionalidad" md-highlight-flags="^i">{{item.descripcion.toUpperCase()}}</span>
+			            </md-item-template>
+			        </md-autocomplete>
+			        <div class="md-errors-spacer" ng-show="!valDePaisNacionalidad">Campo requerido</div>
+			    </md-content>
+	       </div>
+	       
+			<!-- persona juridica -->		
+			<div class="row" ng-if="!persFisica">
+	       		<div class="col-md-4">
+		        	<md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+		                <label>Fecha inscripci&oacute;n (dd/mm/aaaa)</label>
+		                <md-datepicker ng-model="asegurado.feInscrRegJurid" id="feInscrReg"></md-datepicker>
+		                <div class="md-errors-spacer" ng-show="!valFeInscrRegJurid">Campo requerido</div>
+		            </md-input-container>
+		        </div>
+		        <div class="col-md-4">
+		            <md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+		                <label>Fecha constituci&oacute;n (dd/mm/aaaa)</label>
+		                <md-datepicker ng-model="asegurado.feConstJurid" id="feConst"></md-datepicker>
+		                <div class="md-errors-spacer" ng-show="!valFeConstJurid">Campo requerido</div>
+		            </md-input-container>   
+	           </div>
+	           <div class="col-md-4">
+		            <md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+		                <label>N&uacute;mero de inscripci&oacute;n</label>
+		                <input ng-model="asegurado.numInscrRegJurid" id="numInscrReg">
+		                <div class="md-errors-spacer" ng-show="!valNumInscrRegJurid">Campo requerido</div>
+		            </md-input-container>
+	           </div>
+	      	</div>
+	      	
+	      	<!-- mail -->
+	      	<div class="row">
+		       	<div class="col-md-4">
+		        	<md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+		                <label>Email</label>
+		                <input class="lowercase" type="mail" ng-model="asegurado.diMail" id="diMail" maxlength="150" ng-blur="validaMailEstilo()" ng-class="{'email-valido': mailValido==true, 'email-invalido': mailValido==false}" required>
+		                <div class="md-errors-spacer" ng-show="!valDiMail">Campo requerido</div>
+		                <div class="md-errors-spacer" ng-show="mailValido==false">Email no valido</div>
+		            </md-input-container>
+		        </div>
+		        <div class="col-md-4">
+		            <md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm ng-init="asegurado.checkMail = true">
+		            	<md-checkbox ng-model="asegurado.checkMail" id="checkMail" class="green" aria-label="compara">Env&iacute;o electr&oacute;nico</md-checkbox>
+		            </md-input-container>
+		       	</div>
+		        <div class="col-md-4" ng-hide="conMailAutos">
+		            <div class="col-md-2 alertIcon">&nbsp;</div>
+		            <div class="col-md-8 alertText">
+		            	Tener en cuenta que la adhesi&oacute;n al env&iacute;o de p&oacute;liza digital no se encuentra habilitado para los seguros de autos/motos. La p&oacute;liza ser&aacute; enviada por correo postal.
+		            </div>
+		       	</div>
+	       	</div>
+	       	
+	       	<!-- buttons -->
+	       	<div class="row">
+	       		<div class="col-md-12 errorMsj">{{errorEmit}}</div>
+	       		<div class="col-md-12 buttons text-center">
+	       			<input class="btn btn-danger" ng-click="validaMailEstilo();nextStep()" value="Siguiente" readonly />
+	       			<input class="btn btn-info" ng-click="salir()" value="Salir"  readonly />
+	       		</div>
+	       	</div>
+       	</div>
+       	
+       	<!-- DDJJ y Medio de Pago -->
+       	<div class="ddjjMedioPago" ng-if="::finish2" ng-show="stepId == 2" ng-cloak>
+	       	<div class="medioPago">
+	       		<div class="row">
+		       		<div class="col-md-3 text-right">Declaraci&oacute;n jurada origen de fondos:</div>
+		       		<div class="col-md-9 text-justify" style="font-size: small;">
+		       			<div class="col-md-11">
+							Manifiesto en car&aacute;cter de DDJJ que el origen de los fondos correspondientes a la operaci&oacute;n de contrataci&oacute;n de seguros corresponde a: 
+							<md-input-container>
+								<md-select ng-model="medioPago.origFondo" id="origFondo" aria-label="false" style="width: 250px;margin-top: -.5em;">
+									<md-option ng-repeat="cuenta in origenFondos" value="{{cuenta.valor}}">{{cuenta.descripcion}}</md-option>
+								</md-select>
+								<div class="md-errors-spacer" ng-show="!valOrigFondo">Campo requerido</div>
+				            </md-input-container>
+			            </div>
+		       		</div>
+		       		<div class="col-md-12">&nbsp;</div>
+		       		<div class="col-md-3 text-right">Declaraci&oacute;n jurada persona expuesta pol&iacute;ticamente</div>
+		       		<div class="col-md-9">
+		       			<div class="col-md-11 text-justify" style="font-size: small;">
+			       			<p>Declaro bajo juramento que </p>
+			       			<md-radio-group ng-model="medioPago.optionDDJJ" ng-init="medioPago.optionDDJJ=medioPago.optionDDJJ||'n'">
+				       			<md-radio-button id="radioDDJJSi" value="s" class="col-md-1 radioButtondemoBasicUsage" aria-label="false">SI</md-radio-button>
+				       			<md-radio-button id="radioDDJJNo" value="n" class="col-md-1 radioButtondemoBasicUsage" aria-label="false" ng-click="medioPago.motivo = ''">NO</md-radio-button>
+			       			</md-radio-group>
+			       			me encuentro alcanzado por las disposiciones relativas a personas expuestas pol&iacute;ticamente (Resoluci&oacute;n 11/2011 de la UIF) y sus modificatorias descriptos en <a class="anexo-legal" ng-click="showAnexo()" href="">Anexo Legal</a> adjunto.
+			       			<p>En caso afirmativo indicar detalladamente el motivo:
+			                <input ng-model="medioPago.motivo" id="motivo" ng-disabled="medioPago.optionDDJJ != 's'" show-focus="medioPago.optionDDJJ == 's'" aria-label="false" maxlength="100" style="width: 50em;border: 0em;border-bottom: thin;border-bottom-style: dotted;background-color: transparent;">
+			                <div class="md-errors-spacer" ng-show="!valMotivo">Campo requerido</div></p>
+			            </div>
+		       		</div>
+					<div class="col-md-12">&nbsp;</div>
+					<div class="col-md-3 text-right">
+						<md-checkbox ng-model="medioPago.checkLegal" id="checkLegal" aria-label="compara" ng-init="medioPago.checkLegal = false"></md-checkbox>
+						<div class="md-errors-spacer" ng-show="!valDDJJLegal">Check requerido</div>
+					</div>
+					<div class="col-md-9 text-justify" style="font-size: small;">
+						<div class="col-md-11">
+							Declaro bajo juramento que los datos declarados son correctos y verdaderos y me comprometo a informar cualquier modificaci&oacute;n al respecto, dentro de los 30 d&iacute;as de ocurrida, y presentar la documentaci&oacute;n respaldatoria.
+						</div>
+					</div>
+		       		<div ng-show="asegurado.inCliente != 'CLI'">
+			       		<div class="col-md-12">&nbsp;</div>
+			       		<div class="col-md-3 text-right">Declaraci&oacute;n jurada de Riesgos</div>
+			       		<div class="col-md-9" style="font-size: small;">
+			       			<div class="col-md-11">
+				       			<p>Es funcionario p&uacute;blico extranjero de alto nivel y/o sus familiares directos?</p>
+				       			<md-radio-group ng-model="medioPago.optionFuncPubExt" ng-init="medioPago.optionFuncPubExt=medioPago.optionFuncPubExt||'N'">
+					       			<md-radio-button id="radioFuncPubExtSi" value="S" class="col-md-1 radioButtondemoBasicUsage" aria-label="false">SI</md-radio-button>
+					       			<md-radio-button id="radioFuncPubExtNo" value="N" class="col-md-1 radioButtondemoBasicUsage" aria-label="false">NO</md-radio-button>
+				       			</md-radio-group>
+				            </div>
+			       		</div>
+			       		<div class="col-md-12">&nbsp;</div>
+			       		<div class="col-md-3 text-right"></div>
+			       		<div class="col-md-9" style="font-size: small;">
+			       			<div class="col-md-11">
+				       			<p>Esta relacionado con la producci&oacute;n o distribuci&oacute;n de armas y/u otros productos militares?</p>
+				       			<md-radio-group ng-model="medioPago.optionMilitaryProd" ng-init="medioPago.optionMilitaryProd=medioPago.optionMilitaryProd||'N'">
+					       			<md-radio-button id="radioMilitaryProdSi" value="S" class="col-md-1 radioButtondemoBasicUsage" aria-label="false">SI</md-radio-button>
+					       			<md-radio-button id="radioMilitaryProdNo" value="N" class="col-md-1 radioButtondemoBasicUsage" aria-label="false">NO</md-radio-button>
+				       			</md-radio-group>
+				            </div>
+			       		</div>
+			       		<div class="col-md-12">&nbsp;</div>
+			       		<div class="col-md-3 text-right">Ingresos del Cliente</div>
+			       		<div class="col-md-9">
+			       			<div class="col-md-10 text-justify">
+				                <input ng-model="medioPago.ingresos" id="ingresos" aria-label="false" maxlength="11" style="width: 150px; ;border: 0em;border-bottom: thin;border-bottom-style: dotted;background-color: transparent;">
+				                <div class="md-errors-spacer" ng-show="!valIngresos">Campo requerido</div>
+				            </div>
+			       		</div>
+		       		</div>
+	       		</div>
+	       	</div>
+	       	<div class="formaPago">
+				<md-radio-group ng-model="medioPago.optionFormaPago">
+	  				<div class="row" ng-show="ctasBcoFlag">
+		    			<div class="col-md-3 text-right radio">Cuenta Santander<md-radio-button id="radioPago1" value="1" class="radioButtondemoBasicUsage" aria-label="false" ng-click="resetFormaPago()"></md-radio-button></div>
+		    			<div class="col-md-9">
+			       			<div class="col-md-10">
+				    			<md-input-container class="col-md-10 md-block" flex-gt-sm>
+					                <md-select ng-model="medioPago.cuentaSantander" id="cuentaSantander" ng-disabled="medioPago.optionFormaPago != 1" aria-label="false">
+					                    <md-option ng-repeat="cuenta in cuentas" value="{{cuenta.ctaTarjetaRector}}" >
+					                    	<p style="color:black;" ng-if="cuenta.habilitada">{{cuenta.deTpCtaRector + " : " + cuenta.ctaTarjetaFormato}}</p>
+					                    	<p style="color:red;" ng-if="!cuenta.habilitada">{{cuenta.deTpCtaRector + " : " + cuenta.ctaTarjetaFormato + " - Tarjeta bloqueada"}}</p>
+					                    </md-option>		
+					                </md-select>
+					                <div class="md-errors-spacer" ng-show="!valOptionFormaPago && medioPago.optionFormaPago == 1">Campo requerido</div>
+					            </md-input-container>
+				            </div>
+			            </div>
+	   				</div>
+	   				<div class="row" ng-show="otroBoFlag">
+		    			<div class="col-md-3 text-right radio">Tarjeta otro Banco<md-radio-button id="radioPago2" value="2" class="radioButtondemoBasicUsage" aria-label="false" ng-click="resetFormaPago()"></md-radio-button></div>
+		    			<div class="col-md-9">
+			       			<div class="col-md-10">
+				    			<md-input-container class="col-md-5 md-block" flex-gt-sm>
+					                <md-select ng-model="medioPago.tarjOtroBanco" id="tarjOtroBanco" ng-disabled="medioPago.optionFormaPago != 2" aria-label="false" >
+					                    <md-option ng-repeat="tarj in tarjetasOtros | filter:filtTarjetas" value="{{tarj.tipo}}">{{tarj.descripcion}}</md-option>
+					                </md-select>
+					                <div class="md-errors-spacer" ng-show="!valOptionFormaPago && medioPago.optionFormaPago == 2">Campo requerido</div>
+					            </md-input-container>
+					            <md-input-container class="col-md-5 col-md-offset-1 md-block" flex-gt-sm>
+					            	<label>Nro</label>
+					                <input ng-model="medioPago.tarjOtroBancoNro" id="tarjOtroBanco" ng-disabled="medioPago.optionFormaPago != 2" maxlength="16" pattern="[0-9]+">
+					                <div class="md-errors-spacer" ng-show="!valOptionFormaPago && medioPago.optionFormaPago == 2">Campo requerido</div>
+					            </md-input-container>
+					    	</div>
+			            </div>
+					</div>
+					<div class="row" ng-show="cbuFlag">
+		    			<div class="col-md-3 text-right radio">Cuenta otro Banco (CBU)<md-radio-button id="radioPago3" value="3" class="radioButtondemoBasicUsage" aria-label="false" ng-click="resetFormaPago()"></md-radio-button></div>
+		    			<div class="col-md-9">
+			       			<div class="col-md-10">
+				    			<md-input-container class="col-md-10 md-block" flex-gt-sm>
+					                <input ng-model="medioPago.cuentaOtroBancoCbu" id="cuentaOtroBancoCbu" ng-disabled="medioPago.optionFormaPago != 3" aria-label="false" maxlength="22" pattern="[0-9]+">
+					                <div class="md-errors-spacer" ng-show="!valOptionFormaPago && medioPago.optionFormaPago == 3">Campo requerido</div>
+					            </md-input-container>
+					    	</div>
+			            </div>
+					</div>
+	   			</md-radio-group>
+	       	</div>
+	       
+	       	<!-- buttons -->
+	       	<div class="row">
+	       		<div class="col-md-12 errorMsj">{{errorEmit}}</div>
+	       		<div class="col-md-12 buttons text-center">
+	       			<input class="btn btn-default" ng-click="backStep()" value="Atras"  readonly />
+	       			<input class="btn btn-danger"  ng-click="nextStep()" value="Siguiente" readonly />
+	       			<input class="btn btn-info" ng-click="salir()" value="Salir"  readonly />
+	       		</div>
+	       	</div>
+       	</div>
+       	
+       	<!-- Datos de productos contratados -->
+       	<div class="prodContratados" ng-if="::finish3" ng-show="stepId == 3" ng-cloak>
+       	
+       		<div class="heading emit">
+			  <i class="icon iconRamo1 pull-left red iconEmit" ng-hide="poliza.accPersonales == undefined" title="Eliminar Accidentes Personales">
+			    <div class="delRamoEmit" ng-click="deleteCotizacion(poliza.accPersonales.cdRamo)" role="button" tabindex="0"></div>
+			  </i>
+			  <i class="icon iconRamo18 pull-left red iconEmit" ng-hide="poliza.vida == undefined" title="Eliminar Vida">
+			    <div class="delRamoEmit" ng-click="deleteCotizacion(poliza.vida.cdRamo)" role="button" tabindex="0"></div>
+			  </i>
+			  <i class="icon iconRamo19 pull-left red iconEmit" ng-hide="poliza.robo == undefined" title="Eliminar Robo en Cajeros">
+			  	<div class="delRamoEmit" ng-click="deleteCotizacion(poliza.robo.cdRamo)" role="button" tabindex="0"></div>
+			  </i>
+			  <i class="icon iconRamo20 pull-left red iconEmit" ng-hide="poliza.desempleo == undefined" title="Eliminar Desempleo">
+			  	<div class="delRamoEmit" ng-click="deleteCotizacion(poliza.desempleo.cdRamo)" role="button" tabindex="0"></div>
+			  </i>
+			  <i class="icon iconRamo21 pull-left red iconEmit" ng-hide="poliza.vivienda == undefined" title="Eliminar Vivienda">
+			  	<div class="delRamoEmit" ng-click="deleteCotizacion(poliza.vivienda.cdRamo)" role="button" tabindex="0"></div>
+			  </i>
+			  <i class="icon iconRamo24 pull-left red iconEmit" ng-hide="poliza.protSalud == undefined" title="Eliminar Proteccion Salud">
+			  	<div class="delRamoEmit" ng-click="deleteCotizacion(poliza.protSalud.cdRamo)" role="button" tabindex="0"></div>
+			  </i>
+			  <i class="icon iconRamo25 pull-left red iconEmit" ng-hide="poliza.protCartera == undefined" title="Eliminar Proteccion Cartera">
+			  	<div class="delRamoEmit" ng-click="deleteCotizacion(poliza.protCartera.cdRamo)" role="button" tabindex="0"></div>
+			  </i>
+			  <i class="icon iconRamo26 pull-left red iconEmit" ng-hide="poliza.compraProt == undefined" title="Eliminar Compra Protegida">
+			  	<div class="delRamoEmit" ng-click="deleteCotizacion(poliza.compraProt.cdRamo)" role="button" tabindex="0"></div>
+			  </i>
+			  <i class="icon iconRamo40 pull-left red iconEmit" ng-hide="poliza.autos == undefined" title="Eliminar Autos/Motos">
+			  	<div class="delRamoEmit" ng-click="deleteCotizacion(poliza.autos.cdRamo)" role="button" tabindex="0"></div>
+			  </i>
+			</div>
+       		<div class="row ramoDet">
+	       		<div class="col-md-4">
+	       			<md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+	       				<label>Sucursal y Nro. Multicotizaci&oacute;n</label>
+			            <input ng-model="::poliza.sucCoti" id="sucCoti" readonly>
+			        </md-input-container>
+			    </div>
+			    <div class="col-md-4" ng-hide="!poliza.valNormal">
+	       			<md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+		                <label>Inicio de vigencia de p&oacute;liza</label>
+		                <md-select ng-model="poliza.vigencia" ng-disabled="vigencias.length == 0" required>
+		                    <md-option ng-repeat="vig in vigencias" value="{{vig}}" ng-selected="$first">{{vig}}</md-option>		
+		                </md-select>
+		                <div class="md-errors-spacer" ng-show="!valVigencia">Campo requerido</div>
+		            </md-input-container>
+	       		</div>
+	       		<div class="col-md-4" ng-hide="!poliza.valAuto">
+		       		<md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+		                <label>Inicio de vigencia de p&oacute;liza de auto/moto</label>
+		                <md-select ng-model="poliza.vigenciaAuto" ng-disabled="vigenciasAuto.length == 0" required>
+		                    <md-option ng-repeat="vigAut in vigenciasAuto" value="{{vigAut}}" ng-selected="$first">{{vigAut}}</md-option>		
+		                </md-select>
+		                <div class="md-errors-spacer" ng-show="!valVigenciaAuto">Campo requerido</div>
+		            </md-input-container>
+	       		</div>
+       		</div>
+			<!-- Acc. personales -->
+			<!-- <div class="accPersonales ramoDet" ng-hide="poliza.accPersonales == undefined">
+       			<div class="heading">
+                    <i class="icon iconRamo1 pull-left red"></i><h2>Accidentes Personales</h2>
+                </div>
+       		</div> -->   		
+       		<!-- Vida -->
+       		<div class="vida ramoDet" ng-hide="poliza.vida.selCotizacion.cdRamo == undefined || !poliza.vida.isDjsProd">
+       			<div class="heading">
+                    <i class="icon iconRamo18 pull-left red"></i><h2>Vida</h2>
+                </div>
+       			<div class="row">
+       				<div class="col-md-4">
+       					<md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+       						<label>Nro. declaraci&oacute;n Jurada de salud</label>
+				            <input type="text" ng-model="poliza.vida.nuDJS" value="" pattern="[0-9]+" maxlength="10" oninvalid="setCustomValidity('Minimum length is 6 characters')" oninput="setCustomValidity('')" required>
+				            <div class="md-errors-spacer" ng-show="!valNuDJS">Campo requerido</div>
+				        </md-input-container>
+       				</div>
+       				<div class="col-md-4">
+       					<div class="col-md-10 col-md-offset-1"><input class="btn btn-danger" value="CREAR DJS" aria-label="false" ng-click="openDDJJS()" readonly/></div>
+       				</div>
+       			</div>
+       		</div>      		
+       		<!-- Robo en cajeros -->
+       		<div class="robo ramoDet" ng-hide="poliza.robo == undefined || !poliza.robo.isTarjetasAseg">
+       			<div class="heading">
+                    <i class="icon iconRamo19 pull-left red"></i><h2><div class="titleIcon">Robo en cajeros - Plan: {{poliza.robo.selCotizacion.dePlan}}</div><div class="col-md-12 text-center subtitle">Selecciones la(s) tarjeta(s)</div></h2>
+                </div>
+                <div class="clear" ng-click="deleteCotizacion(poliza.robo.cdRamo)" title="Eliminar Producto"></div>
+				<div class="row" ng-repeat="tarj in tarjetasAsegRC">
+       				<div class="col-md-2 text-right">
+	       				<md-input-container class="md-block" flex-gt-sm>
+			            	<md-checkbox id="('check')+$index" name="('check')+$index" ng-model="tarj.check" class="green" aria-label="compara" ng-disabled="tarj.mensaje.trim().length > 0"></md-checkbox>
+			            </md-input-container>
+       				</div>
+       				<div class="col-md-10">
+       					<md-input-container class="col-md-8 md-block" flex-gt-sm>
+				            <input type="text" value="{{tarj.deTpCtaRector + ' : ' + tarj.ctaTarjetaRector}}" aria-label="false" readonly/>
+				            <p>{{tarj.mensaje}}</p>
+				        </md-input-container>
+       				</div>
+       			</div>
+       			<div class="md-errors-spacer center" ng-show="!valTarjetasAsegRC">Campo requerido</div>
+       		</div>
+       		<!-- Desempleo -->
+			<div class="desempleo ramoDet" ng-hide="poliza.desempleo == undefined || !poliza.desempleo.isPP || !poliza.desempleo.isTarjetasAseg">
+       			<div class="heading">
+                    <i class="icon iconRamo20 pull-left red"></i><h2><div class="titleIcon">Desempleo - Plan: Proteccion de Pagos</div><div class="col-md-12 text-center subtitle">Selecciones una tarjeta</div></h2>
+                </div>
+                <div class="clear" ng-click="deleteCotizacion(poliza.desempleo.cdRamo)" title="Eliminar Producto"></div>
+                <md-radio-group ng-model="selectedTarjetaPP" >
+	       			<div class="row" ng-repeat="tarj in tarjetasAsegPP | filter: onlyCreditCard">
+	       				<div class="col-md-2 text-right">
+	       					<md-input-container class="" flex-gt-sm>
+				       			<md-radio-button ng-click="selectCard(tarj)" class="" ng-value="tarj" aria-label="false" ng-disabled="tarj.mensaje.trim().length > 0"></md-radio-button>
+			       			</md-input-container>
+	       				</div>
+	       				<div class="col-md-10">
+	       					<md-input-container class="col-md-8 md-block" flex-gt-sm>
+					            <input type="text" value="{{tarj.deTpCtaRector + ' : ' + tarj.ctaTarjetaRector}}" aria-label="false" readonly/>
+					            <p>{{tarj.mensaje}}</p>
+					        </md-input-container>
+	       				</div>
+	       			</div>
+	       			<div class="md-errors-spacer center" ng-show="!valTarjetasAsegPP">Campo requerido</div>
+       			</md-radio-group>
+       		</div>
+       		<!-- Compra protegida -->
+       		<div class="compraProtegida ramoDet" ng-hide="poliza.compraProt == undefined || !poliza.compraProt.isTarjetasAseg">
+       			<div class="heading">
+                    <i class="icon iconRamo26 pull-left red"></i><h2><div class="titleIcon">Compra protegida - Plan: {{poliza.compraProt.selCotizacion.dePlan}}</div><div class="col-md-12 text-center subtitle">Selecciones la(s) tarjeta(s)</div></h2>
+                </div>
+                <div class="clear" ng-click="deleteCotizacion(poliza.compraProt.cdRamo)" title="Eliminar Producto"></div>
+       			<div class="row" ng-repeat="tarj in tarjetasAsegCP">
+       				<div class="col-md-2 text-right">
+	       				<md-input-container class="md-block" flex-gt-sm>
+			            	<md-checkbox id="('check')+$index" name="('check')+$index" ng-model="tarj.check" class="green" aria-label="compara" ng-disabled="tarj.mensaje.trim().length > 0"></md-checkbox>
+			            </md-input-container>
+       				</div>
+       				<div class="col-md-10">
+       					<md-input-container class="col-md-8 md-block" flex-gt-sm>
+				            <input type="text" value="{{tarj.deTpCtaRector + ' : ' + tarj.ctaTarjetaRector}}" aria-label="false" readonly/>
+				            <p>{{tarj.mensaje}}</p>
+				        </md-input-container>
+       				</div>
+       			</div>
+       			<div class="md-errors-spacer" ng-show="!valTarjetasAsegCompra">Campo requerido</div>
+       		</div>
+       		<!-- Vivienda -->
+       		<div class="vivienda ramoDet" ng-hide="poliza.vivienda == undefined">
+	       		<div class="heading">
+                    <i class="icon iconRamo21 pull-left red"></i><h2><div class="titleIcon">Vivienda</div><div class="col-md-12 text-center subtitle">Datos del bien Asegurado</div></h2>
+	            </div>
+	       		<div class="row">
+	       			<div class="col-md-4">
+	       				<md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+		       				<label>Provincia</label>
+    			            <md-select ng-model="poliza.vivienda.cdProvincia" disabled>	
+			                    <md-option ng-repeat="prov in provincias" value="{{prov.valor}}" ng-selected="{{ prov.valor === poliza.vivienda.cdProvincia ? 'true' : 'false' }}">{{prov.descripcion}}</md-option>		
+			                </md-select>
+				        </md-input-container>
+	       			</div>
+	       			<div class="col-md-4">
+	       				<md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+		       				<label>Localidad</label>
+				            <md-select ng-model="poliza.vivienda.codPos" disabled>	
+			                    <md-option ng-repeat="loc in localidades" value="{{loc.valor}}" ng-selected="{{ loc.valor === poliza.vivienda.cdLocalidad ? 'true' : 'false' }}">{{loc.descripcion}} ({{::poliza.vivienda.cdPostal}})</md-option>
+			                </md-select>
+				        </md-input-container>	
+	       			</div>
+	       			<div class="col-md-4">
+	       				<md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+		       				<label>Suma asegurada</label>
+				            <input ng-model="::poliza.vivienda.selCotizacion.sumaAsegurada" value="" readonly>
+				        </md-input-container>
+	       			</div>
+	       		</div>
+	       		<div class="row">
+	       			<div class="col-md-4">
+						<md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+			                <label>Domicilio</label>
+			                <input ng-model="poliza.vivienda.domCalle" id="domCalle" maxlength="50" pattern="[a-zA-Z0-9 ]+" required>
+			                <div class="md-errors-spacer" ng-show="!valDomicilio">Campo requerido</div>
+			            </md-input-container>
+					</div>
+					<div class="col-md-4">
+						<md-input-container class="col-md-3 col-md-offset-1 md-block" flex-gt-sm>
+			                <label>Nro</label>
+			                <input ng-model="poliza.vivienda.domNro" id="domNro" type="text" maxlength="5" pattern="[a-zA-Z0-9 ]+">
+			            </md-input-container>
+			            <md-input-container class="col-md-3 col-md-offset-1 md-block" flex-gt-sm>
+			                <label>Piso</label>
+			                <input ng-model="poliza.vivienda.domPiso" id="domPiso" maxlength="2" pattern="[a-zA-Z0-9 ]+">
+			            </md-input-container>
+			            <md-input-container class="col-md-2 col-md-offset-1 md-block" flex-gt-sm>
+			                <label>Depto</label>
+			                <input ng-model="poliza.vivienda.domDepto" id="domDepto" maxlength="3" pattern="[a-zA-Z0-9 ]+">
+			            </md-input-container>
+					</div>	
+	       			<div class="col-md-4">
+	       				<md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+		       				<label>Entre calles</label>
+				            <input ng-model="poliza.vivienda.entreCalles" value="" maxlength="75" pattern="[a-zA-Z0-9 ]+">
+				        </md-input-container>	
+	       			</div>	
+	       		</div>
+	       		<div class="row">
+	       			<div class="col-md-12">
+	       				<md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+		       				<label>Alarma (solo completar en caso de existencia. La poliza quedara pendiente de aprobacion por Area de Emisi&oacute;n)</label>
+				            <input ng-model="poliza.vivienda.alarma" value="" maxlength="50" pattern="[a-zA-Z0-9 ]+">
+				        </md-input-container>	
+	       			</div>
+	       		</div>
+       		</div>
+       		
+       		<!-- Autos -->
+       		<div class="autos ramoDet" ng-hide="poliza.autos == undefined">
+       			<div class="heading">
+                    <i class="icon iconRamo40 pull-left red"></i><h2><div class="titleIcon">Autos/Motos</div><div class="col-md-12 text-center subtitle">Datos del autom&oacute;vil/moto</div></h2>
+                </div>
+	       		<div class="row">
+	               <div class="col-md-4">
+         				<md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+		       				<label>Provincia</label>
+    			            <md-select ng-model="poliza.autos.cdProvincia" disabled>	
+			                    <md-option ng-repeat="prov in provincias" value="{{prov.valor}}" ng-selected="{{ prov.valor === poliza.autos.cdProvincia ? 'true' : 'false' }}">{{prov.descripcion}}</md-option>		
+			                </md-select>
+				        </md-input-container>
+	       			</div>
+	       			<div class="col-md-4">
+	       				<md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+		       				<label>Localidad</label>
+				            <md-select ng-model="poliza.autos.codPos" disabled>	
+			                    <md-option ng-repeat="loc in localidadesAut" value="{{loc.valor}}" ng-selected="{{ loc.valor === poliza.autos.cdLocalidad ? 'true' : 'false' }}">{{loc.descripcion}} ({{::poliza.autos.cdPostal}})</md-option>
+			                </md-select>
+				        </md-input-container>	
+	       			</div>
+                </div>
+	       		<div class="row">
+	       			<div class="col-md-4">
+						<md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+			                <label>Domicilio</label>
+			                <input ng-model="poliza.autos.domCalle" id="domCalle" maxlength="50" pattern="[a-zA-Z0-9 ]+" required>
+			                <div class="md-errors-spacer" ng-show="!valDomicilio">Campo requerido</div>
+			            </md-input-container>
+					</div>
+					<div class="col-md-4">
+						<md-input-container class="col-md-3 col-md-offset-1 md-block" flex-gt-sm>
+			                <label>Nro</label>
+			                <input ng-model="poliza.autos.domNro" id="domNro" maxlength="5" pattern="[a-zA-Z0-9 ]+">
+			            </md-input-container>
+			            <md-input-container class="col-md-3 col-md-offset-1 md-block" flex-gt-sm>
+			                <label>Piso</label>
+			                <input ng-model="poliza.autos.domPiso" id="domPiso" maxlength="2" pattern="[a-zA-Z0-9 ]+">
+			            </md-input-container>
+			            <md-input-container class="col-md-2 col-md-offset-1 md-block" flex-gt-sm>
+			                <label>Depto</label>
+			                <input ng-model="poliza.autos.domDepto" id="domDepto" maxlength="3" pattern="[a-zA-Z0-9 ]+">
+			            </md-input-container>
+					</div>	
+                </div>
+	       		<div class="row">
+	       			<div class="col-md-4">
+	       				<md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+	       				<label>Marca</label>
+				            <md-select ng-model="::poliza.autos.marca" disabled>	
+			                    <md-option value="{{::poliza.autos.marca}}">{{ descMarca }}</md-option>		
+			                </md-select>
+				        </md-input-container>
+	       			</div>
+	       			<div class="col-md-4">
+	       				<md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+		       				<label>A&ntilde;o de fabricaci&oacute;n</label>
+				            <input ng-model="::poliza.autos.anoFabr" value="" readonly>
+				        </md-input-container>	
+	       			</div>
+	       			<div class="col-md-4">
+	       				<md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+		       				<label>Modelo</label>
+				            <md-select ng-model="::poliza.autos.anoFabr" disabled>	
+			                    <md-option value="{{::poliza.autos.anoFabr}}">{{ descModelo }}</md-option>		
+			                </md-select>
+				        </md-input-container>
+	       			</div>
+	       		</div>
+	       		<div class="row">
+	       			<div class="col-md-4">
+	       				<md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+		       				<label>Patente (para 0km A/D000)</label>
+				            <input ng-model="poliza.autos.nuPatente" value="" maxlength="7" ng-pattern="regexPatente" required>
+				            <div class="md-errors-spacer" ng-show="!valNuPatente">Campo requerido</div>
+				        </md-input-container>
+	       			</div>
+	       			<div class="col-md-4">
+	       				<md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+		       				<label>N&uacute;mero de chasis</label>
+				            <input ng-model="poliza.autos.nuChasis" value="" type="text" maxlength="20" pattern="[a-zA-Z0-9]+" required>
+				            <div class="md-errors-spacer" ng-show="!valNuChasis">Campo requerido</div>
+				        </md-input-container>	
+	       			</div>
+	       			<div class="col-md-4">
+		                <md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+		                    <label>Nro. Motor</label>
+		                    <input ng-model="poliza.autos.nuMotor" value="" type="text" maxlength="20" pattern="[a-zA-Z0-9]+" required>
+		                    <div class="md-errors-spacer" ng-show="!valNuMotor">Campo requerido</div>
+		                </md-input-container>
+		            </div>
+	       		</div>
+	       		<div class="row">
+	       			<div class="col-md-4">
+	       				<md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+		       				<label>Kilometraje</label>
+				            <input ng-model="poliza.autos.km" value="" type="text" maxlength="10" pattern="[0-9]+" required>
+				            <div class="md-errors-spacer" ng-show="!valKm">Campo requerido</div>
+				        </md-input-container>	
+	       			</div>
+		            <div class="col-md-4" ng-hide="poliza.autos.selCotizacion.inInspeccion == 'N'">
+		                <md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+		                    <label>Inspecci&oacute;n</label>
+		                    <input ng-model="poliza.autos.telInspec" value="" maxlength="15" pattern="[0-9]+" required>
+		                    <div class="md-errors-spacer" ng-show="!valInspec">Campo requerido</div>
+		                </md-input-container>
+		            </div>
+	       			<div class="col-md-4" ng-show="poliza.autos.tpGnc != 'N'">
+	       				<md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+		       				<label>Marca del regulador</label>
+				            <input ng-model="poliza.autos.marcaRegGnc" value="" maxlength="15" pattern="[a-zA-Z0-9 ]+" required>
+				            <div class="md-errors-spacer" ng-show="!valMarcaRegGnc">Campo requerido</div>
+				        </md-input-container>
+	       			</div>
+	       		</div>
+       		</div>
+       		<!-- A pedido de D. Tossi solo se pide la marca del regulador, se pide arriba
+       		<div class="autosGnc ramoDet" ng-show="poliza.autos != undefined && poliza.autos.tpGnc != 'N'">
+       			<div class="heading">
+                    <i class="auto pull-left"></i><h2><div class="titleIcon">Autos/Motos</div><div class="col-md-12 text-center subtitle">Datos del equipo de GNC</div></h2>
+                </div>
+	       		<div class="row">
+	       			<div class="col-md-4">
+	       				<md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+		       				<label>N&uacute;mero de oblea</label>
+				            <input ng-model="poliza.autos.nuObleaGnc" value="" maxlength="15" pattern="[0-9]+" required>
+				            <div class="md-errors-spacer" ng-show="!valNuObleaGnc">Campo requerido</div>
+				        </md-input-container>
+	       			</div>
+	       			<div class="col-md-4">
+	       				<md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+		       				<label>Taller montaje</label>
+				            <input ng-model="poliza.autos.tallerMonGnc" value="" maxlength="9" pattern="[0-9]+" required>
+				            <div class="md-errors-spacer" ng-show="!valTallerMonGnc">Campo requerido</div>
+				        </md-input-container>
+	       			</div>
+	       			<div class="col-md-4">
+	       				<md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+		       				<label>Marca del regulador</label>
+				            <input ng-model="poliza.autos.marcaRegGnc" value="" maxlength="15" pattern="[a-zA-Z0-9 ]+" required>
+				            <div class="md-errors-spacer" ng-show="!valMarcaRegGnc">Campo requerido</div>
+				        </md-input-container>
+	       			</div>
+	       		</div>
+	       		<div class="row">
+	       			<div class="col-md-4">
+	       				<md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+		       				<label>N&uacute;mero de serie</label>
+				            <input ng-model="poliza.autos.nuSerieGnc" value="" maxlength="10" pattern="[a-zA-Z0-9]+" required>
+				            <div class="md-errors-spacer" ng-show="!valNuSerieGnc">Campo requerido</div>
+				        </md-input-container>
+	       			</div>
+	       			<div class="col-md-4">
+	       				<md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+		       				<label>Fecha desde (dd/mm/aaaa)</label>
+				            <md-datepicker ng-model="poliza.autos.feDesdeGnc" id="feDesdeGnc" required></md-datepicker>
+				            <div class="md-errors-spacer" ng-show="!valFeDesdeGnc">Campo requerido</div>
+				        </md-input-container>
+	       			</div>
+	       			<div class="col-md-4">
+	       				<md-input-container class="col-md-10 col-md-offset-1 md-block" flex-gt-sm>
+		       				<label>Fecha hasta (dd/mm/aaaa)</label>
+				            <md-datepicker ng-model="poliza.autos.feHastaGnc" id="feHastaGnc" required></md-datepicker>
+				            <div class="md-errors-spacer" ng-show="!valFeHastaGnc">Campo requerido</div>
+				        </md-input-container>
+	       			</div>
+	       		</div>
+	       		<div class="col-md-12 text-center autosGncDet">Informaci&oacute;n de cada uno de los cilindros</div>
+	       		<div class="row">
+       				<div class="col-md-2 col-md-offset-2 th"></div>
+       				<div class="col-md-2 th">Marca</div>
+       				<div class="col-md-2 th">N&uacute;mero de serie</div>
+       				<div class="col-md-2 th">Fecha de vencimiento</div>
+				</div>
+				<div class="row cilindros" ng-repeat="cilindro in poliza.autos.cilindros">
+       				<div class="col-md-2 col-md-offset-2 td">
+       					<md-input-container class="md-block" flex-gt-sm>
+				            <input type="text" id="index" value="{{$index + 1}}" aria-label="false" readonly>
+				        </md-input-container>
+					</div>
+					<div class="col-md-2 td">
+       					<md-input-container class="md-block" flex-gt-sm>
+				            <input type="text" id="marca" ng-model="cilindro.cdMarcaCilindro" value="" maxlength="20" aria-label="false" pattern="[a-zA-Z0-9 ]+">
+				        </md-input-container>
+					</div>
+					<div class="col-md-2 td">
+       					<md-input-container class="md-block" flex-gt-sm>
+				            <input type="text" id="serie" ng-model="cilindro.nuSerieCilindro" value="" aria-label="false" maxlength="9" pattern="[a-zA-Z0-9 ]+">
+				        </md-input-container>
+					</div>
+					<div class="col-md-2 td">
+				            <md-datepicker id="feVenc" ng-model="cilindro.feVigenciaCilindro" value="" aria-label="false"></md-datepicker>
+					</div>
+	       		</div>
+       		</div>
+       		-->
+       		<!-- Beneficiarios -->
+       		<div class="beneficiarios ramoDet" ng-hide="poliza.accPersonales.selCotizacion.cdRamo == undefined && poliza.vida.selCotizacion.cdRamo == undefined && autonomo == false && poliza.robo.selCotizacion.cdRamo == undefined">
+       			<div class="heading">
+                    <h2><div class="titleIcon">Beneficiarios</div></h2>
+                </div>
+				<div class="col-md-12 headTable rowBenef">
+       				<div class="col_45 th">Nombre</div>
+       				<div class="col_15 th">Tipo Documento</div>
+       				<div class="col_15 th">Documento</div>
+       				<div class="col_15 th">Parentesco</div>
+       				<div class="col_5 th">% Part.</div>
+       				<div class="col_5 td"></div>
+				</div>
+				<div class="itemTable rowBenef" ng-repeat="benef in poliza.beneficiarios">
+	       				<div class="col_45 td">
+	       					<md-input-container class="md-block" flex-gt-sm>
+					            <input type="text" id="nombre" ng-model="benef.nmBeneficiario" value="" aria-label="false" maxlength="50" pattern="[a-zA-Z ]+">
+					        </md-input-container>
+						</div>
+	       				<div class="col_15 td">
+	       					<md-input-container class="md-block" flex-gt-sm>
+					            <md-select ng-model="benef.tpDoc" aria-label="false" id="tpDoc">	
+				                    <md-option ng-repeat="doc in documentos" value="{{doc.valor}}">{{doc.descripcion}}</md-option>		
+				                </md-select>
+					        </md-input-container>
+						</div>
+	       				<div class="col_15 td">
+							<md-input-container class="md-block" flex-gt-sm>
+					            <input type="text" id="nuDoc" ng-model="benef.nuDoc" value="" aria-label="false" maxlength="22" pattern="[0-9]+">
+					        </md-input-container>
+						</div>
+	       				<div class="col_15 td">
+	       					<md-input-container class="md-block" flex-gt-sm>
+					            <md-select ng-model="benef.tpParentezco" aria-label="false" id="parent">	
+				                    <md-option ng-repeat="par in parentescos" value="{{par.valor}}">{{par.descripcion}}</md-option>		
+				                </md-select>
+					        </md-input-container>
+						</div>
+	       				<div class="col_5 td">
+	       					<md-input-container class="md-block" flex-gt-sm>
+					            <input type="number" id="part" ng-model="benef.nuParticipacion" value="" aria-label="false" ng-min="1" ng-max="100" maxlength="3" pattern="[0-9]+">
+					        </md-input-container>
+						</div>
+	       				<div class="col_5 td"><input class="btn btn-danger btn-sm" value="Borrar" ng-click="resetBenef($index)" readonly/></div>
+				</div>
+				<div class="col-md-12 text-center info-benef">Si decide no declararlos, se considerar&aacute;n los herederos legales.</div>
+       		</div>
+       		
+       		<!-- buttons -->
+	       	<div class="row">
+	       		<div class="col-md-12 errorMsj">{{errorEmit}}</div>
+	       		<div class="col-md-12 buttons text-center">
+	       			<input class="btn btn-default" ng-click="backStep()" value="Atras" ng-show="poliza.countPolizas != 0" readonly />
+	       			<button class="btn btn-danger" ng-click="verificaDigital()" id="Aceptacion Digital" ng-show="isAceptacionDigital" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Verif. Digital">Aceptacion Digital</button>
+	       			<button class="btn btn-danger" ng-click="nextStep()" id="emitir" ng-show="poliza.countPolizas != 0" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Emitir">Emitir</button>
+	       			<input class="btn btn-info" ng-click="salir()" value="Salir"  readonly />
+	       		</div>
+	       	</div>
+       	</div>
+     </div>
+</section>

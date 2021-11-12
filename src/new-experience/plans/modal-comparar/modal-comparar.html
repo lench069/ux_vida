@@ -1,0 +1,42 @@
+<section class="compararPlanes">
+    <div class="col-md-12 container-comparar">
+        
+		<div class="col-md-12 th titlePlan">Comparar</div>
+		<table class="table table-bordered" aria-labelledby="">
+			<caption></caption>
+			<th id=""></th>
+						<tbody>
+				<tr>
+					<td class="titlePlan">Compañía</td>
+					<td class="detail text-center" ng-class="('col_')+{{porcent}}" ng-repeat="item in dataList" >
+						<div ng-show="!autos" aria-hidden="false" class="">
+							<img  src="{{item.image}}" alt="" style="width: auto;">
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="titlePlan">Plan</td>
+					<td class="detail text-center " ng-class="('col_')+{{porcent}}" ng-repeat="item in dataList" >{{item.deProducto}}</td>
+				</tr>
+				<tr>
+					<td class="titlePlan">Cuota</td>
+					<td class="detail text-center " ng-class="('col_')+{{porcent}}" ng-repeat="item in dataList" >{{item.mtCuota | currency | formatCurrency}}</td>
+				</tr>
+				<tr>
+					<td class="titlePlan">
+						Cobertura
+					</td>
+				   <td class="detail" ng-class="('col_')+{{porcent}}" ng-repeat="item in dataList">
+						<div ng-repeat="cober in item.cobertura.detalleCobertura">{{cober.deCobertura}} </div>
+					</td>
+
+				</tr>
+			</tbody>
+		</table>
+        <div class="row">
+       		<div class="col-md-12 td_footer td_right">
+			   <md-button class="md-button md-ink-ripple" type="button"  ng-click="hide()">Cerrar</md-button>
+			</div>
+       </div>
+    </div>
+</section>

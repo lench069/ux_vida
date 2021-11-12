@@ -1,0 +1,368 @@
+.padding10pxTop {
+    padding-top: 10px;
+}
+
+.padding20pxTop {
+    padding-top: 20px;
+}
+
+.padding30pxTop {
+    padding-top: 30px;
+}
+
+md-checkbox .md-icon {
+    background-color: #FFFFFF;
+    border: 1px solid #E8E8E8;
+    border-radius: 5px;
+    opacity: 1;
+}
+
+.montoAsegurar {
+    padding: 10px 10px 10px 25px;
+    border: 1px solid #E8E8E8;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.sizeInputMonto {
+    left: 399px;
+    width: 160px !important;
+    height: 40px;
+    border: 1px solid #E8E8E8;
+    border-radius: 5px;
+    opacity: 1;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.btnVolver {
+    width: 220px;
+    height: 45px;
+    margin-left: 25px;
+    background-color: #063F8F !important;
+    border-radius: 5px;
+    opacity: 1;
+}
+
+.imgVivienda {
+    margin-right: 5px !important;
+}
+
+.iconCard {
+    text-align: right;
+    cursor: pointer;
+}
+
+.padding0px {
+    padding: 0px 0px 0px 0px;
+}
+
+.icon-wizard-sec {
+    position: absolute;
+    top: 93px;
+    right: 0px;
+    width: 100%;
+    overflow-y: visible;
+    overflow-x: hidden;
+    z-index: 1;
+  }
+
+.icon-size-sec {
+    font-size: 22px;
+    color: #E90B18;
+    background-color: #efefef;
+    border-radius: 15px;
+    z-index: 2; 
+}
+
+
+.lblEnvioElectronico {
+    margin-top: 0px !important;
+     font-family: 'Roboto Medium', arial !important;
+  }
+
+.fondo-azul {
+    background-color: #003F8F !important;
+    border-radius: 5px;
+
+}
+
+.inputSeguro{
+    text-transform: none !important;
+    border:2px solid #dadada;
+    border-radius:5px;
+    opacity: 1;
+    border: 1px solid #e6e6e6 !important;
+    border-radius: 5px !important;
+    padding: 15px !important; 
+    color:black !important;
+    font-family: 'Roboto Bold', arial !important;
+	text-transform: uppercase;
+
+}
+
+.datePickerSeguro{
+    font-weight: 900;
+}
+
+.radio-in-line{
+    display: inline-block;
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+  }
+
+  .negrita{
+      color: black !important;
+      font-family: 'Roboto Regular', arial !important;
+  }
+
+  label{
+     /* margin-left:4px;*/
+     text-align: left;
+     margin-left:15px;
+  }
+
+  .declaracion{
+    display:inline-flex
+  }
+
+  .radioButton{
+      margin-left: 10px;
+  }
+
+
+  .vertical-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+
+  .rojo{
+      color: red !important;;
+  }
+
+  .azul{
+    color:  #003F8F !important;
+  }
+
+  .card-resumen{
+      border-radius: 10px;
+      border-color: #c3c3c3 !important;
+      border-width: 2px;
+      border-style: solid;
+      width: 250px;
+      display: inline-table;
+      margin-top: -3px;
+      width: 100%;
+  }
+
+
+  .simbolo-dolar {
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Roboto Regular', arial !important;
+    letter-spacing: 0px;
+    color: #003F8F;
+}
+
+
+.deshabilitado {
+    border: 2px solid #e6e6e6 !important;
+    border-radius: 5px !important;
+    background: #e6e6e6 !important;
+    color:black !important;
+}
+
+.input-ic{
+    border: 2px solid #e6e6e6 !important;
+    border-radius: 5px !important;
+  
+    color:black !important;
+}
+
+.containerDatos {
+
+    margin: 20px 0;
+
+}
+.containerDatosAbajo {
+
+    margin: -5px 0;
+
+}
+.containerDatosD {
+
+    margin: 15px 0;
+
+}
+.containerDatosDomi {
+
+    margin: 0px 0;
+
+}
+
+.panddinCol{
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+md-select[disabled] .md-select-value {
+    border-bottom-color: transparent;
+    background-image: linear-gradient(90deg,#ffff 0,#ffff 33%,#ffff 0);
+    background-image: -ms-linear-gradient(left,transparent 0,rgba(0,0,0,0.38) 100%);
+    color: black;
+}
+
+.selectSeg {
+    margin-left: 0px;
+}
+
+md-checkbox.md-default-theme.md-checked .md-icon, md-checkbox.md-checked .md-icon {
+    background-color: #E90B18;
+}
+
+.margLeft {
+    margin-left: 14px;
+}
+
+.margBotton{
+    margin: 18px 0px 0px;
+}
+
+.containerDatosArriba{
+
+    margin: -10px;
+
+}
+.maringTopBooton{
+
+    margin-top: 40px;
+    margin-bottom: 0px;
+
+}
+.maringTop{
+
+    margin-top: 10px;
+
+}
+
+.maxW{
+    max-width: none;
+}
+.inputSeguroF {
+    text-transform: none !important;
+    border-radius: 5px;
+    opacity: 1;
+    border-radius: 5px !important;
+    padding: 15px !important;
+    color: black !important;
+    font-family: 'Roboto Bold', arial !important;
+}
+
+.maxWF{
+    max-width: 400px;
+}
+
+.btnImprimirDatos {
+    width: 107 !important;
+    height: 45px !important;
+    color: #E90B18 !important;
+    font-size: 14px;
+    font-family: 'Roboto Regular', arial !important;
+    background: white !important;
+    border: #E90B18 1px solid !important;
+    border-radius: 5px;
+}
+.btnImprimirDatos:hover {
+    width: 107 !important;
+    height: 45px !important;
+    color: #003F8F !important;
+    font-size: 14px;
+    font-family: 'Roboto Regular', arial !important;
+    background: white !important;
+    border: #003F8F 1px solid !important;
+    border-radius: 5px;
+}
+
+.selectSeguro {
+    background-color: #FFFFFF;
+    border: 1px solid #E8E8E8;
+    border-radius: 5px;
+    opacity: 1;
+    margin-left: 10px;
+	padding-left: 10px !important;
+    font-family: 'Roboto Medium', arial !important;
+    color:black;
+}
+
+.selectSeguroIntro {
+    background-color: #FFFFFF;
+    border: 1px solid #E8E8E8;
+    border-radius: 5px;
+    opacity: 1;
+    padding-left: 10px;
+    font-family: 'Roboto Medium', arial !important;
+    color:black;
+}
+
+.hide-validation-error .md-errors-spacer { 
+    display: none;
+}
+
+.md-errors-spacerInf {
+    color: #ff0000;
+    font-size: 10px;
+    text-align: center;
+    clear: both;
+}
+
+.textResumeCot {
+    text-align: left;
+    font-size: 14px;
+    font-family: 'Roboto Regular', arial !important;
+    letter-spacing: 0px;
+    opacity: 1;
+}
+
+.textTittle {
+    padding-top: 10px;
+    padding-bottom: 10px;
+	padding-left: 5px;
+}
+.marginImage{
+margin-top: 10px;
+}
+
+.marginLeft{
+margin-left: 20px;
+}
+
+.btnContinuar {
+    width: 120px;
+    height: 45px;
+    background-color: #E90B18 !important;
+    border-radius: 5px;
+    opacity: 1;
+    margin-right: 25px;
+}
+
+.btnContinuarDisabled {
+    width: 120px;
+    height: 45px;
+    background-color: #969696 !important;
+    border-radius: 5px;
+    color: #FFFFFF !important;
+    opacity: 1;
+    margin-right: 5px !important;
+}
+

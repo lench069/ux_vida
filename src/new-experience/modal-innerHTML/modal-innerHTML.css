@@ -1,0 +1,114 @@
+.accordion>input[type="checkbox"] {
+    position: absolute;
+    left: -100vw;
+}
+
+.ic {
+    font-family: 'Roboto Medium' !important;
+    font-weight: bold;
+    font-style: normal !important;
+}
+
+.ic::after {
+    content: "\203A  ";
+    font-family: 'Roboto Medium' !important;
+    font-weight: bold;
+}
+
+.accordion .content {
+    overflow-y: hidden;
+    height: 0;
+    transition: height 0.3s ease;
+}
+
+.accordion>input[type="checkbox"]:checked~.content {
+    height: auto;
+    overflow: visible;
+    background-color: white;
+    /*texto de adentro*/
+}
+
+.accordion label {
+    display: block;
+}
+
+/*
+     Styling
+    */
+
+.accordion {
+    margin-bottom: 1em;
+
+}
+
+.accordion>input[type="checkbox"]:checked~.content {
+    padding: 15px;
+    border: 1px solid #f8f6f6;
+    border-top: 2;
+    border-radius: 4px;
+
+}
+
+.accordion .handle {
+    margin: 0;
+    font-size: 1.125em;
+    line-height: 1.2em;
+}
+
+.accordion label {
+    color: #333;
+    cursor: pointer;
+    font-family: 'Roboto Regular', arial !important;
+    font-weight: normal;
+    padding: 15px;
+    background: #e8e8e8;
+}
+
+.accordion label:hover,
+.accordion label:focus {
+    background: #d8d8d8;
+    font-weight: bold;
+    color: red;
+}
+
+.accordion .handle label:before {
+    font-family: 'fontawesome';
+    content: "\f054";
+    display: inline-block;
+    margin-right: 10px;
+    font-size: .58em;
+    line-height: 1.556em;
+    vertical-align: middle;
+
+}
+
+.accordion>input[type="checkbox"]:checked~.handle label:before {
+    content: "\f078";
+    color: red;
+}
+
+.accordion>input[type="checkbox"]:checked~label:before {
+    color: red !important;
+}
+
+/*
+     Demo purposes only
+    */
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+p {
+    font-family: 'Roboto Regular', arial !important;
+    font-size: 12px;
+}
+
+.accordion {
+    max-width: 65em;
+}
+
+.accordion p:last-child {
+    margin-bottom: 0;
+}

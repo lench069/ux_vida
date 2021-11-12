@@ -1,0 +1,356 @@
+<div class="row" style="text-align: left; padding-top: 40px;  font-family: 'Roboto Regular', arial;">
+	<div class="col-xs-12 col-md-8 col-lg-9 col-xl-10 col-xxl-10" style="background-color: #efefef; padding-right: 8px;  padding-left: 0px;">
+		<md-content style="background-color: #efefef; padding-left: 34px;">
+			<p class="title-head">Confirmación</p>
+			<!-- SECCION INCLUIDAS -->
+			<div style="background-color: #FFFFFF; padding: 10px 15px 2px 15px;">
+				<md-toolbar class="md-accent title">
+					<div class="md-toolbar-tools">
+						<p class="title-alert size-elert color-white">
+							INCLUIDAS</p>
+						<span flex></span>
+					</div>
+				</md-toolbar>
+
+				<md-content layout-padding class="borderBody2">
+
+					<div ng-repeat="grupoCobertura in coberturas.obligatorias" style="padding: 8px 8px 2px 8px !important;">
+						<md-toolbar
+							ng-class="!grupoCobertura.show ? 'md-accent borderTitleNg2' : 'md-accent borderTitle2'">
+							<div class="md-toolbar-tools">
+								<md-button class="md-icon-button" aria-label="Settings">
+									<md-icon md-svg-icon="./assets/img/{{grupoCobertura.nameIcon}}"></md-icon>
+								</md-button>
+								<p ng-class="!grupoCobertura.show ? 'title-coberNg2' : 'title-cober2'">
+									{{ grupoCobertura.name }}</p>
+								<span flex></span>
+							</div>
+						</md-toolbar>
+
+						<md-content layout-padding class="borderBody2">
+
+							<div ng-repeat="cobertura in grupoCobertura.coberturas" style="padding-top: 0px;">
+								<div class="row" style="padding-top: 0px;">
+									<div class="col-md-8" style="padding-top: 10px;">
+										<img ng-src="./assets/img/{{cobertura.nameIcon}}" alt=""
+											style="padding-left: 5px; padding-right: 5px; width: 30px; height: 25px;" />
+										<span class="nameItem2"> {{ cobertura.deCobertura }} <span class="verDetalle">
+												<strong ng-click="showHide(cobertura)"> Ver detalle
+													<em class="glyphicon glyphicon-chevron-up"
+														ng-if="cobertura.show"></em>
+													<em class="glyphicon glyphicon-chevron-down"
+														ng-if="!cobertura.show"></em>
+												</strong></span>
+										</span>
+									</div>
+
+									<div class="col-md-4" style="text-align: right; padding-bottom: 5px;">
+										<span>
+											<input type="text" ng-model="cobertura.mtSumaAsegurada" class="sizeInputCo"
+												ng-value="cobertura.mtSumaAsegurada | currency | formatCurrency"
+												ng-disabled="true" />
+										</span>
+									</div>
+								</div>
+								<div ng-if="cobertura.show">
+									<div class="sombraDesc">
+										<div class="descripcionCob">
+											{{cobertura.deCoberturaLarga}}
+										</div>
+									</div>
+								</div>
+								<md-divider style="border: 1px solid #d8d7d7;"></md-divider>
+							</div>
+
+						</md-content>
+					</div>
+				</md-content>
+			</div>
+			<!-- FIN INCLUIDAS -->
+
+			<!-- SECCION ADICIONALES -->
+
+
+			<div style="background-color: #FFFFFF; padding: 10px 15px 2px 15px;"
+				ng-show="verificarAdicionales(coberturas.opcionales)">
+
+				<md-toolbar class="md-accent title">
+					<div class="md-toolbar-tools">
+						<p class="title-alert size-elert color-white">
+							ADICIONALES</p>
+						<span flex></span>
+					</div>
+				</md-toolbar>
+				<md-content layout-padding class="borderBody2">
+					<div ng-repeat="grupoCobertura in coberturas.opcionales" style="padding: 8px 8px 2px 8px !important;" ng-show="verificar(grupoCobertura)">
+						<md-toolbar
+							ng-class="!grupoCobertura.show ? 'md-accent borderTitleNg2' : 'md-accent borderTitle2'" ng-if="!grupoCobertura.active">
+							<div class="md-toolbar-tools">
+								<md-button class="md-icon-button" aria-label="Settings">
+									<md-icon md-svg-icon="./assets/img/{{grupoCobertura.nameIcon}}"></md-icon>
+								</md-button>
+								<p ng-class="!grupoCobertura.show ? 'title-coberNg2' : 'title-cober2'">
+									{{ grupoCobertura.name }}</p>
+								<span flex></span>
+							</div>
+						</md-toolbar>
+
+						<md-toolbar class="md-accent borderTitleNgMascot" ng-if="grupoCobertura.active">
+							<div class="md-toolbar-tools">
+								<md-button class="md-icon-button" aria-label="Settings">
+									<md-icon md-svg-icon="./assets/img/iconProteccionMascotasBlanco.svg"></md-icon>
+								</md-button>
+								<p class="title-cober-mascota"> {{ grupoCobertura.name }}</p>
+								<md-button class="md-raised"><span style="color: #E90B18;"><strong>Nuevo</strong></span>
+								</md-button>
+								<span flex></span>
+							</div>
+						</md-toolbar>
+
+						<md-content layout-padding class="borderBody2">
+
+							<div ng-repeat="cobertura in grupoCobertura.coberturas" style="padding-top: 0px;" ng-show="(cobertura.mtSumaAsegurada > 0 || cobertura.mtSumaAsegurada === '') && grupoCobertura.show">
+								<div class="row" style="padding-top: 0px;">
+									<div class="col-md-8" style="padding-top: 10px;" ng-if="!grupoCobertura.active">
+										<img ng-src="./assets/img/{{cobertura.nameIcon}}" alt=""
+											style="padding-left: 5px; padding-right: 5px; width: 30px; height: 25px;" />
+										<span class="nameItem2"> {{ cobertura.deCobertura }} <span class="verDetalle">
+												<strong ng-click="showHide(cobertura)"> Ver detalle
+													<em class="glyphicon glyphicon-chevron-up"
+														ng-if="cobertura.show"></em>
+													<em class="glyphicon glyphicon-chevron-down"
+														ng-if="!cobertura.show"></em>
+												</strong></span>
+										</span>
+									</div>
+									<div class="col-md-8" style="padding-top: 10px;" ng-if="grupoCobertura.active">
+										<img ng-src="./assets/img/{{cobertura.nameIcon}}" alt=""
+											style="padding-left: 5px; padding-right: 5px; width: 30px; height: 25px;" />
+										<span class="nameItem2"> {{ cobertura.deCobertura }} <span class="verDetalle">
+												<strong ng-click="showHide(cobertura)"> Ver detalle
+													<em class="glyphicon glyphicon-chevron-up"
+														ng-if="cobertura.show"></em>
+													<em class="glyphicon glyphicon-chevron-down"
+														ng-if="!cobertura.show"></em>
+												</strong></span>
+										</span>
+									</div>
+									<div class="col-md-4" style="text-align: right;padding-bottom: 10px;"
+										ng-if="cobertura.mtSumaSugerida * 1">
+										<span>
+											<input type="text" ng-model="cobertura.mtSumaAsegurada" class="sizeInputCo"
+												ng-value="cobertura.mtSumaAsegurada | currency | formatCurrency"
+												ng-disabled="true" />
+										</span>
+									</div>
+								</div>
+								<div ng-if="cobertura.show">
+									<div class="sombraDesc">
+										<div class="descripcionCob">
+											{{cobertura.deCoberturaLarga}}
+										</div>
+									</div>
+								</div>
+								<md-divider style="border: 1px solid #d8d7d7;"></md-divider>
+							</div>
+
+						</md-content>
+					</div>
+				</md-content>
+			</div>
+
+			<div style="background-color: #FFFFFF; padding: 10px 15px 2px 15px;"
+				ng-show="!coberturas.opcionales || coberturas.opcionales.length==0">
+				<p class="sin-cobert"><em class="glyphicon glyphicon-info-sign"></em> No se encontraron coberturas
+					adicionales.</p>
+			</div>
+			<!-- FIN ADICIONALES -->
+
+			<!-- ASISTENCIAS -->
+
+				<div style="background-color: #FFFFFF; padding: 10px 15px 2px 15px;">
+				<md-toolbar class="md-accent title">
+					<div class="md-toolbar-tools">
+						<p class="title-alert size-elert color-white">
+							ASISTENCIAS</p>
+						<span flex></span>
+					</div>
+				</md-toolbar>
+
+				<md-content layout-padding class="borderBody2">
+
+					<div ng-repeat="asistencia in asistencias" style="padding-top: 0px;">
+						<div class="row" style="padding-top: 0px; padding-bottom: 15px;">
+							<div class="col-md-8" style="padding-top: 10px;">
+								<img ng-src="./assets/img/{{asistencia.nameIcon}}" alt=""
+									style="padding-left: 5px; padding-right: 5px; width: 30px; height: 25px;" />
+								<span class="nameItem2"> {{ asistencia.desc }} <span class="verDetalle">
+										<strong ng-click="showHide(asistencia)"> Ver detalle
+											<em class="glyphicon glyphicon-chevron-up" ng-if="asistencia.show"></em>
+											<em class="glyphicon glyphicon-chevron-down" ng-if="!asistencia.show"></em>
+										</strong></span>
+								</span>
+							</div>
+						</div>
+						<div ng-if="asistencia.show">
+							<div class="sombraDesc">
+								<div class="descripcionCob">
+									{{asistencia.DESC_ASISTENCIA}} <a href="" style="color: #E90B18;"
+										ng-click="showModalAsistencia(asistencia)">click aquí.</a>
+								</div>
+							</div>
+						</div>
+						<md-divider style="border: 1px solid #d8d7d7;"></md-divider>
+					</div>
+
+				</md-content>
+			</div>
+			<!-- FIN ASISTENCIAS -->
+
+		</md-content>
+		<footer>
+			<div class="col-md-6">
+				<md-button class="md-raised md-primary btnVolver" ng-show="!showIncAdi" ng-click="volver()"><strong>
+						volver al paso anterior</strong>
+				</md-button>
+			</div>
+			<div class="col-md-6" style="text-align: right; padding-right: 0px;">
+				<md-button class="md-raised btnContinuar" ng-click="emitir(parametros)" style="width: auto;"><strong>emitir cobertura</strong></md-button>
+				<md-button class="md-raised btnContinuar" ng-click="verificaDigital()" ng-show="flagAceptacionDigital" style="width: auto;"><strong>aceptacion digital</strong> </md-button>
+			</div>
+		</footer>
+	</div>
+	
+	<div class="col-xs-12 col-md-3 col-lg-3" style="margin-top:-10px; background-color: #efefef; padding-right: 0px; padding-left: 0px;">
+
+
+	
+		<md-content style="background-color: #efefef;">
+			<md-card md-theme-watch class="bg-planes">
+				<md-card-content style="height: 60px;">
+					<div class="col-md-1 iconCard-cotizar">
+						<img class="icono-casa" src="./assets/img/iconViviendaWhite.svg" alt="">
+					</div>
+					<div class="col-md-11" style="padding-left: 45px;">
+						<p class="title-sub-cotizar">Resumen del seguro
+						</p>
+					</div>
+				</md-card-content>
+				<md-card-content class="bg-card" style="padding-top:5px">
+					<div class="row">
+					<div class="col-md-12">
+						<md-card style="box-shadow: none !important;background-color: #F5F7FA;">
+							<md-card-title style="padding-top:15px">
+								<md-card-title-text>
+									<div class="row">
+										<div class="col-xs-5 col-md-3 col-lg-3" style="text-align: right;padding-right: 0px;">
+											<img  src="./assets/img/iconCostoTotal.svg" alt="">										
+										</div>	
+										<div class="col-xs-7 col-md-8 col-lg-8" style="text-align:start">
+											
+											<p class="title-alert size-elert textResumeCot"><strong>Costo total mensual</strong></p>
+										</div>			
+									</div>
+									<div style="height:10px"></div>
+									<div class="row" style="text-align: center;">
+										<div class="col-md-12">
+											
+															<span class="texto-total-mensual">{{planPersonalizado.costoTotalMensual | currency | formatCurrency}}
+																
+															</span>
+										</div>
+									</div>
+								</md-card-title-text>
+							</md-card-title>
+						</md-card>
+					</div>
+					<div class="col-md-12">
+						<md-card class="card-resumen">
+							<md-card-title class="textTittle">
+								<md-card-title-text>
+									<div class="row">
+										<div class="col-xs-1 col-md-2">
+											<img style="margin-left:10px" src="./assets/img/iconCostoDiario.svg" alt="">
+										</div>
+										<div class="col-xs-10 col-md-10">
+											<p class="title-alert size-elert textResumeCot">Costo diario <span class="color-red">{{ planPersonalizado.costoDiario | currency | formatCurrency}}</span></p>
+										</div>
+									</div>
+								</md-card-title-text>
+							</md-card-title>
+						</md-card>
+					</div>
+					<div class="col-md-12">
+						<md-card class="card-resumen">
+							<md-card-title class="textTittle">
+								<md-card-title-text>
+									<div class="row">
+										<div class="col-xs-1 col-md-2">
+											<img style="margin-left:10px" src="./assets/img/iconPlanPagos.svg" alt="">
+										</div>
+										<div class="col-xs-10 col-md-10">
+											<p class="title-alert size-elert textResumeCot">Plan de pagos <span class="rojo">{{planPersonalizado.numDePagos}} cuotas</span></p>
+										</div>
+									</div>
+								</md-card-title-text>
+							</md-card-title>
+							<div layout="row" layout-align="start" flex>
+							</div>
+						</md-card>
+					</div>
+					<div class="col-md-12">
+						<md-card class="card-resumen">
+							<md-card-title class="textTittle">
+								<md-card-title-text>
+									<div class="row">
+										<div class="col-xs-1 col-md-2">
+											<img style="margin-left:10px;margin-top: 10px;" src="./assets/img/iconViviendaRed.svg" alt="">
+										</div>
+										<div class="col-xs-10 col-md-10">
+											<p class="title-alert size-elert textResumeCot">La vivienda será asegurada correctamente por <span
+													class="rojo">{{planPersonalizado.sumaAsegurada | currency | formatCurrency}}</span></p>
+										</div>
+									</div>
+								</md-card-title-text>
+							</md-card-title>
+							<div layout="row" layout-align="start" flex>
+							</div>
+						</md-card>
+					</div>	
+					<div class="col-md-12">
+						<md-card class="card-resumen">
+							<md-card-title class="textTittle">
+								<md-card-title-text>
+									<div class="row">
+										<div class="col-xs-1 col-md-2">
+											<img style="margin-left:10px" src="./assets/img/iconTamanio.svg" alt="">
+										</div>
+										<div class="col-xs-10 col-md-10" ng-if='dataUser.m2!=""'>
+											<p class="title-alert size-elert textResumeCot">Tamaño <span class="negrita rojo">{{planPersonalizado.tamanoM2}} M²</span></p>
+											
+										</div>
+										<div class="col-xs-10 col-md-10" ng-if='dataUser.m2==""'>
+											<p class="title-alert size-elert textResumeCot">Cantidad de ambientes</p>
+											<p class="title-alert size-elert textResumeCot rojo">{{dataUser.ambiente}} {{dataUser.ambiente == 1? "ambiente":"ambientes"}}</p>
+										</div>
+									</div>
+								</md-card-title-text>
+							</md-card-title>
+							<div layout="row" layout-align="start" flex>
+							</div>
+						</md-card>
+					</div>	
+						<br>
+						<div style="text-align: center;">
+							<img class="marginImage" src="./assets/img/logoZurichSantander.svg" alt="">
+						</div>
+						
+					</div>
+
+				</md-card-content>
+			</md-card>
+			
+</div>
+	
+
+</div>

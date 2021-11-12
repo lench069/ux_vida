@@ -1,0 +1,95 @@
+<section class="card cotizaciones-detail">
+	<div class="row navbar-fixed-top">
+		<div class="col-md-6">
+			<div class="row">
+			    <md-input-container class="col-md-5 col-sm-5" flex-gt-sm ng-hide="isNotAutoType()">
+			        <label>Compa&ntilde;&iacute;a aseguradora</label>
+			        <md-select ng-model="filt.aseguradora" md-container-class="dropDown" ng-change="resetChecks()">
+			            <md-option value="{{null}}" >Seleccionar</md-option>
+			            <md-option ng-repeat="aseguradora in aseguradoras" value="{{aseguradora.valor}}">{{aseguradora.descripcion}}</md-option>
+			        </md-select>
+			    </md-input-container>
+			
+			    <md-input-container class="col-md-5 col-sm-5" flex-gt-sm ng-hide="isNotAutoType()">
+			        <label>Coberturas a cotizar</label>
+			        <md-select ng-model="filt.cobertura" md-container-class="dropDown" ng-change="resetChecks()">
+			            <md-option value="{{null}}" >Seleccionar</md-option>
+			            <md-option ng-repeat="cobertura in coberturas" value="{{cobertura.valor}}">{{cobertura.descripcion}}</md-option>
+			        </md-select>
+			    </md-input-container>
+			
+			    <div class="col-md-12" ng-show="isBasicRamoType()">
+			        <form name="formRecotizador" ng-submit="formRecotizador.$valid && recotizar()" novalidate  class="col-md-12">
+			            <div layout-gt-sm="row">
+			                <md-input-container class="md-block" flex-gt-sm>
+			                    <label>Nueva Suma Asegurada</label>
+			                    <input ng-model="newMtSumAseg" type="number" ng-min="cotizacion.limits.min" ng-max="cotizacion.limits.max" required>
+			                </md-input-container>
+			                <div class="col-md-4">
+			                     <input type="submit" value="Recotizar" class="btn btn-danger btn-recot" readonly/>
+			                </div>
+			            </div>
+			        </form>
+			    </div>
+			</div>
+	    </div>
+
+		<div class="col-md-6">
+		    <div class="col-md-12 text-right">
+		    	<input class="btn btn-danger" value="Continuar cotizaci&oacute;n" ng-click="continuarCoti()" readonly/>
+		        <a href="#!pricing"><input class="btn btn-white" value="Cancelar" readonly/></a>
+		    </div>
+	    </div>
+
+	    <div class="col-md-12">
+		    <div class="listCotizDetail">
+		    	<div class="col-md-12 text-coti">Multicotizaci&oacute;n Nro.: {{cotizacion.nuFlota}}&nbsp;&nbsp;/&nbsp;&nbsp;Cotizaci&oacute;n:&nbsp;&nbsp;{{cotizacion.cdSuc}} - {{cotizacion.nuCotizacion}}</div>
+		    	<div class="row">
+			        <div class="col-md-12 headerRow">
+			            <div class="th col_3">&nbsp;</div>
+			            <div class="th col_10">Compa&ntilde;&iacute;a</div>
+			            <div class="th col_20">Producto</div>
+			            <div class="th col_20">Plan</div>
+			            <div class="th col_6">Pagos</div>
+			            <div class="th col_12">Cuota Mensual</div>
+			            <div class="th col_13">Suma Asegurada</div>
+			            <div class="th col_8 col_none"></div>
+			            <div class="th_input col_8"><input class="btn btn-danger" value="Comparar" ng-click="comparePlans()" readonly/></div>
+			        </div>
+		        </div>
+	        </div>
+	    </div>
+    </div>
+
+    <div class="col-md-12 listCotizDetail">
+        <md-radio-group ng-model="optionCoti">
+            <div class="col-md-12">
+                <div class="col-md-12 containerDetail" ng-repeat="detalleCoti in cotizacion.detalleCotizacion | filter: (!isNotAutoType()?{cdRamo:filt.aseguradora}:'') | filter: (!isNotAutoType()?{cdCategPlan:filt.cobertura}:'') ">
+                    <div class="row">
+	                    <div class="td col_3 rad">
+	                        <md-radio-button id="radioButton" value="{{detalleCoti.cdProducto}}-{{detalleCoti.cdPlan}}" class="radioButtondemoBasicUsage" aria-label="option"></md-radio-button>
+	                    </div>
+	                    <div class="td col_10" ng-class="('cdRamo')+detalleCoti.cdRamo"></div>
+	                    <div class="td col_20 text-left descr">{{detalleCoti.deProducto}}</div>
+	                    <div class="td col_20 text-left descr">{{detalleCoti.dePlan}}</div>
+	                    <div class="td col_6 monto">{{detalleCoti.nuPagos}}</div>
+	                    <div class="td col_12 monto"><div ng-show="isProtPago(detalleCoti)">(*)</div><div ng-show="isNotProtPago(detalleCoti)">$ {{detalleCoti.mtCuota | number:2}}</div></div>
+	                    <div class="td col_13 monto">$ {{detalleCoti.sumaAsegurada}}<br><div class="inspec" ng-show="isAutoInspeccion(detalleCoti)">con Inspecci&oacute;n</div></div>
+	                    <div class="td col_8"><input class="btn btn-green" value="Coberturas" ng-click="showPopup($event, detalleCoti)" readonly/><input class="btn btn-blue" value="Imprimir" ng-click="imprCotizacion(detalleCoti)" readonly/></div>
+	                    <div class="td col_8 check">
+	                        <md-checkbox ng-model="checkboxList[$index]" class="green" aria-label="compara" ng-change="addItemToCompare($index, detalleCoti)" ng-init="checkboxList[$index]=false"></md-checkbox>
+	                    </div>
+                    </div>
+                </div>
+            </div>
+        </md-radio-group>
+
+		<div class="col-md-12" ng-show="isProtPagoPremio()">
+			<div class="col-md-1"></div>
+			<div class="col-md-10"><br>{{isProtPagoPremio('texto')}}</div>
+			<div class="col-md-1"></div>
+       	</div>
+
+    </div>
+
+</section>

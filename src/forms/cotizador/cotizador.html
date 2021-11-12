@@ -1,0 +1,423 @@
+<section class="card formCustomer" ng-show="existsAnySelection2">
+    <form name="formCotizador" ng-submit="formCotizador.$valid && validaForm() && cotizadorSubmit()" novalidate>
+        <md-content layout-padding="" class="layout-padding _md">
+        
+            <!-- vivienda -->
+            <div id="vivienda" class="formFrag" ng-show="ramosSelection.ramo21 && !showNewExperience">
+                <div class="heading">
+                    <i class="icon iconRamo21 pull-left red"></i><h2>Vivienda</h2>
+                </div>
+				
+				<md-content class="col-md-12">
+		            <md-autocomplete class="col-md-12" id="provincia" name="provincia" ng-required="ramosSelection.ramo21"
+			                             ng-disabled="false" md-no-cache="true"
+			                             md-search-text="searchProv"
+			                             md-selected-item = "form.cotiVivienda.deProvincia"
+			                             md-selected-item-change="selectedItemChange(item.valor, 'cotiVivienda', 'cdProvincia')"
+			                             md-items="item in querySearch(searchProv, 'provincias')"
+			                             md-item-text="item.descripcion.toUpperCase()"
+			                             md-min-length="0" placeholder="" md-floating-label="Provincia">
+			            <md-item-template>
+			                <span md-highlight-text="searchProv" md-highlight-flags="^i">{{item.descripcion.toUpperCase()}}</span>
+			            </md-item-template>
+			        </md-autocomplete>
+			    </md-content>
+			        
+			    <md-content class="col-md-12">
+		            <md-autocomplete class="col-md-12" id="codPos" name="codPos" ng-required="ramosSelection.ramo21"
+			                             ng-disabled="false" md-no-cache="true"
+			                             md-search-text="searchLocalidad"
+			                             md-selected-item = "form.cotiVivienda.deLocalidad"
+			                             md-selected-item-change="selectedItemChange(item.valor, 'cotiVivienda', 'codPos')"
+			                             md-items="item in querySearch(searchLocalidad, 'localidades')"
+			                             md-item-text="item.descripcion.toUpperCase()"
+			                             md-min-length="0" placeholder="" md-floating-label="Cod. Postal">
+			            <md-item-template>
+			                <span md-highlight-text="searchLocalidad" md-highlight-flags="^i">{{item.descripcion.toUpperCase()}}</span>
+			            </md-item-template>
+			        </md-autocomplete>
+			    </md-content>
+
+                <div class="col-md-12">
+	                <md-input-container class="md-block col-md-12" flex-gt-sm>
+	                    <label>Tipo de vivienda</label>
+	                    <md-select ng-model="form.cotiVivienda.tpCobertura" ng-required="ramosSelection.ramo21">
+	                        <md-option ng-repeat="vivi in viviendas" value="{{vivi.valor}}">{{vivi.descripcion}}</md-option>
+	                    </md-select>
+	                </md-input-container>
+                </div>
+                <div class="col-md-12">
+	                <md-input-container class="md-block col-md-12" flex-gt-sm>
+	                    <label>Clase de vivienda</label>
+	                    <md-select ng-model="form.cotiVivienda.cdClaseRiesgo" ng-required="ramosSelection.ramo21">
+	                        <md-option ng-repeat="claseVivi in claseVivienda" value="{{claseVivi.valor}}">{{claseVivi.descripcion}}</md-option>
+	                    </md-select>
+	                </md-input-container>
+                </div>
+				<div class="col-md-12">
+	                <md-input-container class="md-block col-md-12 " flex-gt-sm>
+	                    <label>Monto a asegurar ($)</label>
+	                    <input class="monto" ng-model="form.cotiVivienda.mtSumaAseg" type="number" range-reset aria-invalid="false" ng-required="ramosSelection.ramo21" ng-min="form.cotiVivienda.limits.min" ng-max="form.cotiVivienda.limits.max">
+					</md-input-container>
+					<p class="help-block">
+						Debe ser superior a $ {{form.cotiVivienda.limits.min}}.- e inferior a $ {{form.cotiVivienda.limits.max}}.-
+					</p>
+					<p class="help-block" style="color: red;">
+						<img src="/images/icon-alert.png" style="width: 20px;">{{valorM2}}
+					</p>
+            	</div>
+            </div>
+
+			<md-button ng-if="showNewExperience" class="md-raised md-accent btnNuevaExp" ng-click="nuevaExperiencia()"><strong>NUEVA EXPERIENCIA VIVIENDA</strong></md-button>
+
+			<!-- accidentes personales -->
+            <div id="accpersonales" class="formFrag" ng-show="ramosSelection.ramo1">
+                <div class="heading">
+                    <i class="icon iconRamo1 pull-left red"></i><h2>Accidentes personales</h2>
+                </div>
+                <div class="col-md-12">
+	                <md-input-container class="col-md-12 md-block flex-gt-sm" flex-gt-sm="">
+	                    <label for="">Monto a asegurar ($)</label>
+	                    <input class="monto" ng-model="form.cotiAcciPers.mtSumaAseg" type="number" range-reset aria-invalid="false" ng-required="ramosSelection.ramo1" ng-min="form.cotiAcciPers.limits.min" ng-max="form.cotiAcciPers.limits.max">
+					</md-input-container>
+					<p class="help-block">
+						Debe ser superior a $ {{form.cotiAcciPers.limits.min}}.- e inferior a $ {{form.cotiAcciPers.limits.max}}.-
+					</p>
+				</div>
+            </div>
+			
+            <!-- vida -->
+            <div id="vida" class="formFrag" ng-show="ramosSelection.ramo18">
+                <div class="heading">
+                    <i class="icon iconRamo18 pull-left red"></i><h2>Vida</h2>
+                </div>
+                <div class="col-md-12">
+	                <md-input-container class="col-md-12 md-block flex-gt-sm" flex-gt-sm="">
+	                    <label for="">Monto a asegurar ($)</label>
+	                    <input class="monto" ng-model="form.cotiVida.mtSumaAseg" type="number" range-reset aria-invalid="false" ng-required="ramosSelection.ramo18" ng-min="form.cotiVida.limits.min" ng-max="form.cotiVida.limits.max">
+					</md-input-container>
+					<p class="help-block">
+						Debe ser superior a $ {{form.cotiVida.limits.min}}.- e inferior a $ {{form.cotiVida.limits.max}}.-
+					</p>
+				</div>
+            </div>
+            
+            <!-- Robo en cajeros -->
+            <div id="robocajero" class="formFrag formFragNone" ng-show="ramosSelection.ramo19">
+	            <!-- descomentar cuando se deba poner suma asegurada y borrar el call formFragNone
+                <div class="heading">
+                    <i class="icon iconRamo19 pull-left red"></i><h2>Robo en Cajeros</h2>
+                </div>
+                <div class="col-md-12">
+	                <md-input-container class="col-md-12 md-block flex-gt-sm" flex-gt-sm="">
+	                    <label for="">Monto a asegurar ($)</label>
+	                    <input class="monto" ng-model="form.cotiRoboCaj.mtSumaAseg" type="number" range-reset aria-invalid="false" ng-required="ramosSelection.ramo19" ng-min="form.cotiRoboCaj.limits.min" ng-max="form.cotiRoboCaj.limits.max">
+					</md-input-container>
+					<p class="help-block">
+						Debe ser superior a $ {{form.cotiRoboCaj.limits.min}}.- e inferior a $ {{form.cotiRoboCaj.limits.max}}.-
+					</p>
+				</div>
+				-->
+            </div>
+
+            <!-- desempleo -->
+            <div id="desempleo" class="formFrag" ng-show="ramosSelection.ramo20">
+                <div class="heading">
+                    <i class="icon iconRamo20 pull-left red"></i><h2>Desempleo/Gastos Protegidos</h2>
+                </div>
+                <div class="col-md-12">
+	                <md-input-container class="md-block col-md-12" flex-gt-sm>
+	                    <label>Condici&oacute;n laboral</label>
+	                    <md-select ng-model="form.cotiDesempleo.cdClaseRiesgo" ng-required="ramosSelection.ramo20">
+	                        <md-option ng-repeat="condLaboralItem in condLaboralList" value="{{condLaboralItem.valor}}">{{condLaboralItem.descripcion}}</md-option>
+	                    </md-select>
+	                </md-input-container>
+                </div>
+	            <!-- descomentar cuando se deba poner suma asegurada
+                <div class="col-md-12">
+	                <md-input-container class="col-md-12 md-block flex-gt-sm" flex-gt-sm="">
+	                    <label for="">Monto a asegurar ($)</label>
+	                    <input class="monto" ng-model="form.cotiDesempleo.mtSumaAseg" type="number" range-reset aria-invalid="false" ng-required="ramosSelection.ramo20" ng-min="form.cotiDesempleo.limits.min" ng-max="form.cotiDesempleo.limits.max">
+					</md-input-container>
+					<p class="help-block">
+						Debe ser superior a $ {{form.cotiDesempleo.limits.min}}.- e inferior a $ {{form.cotiDesempleo.limits.max}}.-
+					</p>
+				</div>
+				-->
+            </div>
+            
+            <!-- autos/motos -->
+            <div id="autos" class="formFrag" ng-show="ramosSelection.ramo40">
+                <div class="heading">
+                    <i class="icon iconRamo40 pull-left red"></i><h2>Seguro de auto/moto</h2>
+                </div>
+                
+                <md-content class="col-md-12">
+		            <md-autocomplete class="col-md-12" id="provinciaAut" name="provinciaAut" ng-required="ramosSelection.ramo40"
+			                             ng-disabled="false" md-no-cache="true"
+			                             md-search-text="searchProvAut"
+			                             md-selected-item = "form.cotiAuto.deProvincia"
+			                             md-selected-item-change="selectedItemChange(item.valor, 'cotiAuto', 'provAuto')"
+			                             md-items="item in querySearch(searchProvAut, 'provinciasAut')"
+			                             md-item-text="item.descripcion.toUpperCase()"
+			                             md-min-length="0" placeholder="" md-floating-label="Provincia">
+			            <md-item-template>
+			                <span md-highlight-text="searchProvAut" md-highlight-flags="^i">{{item.descripcion.toUpperCase()}}</span>
+			            </md-item-template>
+			        </md-autocomplete>
+			    </md-content>
+			        
+			    <md-content class="col-md-12">
+		            <md-autocomplete class="col-md-12" id="codPosAut" name="codPosAut" ng-required="ramosSelection.ramo40"
+			                             ng-disabled="false" md-no-cache="true"
+			                             md-search-text="searchLocalidadAut"
+			                             md-selected-item = "form.cotiAuto.deLocalidad"
+			                             md-selected-item-change="selectedItemChange(item.valor, 'cotiAuto', 'cdPosAuto')"
+			                             md-items="item in querySearch(searchLocalidadAut, 'localidadesAut')"
+			                             md-item-text="item.descripcion.toUpperCase()"
+			                             md-min-length="0" placeholder="" md-floating-label="Cod. Postal">
+			            <md-item-template>
+			                <span md-highlight-text="searchLocalidadAut" md-highlight-flags="^i">{{item.descripcion.toUpperCase()}}</span>
+			            </md-item-template>
+			        </md-autocomplete>
+			    </md-content>
+
+                <div class="col-md-12">
+                    <div class="col-md-4 md-block flex-gt-sm" flex-gt-sm >
+                        <label>Tipo de Veh&iacute;culo</label>
+						 <md-radio-group ng-model="form.cotiAuto.inAutoMoto" ng-change="checkInAutoMoto()" layout="row">
+						  <md-radio-button value="A">Auto</md-radio-button>
+						  <md-radio-button value="M">Moto</md-radio-button>
+						 </md-radio-group>
+					 </div>
+                </div>
+
+                <div class="col-md-12">
+	                <md-input-container class="col-md-4 md-block">
+	                    <label for="">A&ntilde;o de fabricaci&oacute;n</label>
+	                    <input ng-model="form.cotiAuto.nuAnio" class="col-md-12 ng-pristine ng-valid md-input ng-empty ng-touched" id=""
+	                        ng-blur="checkAnio0Km('input')" aria-invalid="false" ng-required="ramosSelection.ramo40">
+	                </md-input-container>
+	                <md-input-container class="col-md-4 md-block">
+						<md-checkbox ng-model="form.cotiAuto.in0km" class="col-md-12 green" ng-true-value="'S'" ng-false-value="'N'" ng-change="checkAnio0Km('checkbox')">
+							0km
+						</md-checkbox>
+	                </md-input-container> 
+				</div>
+				
+				<md-content class="col-md-12">
+		            <md-autocomplete class="col-md-12" id="marca" name="marca" ng-disabled="!form.cotiAuto.nuAnio" ng-required="ramosSelection.ramo40"
+			                             md-no-cache="true"
+			                             md-search-text="searchTextMarca"
+			                             md-selected-item = "form.cotiAuto.deMarca"
+			                             md-selected-item-change="selectedItemChange(item.valor, 'cotiAuto', 'cdMarca')"
+			                             md-items="item in querySearch(searchTextMarca, 'carBrands')"
+			                             md-item-text="item.descripcion.toUpperCase()"
+			                             md-min-length="0" placeholder="" md-floating-label="Marca">
+			            <md-item-template>
+			                <span md-highlight-text="searchTextMarca" md-highlight-flags="^i">{{item.descripcion.toUpperCase()}}</span>
+			            </md-item-template>
+			        </md-autocomplete>
+			    </md-content>
+			    <md-content class="col-md-12">
+		            <md-autocomplete class="col-md-12" id="modelo" name="modelo" ng-disabled="!form.cotiAuto.cdMarca || !form.cotiAuto.nuAnio" ng-required="ramosSelection.ramo40"
+			                             md-no-cache="true"
+			                             md-search-text="searchTextModelo"
+			                             md-selected-item = "form.cotiAuto.deModelo"
+			                             md-selected-item-change="selectedItemChange(item.valor, 'cotiAuto', 'cdModeloRaw')"
+			                             md-items="item in querySearch(searchTextModelo, 'carModels')"
+			                             md-item-text="item.descripcion.toUpperCase()"
+			                             md-min-length="0" placeholder="" md-floating-label="Modelo">
+			            <md-item-template>
+			                <span md-highlight-text="searchTextModelo" md-highlight-flags="^i">{{item.descripcion.toUpperCase()}}</span>
+			            </md-item-template>
+			        </md-autocomplete>
+			    </md-content>
+
+                <div class="col-md-12">
+                    <md-input-container class="col-md-5 md-block">
+                        <label for="">GNC</label>
+						<md-select ng-model="form.cotiAuto.tpGnc" ng-change="handleGncDropDown(form.cotiAuto.tpGnc)" >
+							<md-option ng-repeat="gncItem in tpGncList" value="{{gncItem.valor}}" >{{gncItem.descripcion}}</md-option>
+						</md-select>
+                    </md-input-container>
+                    <md-input-container class="col-md-6 md-block flex-gt-sm" flex-gt-sm="" ng-show="form.cotiAuto.tpGnc && form.cotiAuto.tpGnc!='N|0|0'">
+                        <label for="">Suma aseg. GNC (${{gncSumMinLimit}} - ${{gncSumMaxLimit}})</label>
+						<input name="pages" range-reset type="number" ng-required="gncSumaAsegRequired && ramosSelection.ramo40" ng-min="gncSumMinLimit" ng-max="gncSumMaxLimit" 
+									ng-model="form.cotiAuto.mtSumaGnc" ng-pattern="/^[0-9]+$/">
+                    </md-input-container>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="col-md-4 md-block flex-gt-sm" flex-gt-sm >
+                        <label>Guarda en garaje</label>
+						 <md-radio-group ng-model="form.cotiAuto.inGarage" layout="row">
+						  <md-radio-button value="N">No</md-radio-button>
+						  <md-radio-button value="S">Si</md-radio-button>
+						 </md-radio-group>
+					 </div>
+					<div class="col-md-4 md-block flex-gt-sm" flex-gt-sm >
+						 <label>Rastreador satelital</label>
+						 <md-radio-group ng-model="form.cotiAuto.inRastreador" layout="row">
+						  <md-radio-button value="N">No</md-radio-button>
+						  <md-radio-button value="S">Si</md-radio-button>
+						 </md-radio-group>
+                    </div>
+                    <div class="col-md-4 md-block flex-gt-sm" flex-gt-sm >
+						 <label>Uso</label>
+						<md-radio-group ng-model="form.cotiAuto.cdUso" layout="row">
+						  <md-radio-button value="1">Particular</md-radio-button>
+						  <md-radio-button value="2">Comercial</md-radio-button>
+						</md-radio-group>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <md-input-container class="md-block col-md-12" flex-gt-sm>
+                        <label for="">Categor&iacute;a de IVA</label>
+						<md-select ng-model="form.cotiAuto.tpIva" ng-required="ramosSelection.ramo40">
+							<md-option ng-repeat="ivaCat in ivaCategories" value="{{ivaCat.valor}}" >{{ivaCat.descripcion}}</md-option>
+						</md-select>
+                    </md-input-container>
+                </div>
+                <div class="col-md-12">
+                    <md-input-container class="col-md-12 md-block flex-gt-sm" flex-gt-sm="">
+                        <label for="">Coberturas a realizar</label>
+						<md-select ng-model="form.cotiAuto.tpCobertura" ng-required="ramosSelection.ramo40">
+							<md-option ng-repeat="coberItem in tpCoberturaList" value="{{coberItem.valor}}" >{{coberItem.descripcion}}</md-option>
+						</md-select>
+                     </md-input-container>
+                </div>
+                <div class="col-md-12">
+                    <md-input-container class="col-md-12 md-block flex-gt-sm" flex-gt-sm="">
+                        <label for="">Compa&ntilde;ia aseguradora</label>
+						<md-select ng-model="form.cotiAuto.cdRamo" ng-required="ramosSelection.ramo40">
+							<md-option ng-repeat="icItem in insuranceCompanyList" value="{{icItem.valor}}">{{icItem.descripcion}}</md-option>
+						</md-select>
+                    </md-input-container>
+                </div>
+                <div class="col-md-12">
+					<div class="col-md-6 md-block flex-gt-sm" flex-gt-sm >					
+						<label>Robo en contenido</label>
+						<md-radio-group ng-model="form.cotiAuto.roboEnContenido" layout="row">
+						  <md-radio-button value="no" ng-click="form.cotiAuto.mtSumaRobo=null">No</md-radio-button>
+						  <md-radio-button value="yes">Si</md-radio-button>
+						</md-radio-group>
+					</div>
+					<div class="col-md-6 md-block flex-gt-sm" ng-show="form.cotiAuto.roboEnContenido == 'yes'" flex-gt-sm>
+						<md-input-container>
+							<label>Suma asegurada</label>
+							<md-select ng-model="form.cotiAuto.mtSumaRobo" ng-required="form.cotiAuto.roboEnContenido == 'yes'">
+								<md-option ng-repeat="roboItem in roboCmbList" value="{{roboItem.valor}}">{{roboItem.descripcion}}</md-option>
+							</md-select>
+						</md-input-container>
+					</div>
+                </div>
+
+            </div>     
+			
+			<!-- Proteccion salud -->
+            <div id="protsalud" class="formFrag formFragNone" ng-show="ramosSelection.ramo24">
+	            <!-- descomentar cuando se deba poner suma asegurada y borrar el call formFragNone
+                <div class="heading">
+                    <i class="icon iconRamo24 pull-left red"></i><h2>Protecci&oacute;n de salud</h2>
+                </div>
+                <div class="col-md-12">
+	                <md-input-container class="col-md-12 md-block flex-gt-sm" flex-gt-sm="">
+	                    <label for="">Monto a asegurar ($)</label>
+	                    <input class="monto" ng-model="form.cotiProtsalud.mtSumaAseg" type="number" range-reset aria-invalid="false" ng-required="ramosSelection.ramo24" ng-min="form.cotiProtsalud.limits.min" ng-max="form.cotiProtsalud.limits.max">
+					</md-input-container>
+					<p class="help-block">
+						Debe ser superior a $ {{form.cotiProtsalud.limits.min}}.- e inferior a $ {{form.cotiProtsalud.limits.max}}.-
+					</p>
+				</div>
+				-->
+            </div>
+			
+			<!-- Proteccion cartera -->
+            <div id="protcartera" class="formFrag formFragNone" ng-show="ramosSelection.ramo25">
+	            <!-- descomentar cuando se deba poner suma asegurada y borrar el call formFragNone
+                <div class="heading">
+                    <i class="icon iconRamo25 pull-left red"></i><h2>Protecci&oacute;n de cartera</h2>
+                </div>
+                <div class="col-md-12">
+	                <md-input-container class="col-md-12 md-block flex-gt-sm" flex-gt-sm="">
+	                    <label for="">Monto a asegurar ($)</label>
+	                    <input class="monto" ng-model="form.cotiProtCartera.mtSumaAseg" type="number" range-reset aria-invalid="false" ng-required="ramosSelection.ramo25" ng-min="form.cotiProtCartera.limits.min" ng-max="form.cotiProtCartera.limits.max">
+					</md-input-container>
+					<p class="help-block">
+						Debe ser superior a $ {{form.cotiProtCartera.limits.min}}.- e inferior a $ {{form.cotiProtCartera.limits.max}}.-
+					</p>
+				</div>
+				-->
+            </div>
+			
+			<!-- Compra protegida -->
+            <div id="compraprot" class="formFrag formFragNone" ng-show="ramosSelection.ramo26">
+	            <!-- descomentar cuando se deba poner suma asegurada y borrar el call formFragNone
+                <div class="heading">
+                    <i class="icon iconRamo26 pull-left red"></i><h2>Ccompra protegida</h2>
+                </div>
+                <div class="col-md-12">
+	                <md-input-container class="col-md-12 md-block flex-gt-sm" flex-gt-sm="">
+	                    <label for="">Monto a asegurar ($)</label>
+	                    <input class="monto" ng-model="form.cotiCompraprot.mtSumaAseg" type="number" range-reset aria-invalid="false" ng-required="ramosSelection.ramo26" ng-min="form.cotiCompraprot.limits.min" ng-max="form.cotiCompraprot.limits.max">
+					</md-input-container>
+					<p class="help-block">
+						Debe ser superior a $ {{form.cotiCompraprot.limits.min}}.- e inferior a $ {{form.cotiCompraprot.limits.max}}.-
+					</p>
+				</div>
+				-->
+            </div>
+                        
+			<!-- integral de comercio -->
+            <!-- <div id="integralcomerc" class="formFrag" ng-show="ramosSelection.ramo22">
+                <div class="heading">
+                    <i class="icon iconRamo22 pull-left red"></i><h2>Contrata y cotiza tu seguro de integral de comercio</h2>
+                </div>
+                <p class="subheading">Por favor complete los siguientes datos</p>
+                <md-input-container class="col-md-4 md-block flex-gt-sm" flex-gt-sm="">
+                    <label for="">Monto a asegurar ($)</label>
+                    <input ng-model="form.cotiIntegralComerc.mtSumaAseg" class="ng-pristine ng-valid md-input ng-empty ng-touched" id="" aria-invalid="false" ng-required="ramosSelection.ramo22">
+                </md-input-container>
+            </div> -->
+			
+			<!-- Pymes -->
+            <!-- <div id="compraprot" class="formFrag" ng-show="ramosSelection.ramo000">
+                <div class="heading">
+                    <i class="icon iconRamo000 pull-left red"></i><h2>Contrata y cotiza tu seguro de pymes</h2>
+                </div>
+                <p class="subheading">Por favor complete los siguientes datos</p>
+                <md-input-container class="col-md-4 md-block flex-gt-sm" flex-gt-sm="">
+                    <label for="">Monto a asegurar ($)</label>
+                    <input ng-model="form.cotiPymes.mtSumaAseg" class="ng-pristine ng-valid md-input ng-empty ng-touched" id="" aria-invalid="false" ng-required="ramosSelection.ramo000">
+                </md-input-container>
+            </div> -->
+            
+			<!-- incendio -->
+            <!-- <div id="incendio" class="formFrag" ng-show="ramosSelection.ramo8">
+                <div class="heading">
+                    <i class="icon iconRamo8 pull-left red"></i><h2>Incendio</h2>
+                </div>
+                <p class="subheading">Por favor complete los siguientes datos</p>
+				<md-input-container class="md-block col-md-12" flex-gt-sm>
+                    <label>Tipo de Vivienda</label>
+                    <md-select ng-model="form.cotiIncendio.tpCobertura" ng-required="ramosSelection.ramo8">
+                        <md-option ng-repeat="tpViviendaItem in tpViviendaList" value="{{tpViviendaItem.valor}}">{{tpViviendaItem.descripcion}}</md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container class="col-md-6 md-block flex-gt-sm" flex-gt-sm="">
+                    <label for="">Monto a asegurar ($)</label>
+                    <input type="number" range-reset ng-model="form.cotiIncendio.mtSumaAseg" class="ng-pristine ng-valid md-input ng-empty ng-touched" id="" aria-invalid="false" ng-required="ramosSelection.ramo8" ng-min="form.cotiIncendio.limits.min" ng-max="form.cotiIncendio.limits.max">
+					<p class="help-block">
+						Debe ser superior a $ {{form.cotiIncendio.limits.min}}.- e inferior a $ {{form.cotiIncendio.limits.max}}.-
+					</p>
+				</md-input-container>
+            </div> -->
+			          
+            <input ng-if="!showNewExperience" type="submit" value="Continuar cotizaci&oacute;n" class="btn btn-danger" readonly/>
+			<div class="errorForm" ng-show="errorForm">Datos ingresados inv&aacute;lidos.</div>
+        </md-content>
+    </form>
+
+</section>

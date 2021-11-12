@@ -1,0 +1,4 @@
+section.poliza-print { padding: 30px 20px 20px 20px; }
+    section.poliza-print div.th {background-color: #ec0000; color: #fff; display: block; float: left; text-transform: uppercase; font-weight: 600; font-size: 14px; text-align: center; padding: 12px 12px 12px 12px; border: solid 1px #fff; margin: 10px 0px 10px 0px;}
+    section.poliza-print md-input-container { margin: 0px; margin-top: 10px; height: 40px;}
+    section.poliza-print md-radio-button { margin-top: 16px; height: 30px;}

@@ -1,0 +1,88 @@
+<section class="card cotizaciones">  
+	<div layout="row" layout-sm="column" layout-align="space-around" ng-show="loading" class="loadingSVG">
+	    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+	</div>
+	
+	<div class="cards-pricing">
+		<div class="col-md-12 costs">
+			<div class="col-md-6">
+				 <md-input-container class="md-block head col-md-3 col-md-offset-3" flex-gt-sm>
+			        <label>Sucursal emisi&oacute;n</label>
+			        <input class="labelHead" ng-value="(cotizadorServ.getCotizaciones()[0].cdSuc || cotizadorServ.getCotizaciones()[1].cdSuc || cotizadorServ.getCotizaciones()[2].cdSuc) + ' - ' + (cotizadorServ.getCotizaciones()[0].deSuc || cotizadorServ.getCotizaciones()[1].deSuc || cotizadorServ.getCotizaciones()[2].deSuc)" readonly>
+			    </md-input-container>
+			</div>
+			<div class="col-md-6">
+				<md-input-container class="md-block head col-md-3" flex-gt-sm>
+			        <label>Usuario emisi&oacute;n</label>
+			        <input class="labelHead" ng-value="cotizadorServ.getCotizaciones()[0].nmUsuario || cotizadorServ.getCotizaciones()[1].nmUsuario || cotizadorServ.getCotizaciones()[2].nmUsuario" readonly>
+			    </md-input-container>
+			</div>
+		</div>
+	
+	    <div class="col-md-12 text-center boxes-container">
+	    	<div class="col-md-12">
+	    		<div class="col-md-3 text-left nrocot">Multicotizaci&oacute;n Nro. {{cotizadorServ.getCotizaciones()[0].nuFlota}}</div>
+	    		<div class="col-md-3 text-right costs">Costo total: $ {{cotizadorServ.getCostos().total | number:2}}</div>
+	    		<div class="col-md-6 text-left costs">Costo Diario: $ {{cotizadorServ.getCostos().totalDiario | number:2}}</div>
+	    	</div>
+	        <div class="box card cotizacion" ng-repeat="cotizacion in cotizadorServ.getCotizaciones() | orderBy:putAutoFirst">
+	            <div class="clear" ng-click="delCotizacion(cotizacion.cdRamo)"></div>
+	            <h1>{{cotizacion.firstPricing.deRamo}}</h1>
+	            <div ng-show="!cotizacion.asyncIsDone" layout="row" layout-sm="column" layout-align="space-around">
+	                <md-progress-circular ng-disabled="cotizacion.asyncIsDone" md-mode="indeterminate"></md-progress-circular>
+	            </div>
+	            <span ng-show="(cotizacion.asyncIsDone && !cotizacion.cotizacionFails)">
+	                <div class="color-box" ng-class="('cdramo')+cotizacion.cdRamo">
+	                    <h2>{{cotizacion.firstPricing.dePlan}}</h2>
+	                    <h3 ng-show="cotizacion.firstPricing.hasOwnProperty('mtCuota')">$ {{cotizacion.firstPricing.mtCuota | number:2}}</h3>
+	                    <h3 ng-show="!cotizacion.firstPricing.hasOwnProperty('mtCuota')"></h3>
+	                    <div class="logo" ng-class="('cdramo')+cotizacion.cdRamo"></div>
+	                </div>
+	                <div class="box-info upper">
+	                    <div class="logos" ng-show="getShowIncluye(cotizacion.firstPricing)" >
+	                        <img src="assets/img/marcas.svg" alt="">
+	                    </div>
+	                    <div class="detail" ng-show="showDetail">
+	                        <div class="titleDetail" ng-show="cotizacion.cdRamo < 30 || cotizacion.cdRamo > 40"></div>
+	                        <div class="bodyDetail">
+	                            <div class="col-md-12">{{cotizacion.firstPricing.deProducto}}</div>
+	                            <div class="col-md-12">({{cotizacion.firstPricing.cdProducto}})</div>
+	                            <div class="col-md-12"><b>{{cotizacion.firstPricing.nuPagos}} PAGOS</b></div>
+	                        </div>
+	                        <div class="titleDetail logo" ng-show="cotizacion.firstPricing.cdRamo >= 30 && cotizacion.firstPricing.cdRamo <= 39">
+	                        	<img ng-src="./assets/img/zurich.svg" ng-show="cotizacion.firstPricing.cdRamo == '30'" alt="">
+	                        	<img ng-src="./assets/img/orbis.svg" ng-show="cotizacion.firstPricing.cdRamo == '31'" alt="">
+	                        	<img ng-src="./assets/img/mapfre.svg" ng-show="cotizacion.firstPricing.cdRamo == '32'" alt="">
+	                        	<img ng-src="./assets/img/sancor.svg" ng-show="cotizacion.firstPricing.cdRamo == '33'" alt="">
+	                        	<img ng-src="./assets/img/meridional.svg" ng-show="cotizacion.firstPricing.cdRamo == '35'" alt="">
+	                        	<img ng-src="./assets/img/lacaja.svg" ng-show="cotizacion.firstPricing.cdRamo == '36'" alt="">
+	                        	<img ng-src="./assets/img/sura.svg" ng-show="cotizacion.firstPricing.cdRamo == '39'" alt="" id="sura">
+	                        </div>
+	                        <div class="person" ng-show="cotizacion.firstPricing.cdRamo == '21'">
+	                            <input class="btn btn-dark-blue" ng-click="showPersonalizarModal(cotizacion.firstPricing)" value="Personalizar" readonly/>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="cost">
+	                	<div ng-show="showDetail" class="costItem">Nro. Cotizaci&oacute;n: {{cotizacion.firstPricing.nuCotizacion}}</div>
+	                	<div ng-show="showDetail" class="costItem">Suma Asegurada: $ {{cotizacion.firstPricing.sumaAsegurada | number:0}}</div>
+	                	<div ng-show="showDetail" class="costItem">Costo Diario: $ {{cotizacion.firstPricing.mtCuota / 30 | number:2}}</div>
+	                </div>  
+	                <div class="btns-container">
+	                    <a href="#!pricing/cotidetail/{{cotizacion.cdRamo}}"><input class="btn btn-default ver-mas" value="+ planes" readonly/></a>
+	                    <input class="btn btn-default coberturas" value="Coberturas" ng-click="showCoberturas(cotizacion.firstPricing)" ng-show="cotizacion.cdRamo < 30 || cotizacion.cdRamo > 40"/>
+	                </div>
+	            </span>
+	            <div class="error" ng-hide="!(cotizacion.asyncIsDone && cotizacion.cotizacionFails)">
+	                {{cotizacion.mensaje || 'No se pueden procesar los datos'}}
+	            </div>
+	        </div>
+	    </div>
+	
+	    <div class="col-md-12 text-center barbuttons">
+	        <button type="button" class="btn btn-danger continuar" ng-click="submitPricing()" readonly ng-disabled="disabledButton" id="continuar" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Continuar contrataci&oacute;n">Continuar contrataci&oacute;n</button>
+	        <input class="btn btn-white" ng-click="imprCotizaciones()" value="Imprimir cotizaci&oacute;n" readonly ng-disabled="disabledButton"/>
+	        <a href="#!form"><input class="btn btn-white" value="Volver a cotizar" ng-click="returnCoti()" readonly/></a>
+	    </div>
+	</div>
+</section>

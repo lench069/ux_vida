@@ -1,0 +1,48 @@
+<section class="comparar">
+    <div class="col-md-12 container-comparar">
+        
+		<div class="col-md-12 th title">Comparar</div>
+		<table class="table table-bordered">
+			<tbody>
+				<tr>
+					<td class="col_15 title">Compa&ntilde;&iacute;a</td>
+					<td class="detail text-center" ng-class="('col_')+{{porcent}}" ng-repeat="item in dataList">
+						<div ng-show="!autos">
+							<img ng-src="./assets/img/zurich-santander.svg" />
+						</div>
+						
+						<div ng-show="autos">
+	                        <div>
+								<img ng-src="./assets/img/zurich.svg" ng-show="item.cdRamo == '30'" alt="">
+								<img ng-src="./assets/img/orbis.svg" ng-show="item.cdRamo == '31'" alt="">
+								<img ng-src="./assets/img/mapfre.svg" ng-show="item.cdRamo == '32'" alt="">
+	                        	<img ng-src="./assets/img/sancor.svg" ng-show="item.cdRamo == '33'" alt="">
+	                        	<img ng-src="./assets/img/meridional.svg" ng-show="item.cdRamo == '35'" alt="" id="meridional">
+	                        	<img ng-src="./assets/img/lacaja.svg" ng-show="item.cdRamo == '36'" alt="">
+	                        	<img ng-src="./assets/img/sura.svg" ng-show="item.cdRamo == '39'" alt="" id="sura">
+							</div>
+                        </div>
+						
+					</td>
+				</tr>
+				<tr>
+					<td class="col_15 title">Plan</td>
+					<td class="detail text-center" ng-class="('col_')+{{porcent}}" ng-repeat="item in dataList">{{item.dePlan}}</td>
+				</tr>
+				<tr>
+					<td class="col_15 title">Cuota</td>
+					<td class="detail text-center" ng-class="('col_')+{{porcent}}" ng-repeat="item in dataList">{{item.mtCuota | number:2}}</td>
+				</tr>
+				<tr>
+					<td class="col_15 title">Cobertura</td>
+					<td class="detail" ng-class="('col_')+{{porcent}}" ng-repeat="item in dataList">
+						<div ng-repeat="cober in item.cobertura.detalleCobertura">{{cober.deCobertura}}</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+        <div class="row">
+       	<div class="col-md-12 td_footer td_right"><md-button ng-click="hide()">Cerrar</md-button></div>
+       </div>
+    </div>
+</section>

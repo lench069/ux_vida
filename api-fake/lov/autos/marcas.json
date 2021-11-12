@@ -1,0 +1,440 @@
+[
+
+    {
+        "valor":"01",
+        "descripcion":"ACURA "
+    },
+    {
+        "valor":"21",
+        "descripcion":"AEOLUS"
+    },
+    {
+        "valor":"63",
+        "descripcion":"AGRALE"
+    },
+    {
+        "valor":"02",
+        "descripcion":"ALEKO "
+    },
+    {
+        "valor":"03",
+        "descripcion":"ALFA ROMEO "
+    },
+    {
+        "valor":"04",
+        "descripcion":"ARO "
+    },
+    {
+        "valor":"05",
+        "descripcion":"ASIA "
+    },
+    {
+        "valor":"71",
+        "descripcion":"ASIA CAM. "
+    },
+    {
+        "valor":"06",
+        "descripcion":"AUDI "
+    },
+    {
+        "valor":"60",
+        "descripcion":"AUSTIN "
+    },
+    {
+        "valor":"07",
+        "descripcion":"AUTOBIANCHI "
+    },
+    {
+        "valor":"78",
+        "descripcion":"BELAVTOMAZ "
+    },
+    {
+        "valor":"61",
+        "descripcion":"BERTONE "
+    },
+    {
+        "valor":"58",
+        "descripcion":"BLAC "
+    },
+    {
+        "valor":"08",
+        "descripcion":"BMW "
+    },
+    {
+        "valor":"09",
+        "descripcion":"BUIK"
+    },
+    {
+        "valor":"10",
+        "descripcion":"CADILLAC"
+    },
+    {
+        "valor":"108",
+        "descripcion":"CHERY"
+    },
+    {
+        "valor":"12",
+        "descripcion":"CHEVROLET "
+    },
+    {
+        "valor":"72",
+        "descripcion":"CHEVROLET CAM. "
+    },
+    {
+        "valor":"13",
+        "descripcion":"CHRYSLER "
+    },
+    {
+        "valor":"11",
+        "descripcion":"CITROEN "
+    },
+    {
+        "valor":"14",
+        "descripcion":"DACIA "
+    },
+    {
+        "valor":"15",
+        "descripcion":"DAEWOO "
+    },
+    {
+        "valor":"16",
+        "descripcion":"DAIHATSU "
+    },
+    {
+        "valor":"93",
+        "descripcion":"DAIHATSU CAM. "
+    },
+    {
+        "valor":"89",
+        "descripcion":"DIMEX "
+    },
+    {
+        "valor":"54",
+        "descripcion":"ENIAK "
+    },
+    {
+        "valor":"69",
+        "descripcion":"F.E.R.E.S.A. "
+    },
+    {
+        "valor":"51",
+        "descripcion":"FERRARI "
+    },
+    {
+        "valor":"17",
+        "descripcion":"FIAT "
+    },
+    {
+        "valor":"18",
+        "descripcion":"FORD "
+    },
+    {
+        "valor":"73",
+        "descripcion":"FORD CAM. "
+    },
+    {
+        "valor":"79",
+        "descripcion":"G.A.Z. "
+    },
+    {
+        "valor":"64",
+        "descripcion":"GROSSPAL "
+    },
+    {
+        "valor":"52",
+        "descripcion":"HAM-JIANG "
+    },
+    {
+        "valor":"99",
+        "descripcion":"HEIBAO "
+    },
+    {
+        "valor":"80",
+        "descripcion":"HINO "
+    },
+    {
+        "valor":"19",
+        "descripcion":"HONDA "
+    },
+    {
+        "valor":"49",
+        "descripcion":"HUMMER "
+    },
+    {
+        "valor":"20",
+        "descripcion":"HYUNDAI "
+    },
+    {
+        "valor":"59",
+        "descripcion":"I.K.A. RENAULT"
+    },
+    {
+        "valor":"87",
+        "descripcion":"INTERNATIONAL "
+    },
+    {
+        "valor":"22",
+        "descripcion":"ISUZU "
+    },
+    {
+        "valor":"41",
+        "descripcion":"IVECO "
+    },
+    {
+        "valor":"81",
+        "descripcion":"IZH "
+    },
+    {
+        "valor":"98",
+        "descripcion":"JAC "
+    },
+    {
+        "valor":"23",
+        "descripcion":"JAGUAR "
+    },
+    {
+        "valor":"68",
+        "descripcion":"JINBEI"
+    },
+    {
+        "valor":"82",
+        "descripcion":"KAMAZ "
+    },
+    {
+        "valor":"83",
+        "descripcion":"KENWORTH "
+    },
+    {
+        "valor":"24",
+        "descripcion":"KIA "
+    },
+    {
+        "valor":"74",
+        "descripcion":"KIA CAM."
+    },
+    {
+        "valor":"25",
+        "descripcion":"LADA "
+    },
+    {
+        "valor":"53",
+        "descripcion":"LANCIA "
+    },
+    {
+        "valor":"84",
+        "descripcion":"LIAZ "
+    },
+    {
+        "valor":"114",
+        "descripcion":"LIFAN"
+    },
+    {
+        "valor":"67",
+        "descripcion":"MAESTRO "
+    },
+    {
+        "valor":"55",
+        "descripcion":"MAHINDRA "
+    },
+    {
+        "valor":"00",
+        "descripcion":"MARCA GENERICA"
+    },
+    {
+        "valor":"102",
+        "descripcion":"MASERATI "
+    },
+    {
+        "valor":"26",
+        "descripcion":"MAZDA "
+    },
+    {
+        "valor":"90",
+        "descripcion":"MAZDA CAM. "
+    },
+    {
+        "valor":"28",
+        "descripcion":"MERCEDES BENZ "
+    },
+    {
+        "valor":"75",
+        "descripcion":"MERCEDES BENZ C"
+    },
+    {
+        "valor":"27",
+        "descripcion":"MERCURY"
+    },
+    {
+        "valor":"62",
+        "descripcion":"METRO "
+    },
+    {
+        "valor":"106",
+        "descripcion":"MINI COOPER"
+    },
+    {
+        "valor":"29",
+        "descripcion":"MITSUBISHI "
+    },
+    {
+        "valor":"91",
+        "descripcion":"MITSUBISHI CAM."
+    },
+    {
+        "valor":"77",
+        "descripcion":"NAKAI (CHANGAN)"
+    },
+    {
+        "valor":"30",
+        "descripcion":"NISSAN "
+    },
+    {
+        "valor":"92",
+        "descripcion":"NISSAN CAM. "
+    },
+    {
+        "valor":"31",
+        "descripcion":"OPEL "
+    },
+    {
+        "valor":"32",
+        "descripcion":"PEUGEOT "
+    },
+    {
+        "valor":"94",
+        "descripcion":"PIAGGIO "
+    },
+    {
+        "valor":"105",
+        "descripcion":"PLYMOUTH"
+    },
+    {
+        "valor":"33",
+        "descripcion":"POLONEZ "
+    },
+    {
+        "valor":"34",
+        "descripcion":"PONTIAC"
+    },
+    {
+        "valor":"35",
+        "descripcion":"PORSCHE "
+    },
+    {
+        "valor":"48",
+        "descripcion":"PROTON "
+    },
+    {
+        "valor":"65",
+        "descripcion":"RANQUEL "
+    },
+    {
+        "valor":"56",
+        "descripcion":"RASTROJERO "
+    },
+    {
+        "valor":"36",
+        "descripcion":"RENAULT "
+    },
+    {
+        "valor":"70",
+        "descripcion":"RENAULT CAM. "
+    },
+    {
+        "valor":"37",
+        "descripcion":"ROVER "
+    },
+    {
+        "valor":"38",
+        "descripcion":"SAAB "
+    },
+    {
+        "valor":"103",
+        "descripcion":"SANTANA "
+    },
+    {
+        "valor":"95",
+        "descripcion":"SANXING "
+    },
+    {
+        "valor":"50",
+        "descripcion":"SCANIA "
+    },
+    {
+        "valor":"39",
+        "descripcion":"SEAT "
+    },
+    {
+        "valor":"104",
+        "descripcion":"SIAM DI TELLA"
+    },
+    {
+        "valor":"40",
+        "descripcion":"SKODA "
+    },
+    {
+        "valor":"101",
+        "descripcion":"SPACE "
+    },
+    {
+        "valor":"96",
+        "descripcion":"STAR (3-STAR) "
+    },
+    {
+        "valor":"42",
+        "descripcion":"SUBARU "
+    },
+    {
+        "valor":"43",
+        "descripcion":"SUZUKI "
+    },
+    {
+        "valor":"57",
+        "descripcion":"TATA "
+    },
+    {
+        "valor":"76",
+        "descripcion":"TATA CAM. "
+    },
+    {
+        "valor":"44",
+        "descripcion":"TAVRIA "
+    },
+    {
+        "valor":"45",
+        "descripcion":"TOYOTA "
+    },
+    {
+        "valor":"85",
+        "descripcion":"UAZ "
+    },
+    {
+        "valor":"46",
+        "descripcion":"VOLKSWAGEN "
+    },
+    {
+        "valor":"66",
+        "descripcion":"VOLKSWAGEN CAM."
+    },
+    {
+        "valor":"47",
+        "descripcion":"VOLVO "
+    },
+    {
+        "valor":"88",
+        "descripcion":"VOLVO CAM. "
+    },
+    {
+        "valor":"100",
+        "descripcion":"WULING MOTORS "
+    },
+    {
+        "valor":"97",
+        "descripcion":"YANTAI "
+    },
+    {
+        "valor":"86",
+        "descripcion":"YUEJIN "
+    }
+
+]

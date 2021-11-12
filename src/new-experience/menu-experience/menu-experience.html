@@ -1,0 +1,89 @@
+<div class="row" style="text-align: center; margin-top: 40px; font-family: 'Roboto Regular', arial;">
+    <div class="col-md-9 padding0px">
+        <div class="col-md-2 line-blue"
+            ng-class="menu.seguro ? menu.cotizacion ? 'line-green' : 'line-blue' : 'line-bottom'"
+            style="padding-top: 21px;">
+        </div>
+        <div class="col-md-3 padding0px">
+            <div class="col-md-12"
+                ng-class="menu.seguro ? menu.cotizacion ? 'ng-head-wizard-ok' : 'ng-head-wizard' : 'ng-head-wizard'">
+                PERFILAR
+            </div>
+            <div class="col-md-4"
+                ng-class="menu.seguro ? menu.cotizacion ? 'line-green' : 'line-blue'  : 'line-bottom'">
+            </div>
+            <div class="col-md-4"
+                ng-class="menu.seguro ? menu.cotizacion ? 'line-green' : 'line-blue'  : 'line-bottom'">
+            </div>
+            <div class="col-md-4"
+                ng-class="menu.seguroVivienda ? menu.cotizacion ? 'line-green' : 'line-blue'  : 'line-bottom'">
+            </div>
+            <div class="icon-wizard">
+                <i ng-if="menu.seguro && !menu.cliente" class="glyphicon glyphicon-record icon-size"></i>
+                <i ng-if="menu.cotizacion" class="glyphicon glyphicon-ok-circle icon-size-ok"></i>
+            </div>
+        </div>
+        <div class="col-md-2  padding0px">
+            <div class="col-md-12"
+                ng-class="menu.cotizacion ? menu.cliente ? 'ng-head-wizard-ok' : 'ng-head-wizard' : 'head-wizard'">
+                COTIZAR</div>
+            <div class="col-md-6"
+                ng-class="menu.cotizacion ? menu.cliente ? 'line-green' : 'line-blue' : 'line-bottom'">
+            </div>
+            <div class="col-md-6"
+                ng-class="menu.cliente ? menu.confirmacion ? 'line-green' : 'line-blue' : 'line-bottom'">
+            </div>
+            <div class="icon-wizard">
+                <i ng-if="menu.cotizacion && !menu.cliente" class="glyphicon glyphicon-record icon-size"></i>
+                <i ng-if="menu.cliente" class="glyphicon glyphicon-ok-circle icon-size-ok"></i>
+                <span ng-if="!menu.cotizacion" class="icon-size-no">o</span>
+            </div>
+        </div>
+        <div class="col-md-3  padding0px">
+            <div class="col-md-12"
+                ng-class="menu.cliente ? menu.confirmacion ? 'ng-head-wizard-ok' : 'ng-head-wizard' : 'head-wizard'">
+                CONFIRMAR</div>
+            <div class="col-md-6"
+                ng-class="menu.cliente ? menu.confirmacion ? 'line-green' : 'line-blue' : 'line-bottom'">
+            </div>
+            <div class="col-md-6" ng-class="menu.confirmacion ? 'line-blue' : 'line-bottom'"></div>
+            <div class="icon-wizard">
+                <i ng-if="menu.cliente && !menu.confirmacion" class="glyphicon glyphicon-record icon-size"></i>
+                <i ng-if="menu.cliente && menu.confirmacion" class="glyphicon glyphicon-ok-circle icon-size-ok"></i>
+                <span ng-if="!menu.cliente" class="icon-size-no">o</span>
+            </div>
+        </div>
+        <div class="col-md-2 padding0px">
+            <div class="col-md-12" ng-class="menu.confirmacion ?  'ng-head-wizard' : 'head-wizard'">EMITIR</div>
+            <div class="col-md-6" ng-class="menu.confirmacion ?  'line-blue' : 'line-bottom'"></div>
+            <div class="col-md-6 line-bottom"></div>
+            <div class="icon-wizard">
+                <img ng-if="menu.confirmacion" class="imgVivienda" src="./assets/img/iconConfirmacionAzul.svg" alt="">
+                <img ng-if="!menu.confirmacion" class="imgVivienda" src="./assets/img/iconConfirmacion.svg" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 line-bottom" style="padding-top: 21px;"></div>
+
+
+    <div ng-if="menu.seguro && !menu.cotizacion" class="col-md-12" ng-if="true"
+        style="margin-top: 30px; background-color: #efefef;">
+        <configure-secure></configure-secure>
+    </div>
+
+    <div ng-if="menu.cotizacion && !menu.cliente" class="col-md-12"
+        style="margin-top: 30px; background-color: #efefef;">
+        <quotation></quotation>
+    </div>
+
+    <div ng-if="menu.cliente && !menu.confirmacion" class="col-md-12"
+        style="margin-top: 30px; background-color: #efefef;">
+        <info-client></info-client>
+    </div>
+
+    <div ng-if="menu.confirmacion" class="col-md-12" style="margin-top: 30px; background-color: #efefef;">
+        <confirmation></confirmation>
+    </div>
+
+</div>

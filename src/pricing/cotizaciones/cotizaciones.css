@@ -1,0 +1,78 @@
+section.cotizaciones {padding: 20px 20px 20px 20px;}
+
+section.cotizaciones div.headRow{padding-left: 25%;}
+section.cotizaciones md-input-container.head{ width: 380px; height: 2.2em;}
+
+@media (max-width: 1350px) {
+    section.cotizaciones div.headRow{padding-left: 10%;}
+}
+@media (max-width: 1210px) {
+    section.cotizaciones div.headRow{padding-left: 5%;}
+}
+
+section.cotizaciones div.barbuttons {margin-top: -10px;}  
+section.cotizaciones input.continuar {width: 220px;}  
+section.cotizaciones div.box div.error{ width: 100%;}
+section.cotizaciones div.box.card { box-shadow: 2px 4px 8px 0 rgba(0,0,0,0.5);};
+section.cotizaciones input.labelHead { font-weight: 500; font-size: 0.9em;}
+section.cotizaciones div.boxes-container div.nrocot{ font-size: 12px; margin-bottom: 10px;}
+section.cotizaciones div.boxes-container div.costs{ font-size: 14px; font-weight: 600; text-transform: uppercase; margin-bottom: 10px; color: red;}
+
+/*colores de ramos*/
+section.cotizaciones div.color-box.cdramo40, div.color-box.cdramo30, div.color-box.cdramo31, div.color-box.cdramo32, div.color-box.cdramo33, div.color-box.cdramo35, div.color-box.cdramo36, div.color-box.cdramo39 {background-color: #d60000; color: #eee;} /*Color para ramo autos*/
+section.cotizaciones div.color-box.cdramo1 {background-color: #1faa00; color: #eee;} /*Accidentes Personales*/
+section.cotizaciones div.color-box.cdramo8 {background-color: #0101fc; color: #eee;} /*Incendio*/
+section.cotizaciones div.color-box.cdramo18 {background-color: #00b7d3; color: #eee;}/*Vida*/
+section.cotizaciones div.color-box.cdramo19 {background-color: #ffd600; color: #eee;}/*Robo en Cajeros*/
+section.cotizaciones div.color-box.cdramo20 {background-color: #ff6d00; color: #eee;}/*Desempleo*/
+section.cotizaciones div.color-box.cdramo21 {background-color: #304fff; color: #eee;}/*Vivienda*/
+section.cotizaciones div.color-box.cdramo22 {background-color: #8bc24a; color: #eee;}/*Integral de comercio*/
+section.cotizaciones div.color-box.cdramo23 {background-color: #feca28; color: #eee;}/*Integral de consorcio*/
+section.cotizaciones div.color-box.cdramo24 {background-color: #0a00b6; color: #eee;}/*Proteccion salud*/
+section.cotizaciones div.color-box.cdramo25 {background-color: #c43c00; color: #eee;}/*Proteccion cartera*/
+section.cotizaciones div.color-box.cdramo26 {background-color: #aa00ff; color: #eee;}/*Compra protegida*/
+
+    /*logos de box*/
+    section.cotizaciones div.color-box div.logo{height: 60px; width: 100%; margin: auto; text-align: center; padding: 0 10px; box-sizing: border-box; background-size: 70%; margin-top: -10px; }
+        section.cotizaciones div.color-box div.logo.cdramo30, div.logo.cdramo31, div.logo.cdramo32, div.logo.cdramo33, div.logo.cdramo35, div.logo.cdramo36, div.logo.cdramo39, div.logo.cdramo40 {background: url(../../../../../Multicotizador/assets/img/logo.svg) center no-repeat transparent;} /*Logo para ramo autos*/
+        section.cotizaciones div.color-box div.logo.cdramo1, div.logo.cdramo8, div.logo.cdramo18, div.logo.cdramo19, div.logo.cdramo20, div.logo.cdramo21, div.logo.cdramo22, div.logo.cdramo23, div.logo.cdramo24, div.logo.cdramo25, div.logo.cdramo26 {background: url(../../../../../Multicotizador/assets/img/logo-zurich-santander.svg) center no-repeat transparent; background-size: 70%;} /*Logo para el resto de los ramos*/
+
+	section.cotizaciones div.boxes-container div.cotizacion span{ width: 100%;}
+	section.cotizaciones div.boxes-container div.cotizacion span div.color-box{ height: 96px;}
+    section.cotizaciones div.boxes-container div.cotizacion div.box-info { height: 160px; font-size: 12px; width: 100%; display: block; float: left;}
+    section.cotizaciones div.boxes-container div.cotizacion div.box-info div.logos { }
+    section.cotizaciones div.boxes-container div.cotizacion div.person{ padding-top: 20px;}
+    section.cotizaciones div.boxes-container div.cotizacion div.titleDetail { margin: 0px; overflow: hidden;}
+    
+    section.cotizaciones div.boxes-container div.cotizacion div.titleDetail.logo { height: 60px; width:100%;}
+        section.cotizaciones div.boxes-container div.cotizacion div.titleDetail.logo img { margin: 0px; width: 100%; height: 100%; }
+            section.cotizaciones div.boxes-container div.cotizacion div.titleDetail.logo img#sura { margin: 0px; width: 100px; height: 70px; }
+    
+    section.cotizaciones div.boxes-container div.cotizacion div.titleDetail.logoSpray { height: 60px; width:80%;}
+        section.cotizaciones div.boxes-container div.cotizacion div.titleDetail.logoSpray img { margin: 0px; width: 196%; height: 375%; }
+    
+    section.cotizaciones div.boxes-container div.cotizacion div.bodyDetail { margin: 0px; overflow: hidden; height: 80px; padding-top: 10px;}
+    section.cotizaciones div.boxes-container div.cotizacion div.cost { display: block; float: left; width: 100%; font-size: 12px; text-transform: uppercase; height: 63px;}
+        section.cotizaciones div.boxes-container div.cotizacion div.cost div.costItem { height: 18px;}
+    section.cotizaciones div.boxes-container div.cotizacion div.btns-container { margin-top: 5px; display: block; float: left; width: 100%;}
+    section.cotizaciones div.boxes-container div.cotizacion div.btns-container input.ver-mas {     width: 100px; padding-left: 5px; padding-right: 5px;}
+    section.cotizaciones div.boxes-container div.cotizacion div.btns-container input.coberturas { width: 114px; padding-left: 5px; padding-right: 5px;}
+    
+    section.cotizaciones div.boxes-container div.cotizacion div.detail div.titleDetail.logo.cdRamo30 {background-image: url(../../../assets/img/zurich.svg); background-repeat: no-repeat; background-position: 150px 0px; background-size: contain;}
+    section.cotizaciones div.boxes-container div.cotizacion div.detail div.titleDetail.logo.cdRamo31 {background-image: url(../../../assets/img/orbis.svg); background-repeat: no-repeat; background-position: 100px 0px; background-size: contain;}
+    section.cotizaciones div.boxes-container div.cotizacion div.detail div.titleDetail.logo.cdRamo32 {background-image: url(../../../assets/img/mapfre.svg); background-repeat: no-repeat; background-position: 100px 0px; background-size: contain;}
+    section.cotizaciones div.boxes-container div.cotizacion div.detail div.titleDetail.logo.cdRamo33 {background-image: url(../../../assets/img/sancor.svg); background-repeat: no-repeat; background-position: 120px 0px; background-size: contain;}
+    section.cotizaciones div.boxes-container div.cotizacion div.detail div.titleDetail.logo.cdRamo35 {background-image: url(../../../assets/img/meridional.svg); background-repeat: no-repeat; background-position: 100px 0px; background-size: contain;}
+    section.cotizaciones div.boxes-container div.cotizacion div.detail div.titleDetail.logo.cdRamo36 {background-image: url(../../../assets/img/lacaja.svg); background-repeat: no-repeat; background-position: 150px 0px; background-size: contain; height: 60px;}
+    section.cotizaciones div.boxes-container div.cotizacion div.detail div.titleDetail.logo.cdRamo39 {background-image: url(../../../assets/img/sura.svg); background-repeat: no-repeat; background-position: 130px 0px; background-size: contain; height: 60px;}
+    
+section.cotizaciones .loadingSVG {
+    position: fixed;
+    padding-top: 15%;
+    padding-left: 46%;
+    z-index: 100;
+}
+
+.cards-pricing.loading {
+	opacity: 0.6;
+}

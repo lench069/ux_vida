@@ -1,0 +1,206 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>index2</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+
+var parms = '{ "nuDoc": "14070612"}'
+var parms2 = '{ "mtSumaAseg": "1000000", "cdRamo" : "21", "tpCobertura" : "1", "cdClaseRiesgo" : "PER"}'
+var parms2b = '{ "cdActividad":"585", "cdRamo" : "26", "mtSumaAseg": "15000" }'
+var parms7 = '{ "mtSumaAseg": "1000022", "cdRamo" : "21", "tpCobertura" : "1", "cdClaseRiesgo" : "PER"}'
+var parms3 = '{ "cdProducto": "HOG426", "cdRamo" : "21", "cdPlan" : "2", "sumaAsegurada" : "1000000", "cdSucursal" : "1"}'
+var coti1 = {};
+var coti2 = {};
+var select3 = {};
+var param8 = {
+	"cdProvincia" : "13",
+	"cdCiudad" : "371",
+	"cdPostal" : "5500",
+	"domCalle" : "P DE LOS AN",
+	"domDepto" : "",
+	"domNro" : "02867",
+	"domPiso" : "",
+	"nuTelefono" : "01146326723",
+	"diMail" : "histrionica48@hotmail.com",
+
+	"origenFondosDDJJ" : "haberes",
+	"inPep" : "N",
+	"cargoPep" : "",
+	"funcPubExt" :"N",
+	"militaryProd" : "N",
+
+	"formaPago" :  {
+	  "tpCuentaBco": "05",
+	  "cdSucCta": "398",
+	  "ctaTarjetaRector": "377790000309568",
+	  "stTarjeta": "01",
+	  "nuCBU": "",
+	  "moneda": "",
+	  "ctaTarjetaFormato": "377790000309568",
+	  "ctaTarjetaFormatoProtegido": "4517#########049",
+	  "tpCtaRector": "A",
+	  "deTpCtaRector": "Debito",
+	  "cdCtaRector": "5",
+	  "inCtaRector": "T",
+	  "cdTitularidad": "TI",
+	  "nroCtaContrato": "0000000000000000"
+	},
+		
+	"feIncripcionRegistral" : "",
+	"nuIncripcionRegistral" : "",
+	"feConstitucion" : "",
+		
+	"feVigenciaNormal" : "20170414",
+	"feVigenciaAutos" : "",
+
+	"entreCalles" : "",
+	"alarma" : "",
+
+	
+	"nroPoliza" : " ",
+	"nroCertificado" : " ",
+	"errNumber" : " ",
+	"errMensaje" : " "
+};
+
+var emitir = function(){
+	var params9 = JSON.stringify(param8);
+	$.getJSON({
+	  type: "POST",
+	  url: '/Multicotizador/api/cotizacion/emision',
+	  data: params9,
+	  contentType:"application/json",
+	  dataType: "json"
+	});
+}
+
+var logingUser = function(){
+	
+	$.getJSON({
+	  type: "POST",
+	  url: '/Multicotizador/api/cliente/',
+	  data: parms,
+	  contentType:"application/json",
+	  dataType: "json"
+	});
+}
+
+var cotizacion = function(){
+	$.getJSON({
+	  type: "POST",
+	  url: '/Multicotizador/api/cotizacion/normal',
+	  data: parms2,
+	  contentType:"application/json",
+	  dataType: "json"
+	}).done(function( data ) {
+    	coti1 = data.firstPricing;
+    });
+}
+
+var cotizacion2 = function(){
+	$.getJSON({
+	  type: "POST",
+	  url: '/Multicotizador/api/cotizacion/normal',
+	  data: parms2b,
+	  contentType:"application/json",
+	  dataType: "json"
+	}).done(function( data ) {
+    	coti2 = data.firstPricing;
+    });
+}
+
+
+
+var selectC = function(){
+	$.getJSON({
+	  type: "POST",
+	  url: '/Multicotizador/api/cotizacion/select',
+	  data: select3,
+	  contentType:"application/json",
+	  dataType: "json"
+	});
+}
+
+var all2 = function(){
+	$.getJSON({
+	  type: "GET",
+	  contentType:"application/x-www-form-urlencoded; charset=UTF-8",
+	  url: '/Multicotizador/api/cotizacion/all'
+	}).done(function( data ) {
+		tmp = data;
+    	tmp.listCotizacion[21].selCotizacion = coti1;
+    	tmp.listCotizacion[26].selCotizacion = coti2;
+    	var asd = [];
+    	asd.push(coti1);
+    	asd.push(coti2);
+    	var asd2 = {};
+    	asd2.listCotizacion = asd;
+    	select3 = JSON.stringify(asd);
+    });
+}
+
+
+var msgCom = function(){
+	$.getJSON({
+	  type: "GET",
+	  contentType:"application/x-www-form-urlencoded; charset=UTF-8",
+	  url: '/Multicotizador/api/cliente/mensajecomercial'
+	});
+}
+
+var pdata = {"cdRamo":"21","nuPoliza":"1824170","nuCertificado":"0"};
+var imprimirPoliza = function(){
+	$.getJSON({
+	  type: "POST",
+	  url: '/Multicotizador/api/cotizacion/imprimirPoliza',
+	  data: JSON.stringify(pdata),
+	  contentType:"application/json",
+	  dataType: "json"
+	})
+	
+};
+
+
+</script>	
+</head>
+<body>
+1-JSONS Login Cliente
+<br>Login:<input type="button" value="POST" onclick="logingUser();"/>
+
+<br><br>
+2-Json Cotizacion Vivienda
+<br>parms = '{ "mtSumaAseg": "1000000", "cdRamo" : "21", "tpCobertura" : "1", "cdClaseRiesgo" : "PER"}'
+<br>Cotizaciones:<input type="button" value="POST" onclick="cotizacion();cotizacion2();"/>
+<br>
+<br><br>
+3-Json Select
+<br>parms = response del 2 pero con el select [0];
+<br>Cotizaciones:<input type="button" value="POST" onclick="selectC();"/>
+<br>
+<br><br>
+Json All
+<br>parms = '{ "cdProd": "HOG426", "cdRamo" : "21", "cdPlan" : "2", "nuCoti" : "1000000", "cdSuc" : "1"}'
+<br>Cotizaciones:
+	<input type="button" value="GET" onclick="all2();"/>
+<br>
+<br><br>
+4-Json Emitir
+<br>parms = 'asdasd'
+<br>Emitir
+:<input type="button" value="POST" onclick="emitir();"/>
+<br>
+<br><br>
+4-Json Mensaje Comercial
+<br>parms = 'asdasd'
+<br>Emitir
+:<input type="button" value="GET" onclick="msgCom();"/>
+<br>
+
+<div>
+	<h2>imprimir póliza</h2>
+	<button onclick="imprimirPoliza()">imprimirPoliza.call()</button>
+</div>
+</body>
+</html>

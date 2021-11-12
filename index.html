@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="es">
+<head>
+
+       <!-- Google Analytics -->
+<script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] ||
+                function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date().getDate();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+		ga('create', 'UA-203239212-1'); // Creates the tracker with default parameters.
+		ga('send', 'pageview','newExperence');  
+ 
+
+</script>
+     <!-- End Google Analytics -->
+    <meta charset="UTF-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+    <link rel="icon" type="image/ico" href="favico.ico">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>Santander</title>
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+
+    <!-- Fonts and icons -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
+    <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="./node_modules/angular-material/angular-material.min.css" rel="stylesheet" />
+    <link href="./node_modules/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="https://allfont.es/allfont.css?fonts=roboto-bold" rel="stylesheet" type="text/css" />
+    <link href="https://allfont.es/allfont.css?fonts=roboto-medium" rel="stylesheet" type="text/css" />
+    <link href="https://allfont.es/allfont.css?fonts=roboto-regular" rel="stylesheet" type="text/css" />
+
+    <!-- CSS Files -->
+    <link href="assets/css/material-kit.css" rel="stylesheet" />
+    <link href="assets/css/custom.css" rel="stylesheet" />
+    <link href="./src/forms/customer/customer.css" rel="stylesheet" />
+    <link href="./src/forms/cotizador/cotizador.css" rel="stylesheet" />
+    <link href="./src/pricing/cotizaciones/cotizaciones.css" rel="stylesheet" />
+    <link href="./src/pricing/cotizaciones-detail/cotizaciones-detail.css" rel="stylesheet" />
+    <link href="./src/pricing/coberturas/coberturas.css" rel="stylesheet" />
+    <link href="./src/pricing/legales/legales.css" rel="stylesheet" />
+    <link href="./src/common/exclusiones-generales/exclusiones-generales.css" rel="stylesheet" />
+    <link href="./src/pricing/personalizar/personalizar.css" rel="stylesheet" />
+    <link href="./src/new-experience/menu-experience/menu-experience.css" rel="stylesheet" />
+    <link href="./src/new-experience/configure-secure/configure-secure.css" rel="stylesheet" />
+    <link href="./src/new-experience/quotation/quotation.css" rel="stylesheet" />
+    <link href="./src/new-experience/info-client/info-client.css" rel="stylesheet" />
+    <link href="./src/new-experience/confirmation/confirmation.css" rel="stylesheet" />
+    <link href="./src/new-experience/coverages/coverages.css" rel="stylesheet" />
+    <link href="./src/new-experience/security-measures/security-measures.css" rel="stylesheet" />
+    <link href="./src/new-experience/modal-info/modal-info.css" rel="stylesheet" />
+    <link href="./src/new-experience/modal-confirmation/modal-confirmation.css" rel="stylesheet" />
+    <link href="./src/new-experience/modal-innerHTML/modal-innerHTML.css" rel="stylesheet" />
+    <link href="./src/new-experience/modal-innerHTML-ok-cancel/modal-innerHTML-ok-cancel.css" rel="stylesheet" />
+    <link href="./src/new-experience/modal-error/modal-error.css" rel="stylesheet" />
+    <link href="./src/new-experience/plans/plans.css" rel="stylesheet" />
+    <link href="./src/issue/form-emit/form-emit.css" rel="stylesheet" />
+    <link href="./src/issue/poliza-resume/poliza-resume.css" rel="stylesheet" />
+    <link href="./src/issue/poliza-print/poliza-print.css" rel="stylesheet" />
+    <link href="./src/mailVerify/mailstyle.css" rel="stylesheet" type="text/css" />
+    <link href="./src/new-experience/poliza-resume-newEx/poliza-resume-newEx.css" rel="stylesheet" />
+    <link href="./src/new-experience/poliza-print/poliza-print.css" rel="stylesheet" />
+</head>
+<body ng-app="app" ng-cloak>
+
+    <header-top></header-top>
+
+    <div layout="row" layout-sm="column" layout-align="space-around" class="loadingSVG" id="loadingSVG">
+        <div id="wrapper">
+			<svg class="circular-loader"viewBox="25 25 50 50" >
+                <circle class="loader-path" cx="50" cy="50" r="20" fill="none" stroke="#2b387d" stroke-width="5" />
+            </svg>
+        </div>
+    </div>
+	
+    <div ng-view class="container-fluid"></div>
+
+    <!-- dependencies -->
+    <script src="./node_modules/angular/angular.min.js"></script>
+    <script src="./node_modules/angular/angular-sanitize.min.js"></script>
+    <script src="./node_modules/angular/angular-sanitize.js"></script>
+    <script src="./node_modules/angular-animate/angular-animate.min.js"></script>
+    <script src="./node_modules/angular-route/angular-route.min.js"></script>
+    <script src="./node_modules/angular-aria/angular-aria.min.js"></script>
+    <script src="./node_modules/angular-material/angular-material.min.js"></script>
+    <script src="./node_modules/moment/min/moment.min.js"></script>
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- modules -->
+    <script type="text/javascript" src="./src/utils.js"></script>
+    <script src="./src/utils/filters.js"></script>
+    <script src="./src/common/header-top/header-top.js"></script>
+    <script src="./src/common/menu-left/menu-left.js"></script>
+    <script src="./src/common/menu-ramos/menu-ramos.js"></script>
+    <script src="./src/common/exclusiones-generales/exclusiones-generales.js"></script>
+    <script src="./src/common/gestor-campanas/gestor-campanas.js"></script>
+    <script src="./src/common/menu-tabs/menu-tabs.js"></script>
+    <script src="./src/forms/customer/customer.js"></script>
+    <script src="./src/forms/cotizador/cotizador.js"></script>
+    <script src="./src/pricing/cotizaciones/cotizaciones.js"></script>
+    <script src="./src/pricing/personalizar/personalizar.js"></script>
+    <script src="./src/new-experience/menu-experience/menu-experience.js"></script>
+    <script src="./src/new-experience/configure-secure/configure-secure.js"></script>
+    <script src="./src/new-experience/quotation/quotation.js"></script>
+    <script src="./src/new-experience/info-client/info-client.js"></script>
+    <script src="./src/new-experience/confirmation/confirmation.js"></script>
+    <script src="./src/new-experience/coverages/coverages.js"></script>
+    <script src="./src/new-experience/security-measures/security-measures.js"></script>
+    <script src="./src/new-experience/modal-info/modal-info.js"></script>
+    <script src="./src/new-experience/modal-confirmation/modal-confirmation.js"></script>
+    <script src="./src/new-experience/modal-innerHTML/modal-innerHTML.js"></script>
+    <script src="./src/new-experience/modal-innerHTML-ok-cancel/modal-innerHTML-ok-cancel.js"></script>
+    <script src="./src/new-experience/modal-error/modal-error.js"></script>
+    <script src="./src/repositories/forms.js"></script>
+    <script src="./src/repositories/pricing.js"></script>
+    <script src="./src/repositories/common.js"></script>
+    <script src="./src/repositories/gaService.js"></script>
+    <script src="./src/pricing/cotizaciones-detail/cotizaciones-detail.js"></script>
+    <script src="./src/pricing/coberturas/coberturas.js"></script>
+    <script src="./src/new-experience/plans/plans.js"></script>
+    <script src="./src/issue/form-emit/form-emit.js"></script>
+    <script src="./src/issue/poliza-resume/poliza-resume.js"></script>
+    <script src="./src/repositories/issue.js"></script>
+    <script src="./src/app.js"></script>
+    <script src="./src/mailVerify/funcionesVerificador.js"></script>
+    <script src="./src/mailVerify/verificadorMailOnline.js"></script>
+    <script src="./src/new-experience/poliza-resume-newEx/poliza-resume-newEx.js"></script>
+
+</body>
+
+</html>

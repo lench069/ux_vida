@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="29.158" height="18.001" viewBox="0 0 29.158 18.001">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectángulo_12" data-name="Rectángulo 12" width="29.158" height="18.001" transform="translate(147 354)" fill="none" stroke="#707070" stroke-linecap="round" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="iconHospedaje" transform="translate(-147 -354)" clip-path="url(#clip-path)">
+    <path id="Trazado_51" data-name="Trazado 51" d="M158.1,360.627a2.621,2.621,0,1,1-5.241,0,2.621,2.621,0,1,1,5.241,0Z" transform="translate(-2.33 -1.578)" fill="none" stroke="#e90b18" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/>
+    <path id="Trazado_52" data-name="Trazado 52" d="M153.6,381.737H151.55V379.43H153.6Z" transform="translate(-1.809 -10.11)" fill="none" stroke="#707070" stroke-linecap="round" stroke-width="1"/>
+    <path id="Trazado_53" data-name="Trazado 53" d="M153.6,381.737H151.55V379.43H153.6Z" transform="translate(-1.809 -10.11)" fill="none" stroke="#e90b18" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/>
+    <path id="Trazado_54" data-name="Trazado 54" d="M188.863,381.737H186.7V379.43h2.163Z" transform="translate(-15.783 -10.11)" fill="none" stroke="#707070" stroke-linecap="round" stroke-width="1"/>
+    <path id="Trazado_55" data-name="Trazado 55" d="M188.863,381.737H186.7V379.43h2.163Z" transform="translate(-15.783 -10.11)" fill="none" stroke="#e90b18" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/>
+    <path id="Trazado_56" data-name="Trazado 56" d="M173.461,362.146H152.514a1.785,1.785,0,0,1-1.819-1.729V356.5a1.393,1.393,0,0,0-1.368-1.386,1.483,1.483,0,0,0-1.368,1.386v11.657a1.566,1.566,0,0,0,1.6,1.615h23.9a1.57,1.57,0,0,0,1.6-1.615v-4.386A1.648,1.648,0,0,0,173.461,362.146Z" transform="translate(-0.382 -0.441)" fill="none" stroke="#e90b18" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/>
+    <path id="Trazado_57" data-name="Trazado 57" d="M177.072,363.719H164.21V359.13h12.862a2.349,2.349,0,0,1,2.392,2.422A2.214,2.214,0,0,1,177.072,363.719Z" transform="translate(-6.842 -2.04)" fill="none" stroke="#e90b18" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/>
+  </g>
+</svg>

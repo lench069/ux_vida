@@ -1,0 +1,36 @@
+[
+
+    {
+        "valor":"CF",
+        "descripcion":"CONSUMIDOR FINAL"
+    },
+    {
+        "valor":"EX",
+        "descripcion":"EXENTO"
+    },
+    {
+        "valor":"IN",
+        "descripcion":"RESPONSABLE INSCRIPTO"
+    },
+    {
+        "valor":"MO",
+        "descripcion":"MONOTRIBUTO"
+    },
+    {
+        "valor":"NC",
+        "descripcion":"NO CATEGORIZADOS RG.212"
+    },
+    {
+        "valor":"NI",
+        "descripcion":"RESPONSABLE NO INSCRIPTO"
+    },
+    {
+        "valor":"RG",
+        "descripcion":"INSCRIPTO RG 3125"
+    },
+    {
+        "valor":"TF",
+        "descripcion":"EXENTO (TIERRA DEL FUEGO)"
+    }
+
+]
